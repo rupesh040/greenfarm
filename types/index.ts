@@ -97,6 +97,7 @@ export interface AboutFeature {
 export interface AboutData {
   badge: string;
   title: string;
+  highlightText?: string;
   experienceYears: string;
   experienceLabel: string;
   features: AboutFeature[];
@@ -121,8 +122,47 @@ export interface ServiceItem {
 export interface ServicesData {
   badge: string;
   title: string;
+  highlightText?: string;
   description: string;
   items: ServiceItem[];
+}
+
+export interface ServiceBenefit {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface SidebarServiceItem {
+  id: string;
+  title: string;
+  image: string;
+  href: string;
+  active?: boolean;
+}
+
+export interface ServiceDetailData {
+  id: string;
+  badge: string;
+  title: string;
+  shortDescription: string;
+  enquiryButtonText?: string;
+  heroImage: string;
+  overviewTitle: string;
+  overviewDescription: string;
+  overviewImage: string;
+  benefitsTitle: string;
+  benefits: ServiceBenefit[];
+  whyChooseTitle: string;
+  whyChooseDescription: string;
+  whyChooseImage: string;
+  whyChoosePoints: string[];
+  sidebarServices?: SidebarServiceItem[];
+  helpCard?: {
+    title: string;
+    description: string;
+  };
 }
 
 export interface UspCard {
@@ -133,12 +173,20 @@ export interface UspCard {
 }
 
 export interface WhyChooseUsData {
+  sectionId?: string;
   badge: string;
+  badgeIcon?: string;
   title: string;
+  highlightText?: string;
   description: string;
   ctaButton: CtaButton;
   videoThumbnail: string;
+  videoThumbnailAlt?: string;
   videoUrl?: string;
+  videoTitle?: string;
+  playButtonAria?: string;
+  sparkleText?: string;
+  closeVideoAriaLabel?: string;
   uspCards: UspCard[];
 }
 
@@ -146,16 +194,25 @@ export interface ProductItem {
   id: string;
   title: string;
   description: string;
-  price: string;
-  badge: string;
+  price?: string;
+  badge?: string;
   image: string;
+  icon?: string;
 }
 
 export interface ProductsData {
   badge: string;
+  badgeIcon?: string;
   title: string;
+  highlightText?: string;
   description: string;
   items: ProductItem[];
+  buttons?: {
+    viewDetails?: string;
+    viewAll?: string;
+  };
+  prevAriaLabel?: string;
+  nextAriaLabel?: string;
 }
 
 export interface MilestoneItem {
@@ -174,6 +231,7 @@ export interface MilestonesData {
 
 export interface TestimonialItem {
   id: string;
+  headline?: string;
   quote: string;
   author: string;
   role: string;
@@ -181,11 +239,19 @@ export interface TestimonialItem {
   avatar: string;
 }
 
+export interface TestimonialTrustBadge {
+  count: string;
+  subtitle: string;
+}
+
 export interface TestimonialsData {
-  badge: string;
+  badge?: string;
   title: string;
-  farmerImage: string;
+  subtitle?: string;
+  highlightText?: string;
+  farmerImage?: string;
   items: TestimonialItem[];
+  trustBadge?: TestimonialTrustBadge;
 }
 
 export interface BlogItem {
@@ -202,6 +268,7 @@ export interface BlogItem {
 export interface BlogData {
   badge: string;
   title: string;
+  highlightText?: string;
   description: string;
   items: BlogItem[];
 }
@@ -232,6 +299,12 @@ export interface FooterData {
   };
   gallery: FooterGalleryItem[];
   copyright: string;
+}
+
+export interface PageBannerData {
+  title: string;
+  breadcrumb: string;
+  image?: string;
 }
 
 export interface TemplatePageConfig {
@@ -268,9 +341,156 @@ export interface AgricultureContent {
     Testimonial: { variants: Record<string, TestimonialsData> };
     Blog: { variants: Record<string, BlogData> };
     Footer: { variants: Record<string, FooterData> };
+    Faq: { variants: Record<string, FaqData> };
+    Gallery: { variants: Record<string, GalleryData> };
+    Team: { variants: Record<string, TeamData> };
+    PageBanners?: { variants: Record<string, Record<string, PageBannerData>> };
   };
 }
 
 export interface SiteContent {
   Agriculture: AgricultureContent;
+}
+
+export interface TeamMemberSocial {
+  platform: string;
+  href: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  alt: string;
+  socials?: TeamMemberSocial[];
+}
+
+export interface TeamData {
+  sectionId?: string;
+  title: string;
+  subtitle: string;
+  members: TeamMember[];
+}
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  categories?: string[];
+  image: string;
+  alt: string;
+}
+
+export interface GalleryData {
+  sectionId?: string;
+  title: string;
+  subtitle: string;
+  categories: string[];
+  items: GalleryItem[];
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+export interface FaqData {
+  sectionId?: string;
+  title: string;
+  highlightText?: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  helpTitle: string;
+  helpHighlight?: string;
+  helpDescription: string;
+  contactButton: {
+    label: string;
+    href: string;
+  };
+  defaultOpenId?: string;
+  faqs: FaqItem[];
+}
+
+export interface ProductDetailBadge {
+  id: string;
+  icon: string;
+  label: string;
+}
+
+export interface ProductDetailImage {
+  src: string;
+  alt: string;
+}
+
+export interface ProductDetailHighlight {
+  id: string;
+  icon: string;
+  label: string;
+}
+
+export interface ProductDetailKeyFeature {
+  id: string;
+  icon: string;
+  text: string;
+}
+
+export interface ProductDetailSpecRow {
+  label: string;
+  value: string;
+}
+
+export interface ProductDetailBenefit {
+  id: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+export interface ProductDetailAvailability {
+  id: string;
+  icon: string;
+  label: string;
+  value: string;
+}
+
+export interface ProductDetailData {
+  id?: string;
+  sectionId?: string;
+  category: string;
+  title: string;
+  description: string;
+  images: ProductDetailImage[];
+  imageBadges: ProductDetailBadge[];
+  highlights: ProductDetailHighlight[];
+  enquiry: {
+    label: string;
+    href: string;
+  };
+  overview: {
+    title: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+  };
+  keyFeatures: {
+    title: string;
+    items: ProductDetailKeyFeature[];
+  };
+  specifications: {
+    title: string;
+    rows: ProductDetailSpecRow[];
+  };
+  benefits: {
+    title: string;
+    items: ProductDetailBenefit[];
+  };
+  availability: {
+    title: string;
+    items: ProductDetailAvailability[];
+  };
 }

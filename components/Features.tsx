@@ -1,189 +1,504 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Play, ArrowRight, Leaf, Award, X, Sprout, Wheat } from "lucide-react";
 import { WhyChooseUsData } from "@/types";
+import { featuresData as defaultFeaturesData } from "@/data";
 
 interface FeaturesProps {
-  data: WhyChooseUsData;
+  data?: WhyChooseUsData;
 }
 
-export default function Features({ data }: FeaturesProps) {
+const LEAF = "/images/leaf.png";
+const LEAF_LIGHT = "/images/leaf-light.png";
+
+function useInView<T extends HTMLElement>(threshold = 0.15) {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}
+
+type Direction = "left" | "right" | "up" | "scale";
+
+const hiddenState: Record<Direction, string> = {
+  left: "-translate-x-14 opacity-0",
+  right: "translate-x-14 opacity-0",
+  up: "translate-y-10 opacity-0",
+  scale: "scale-50 opacity-0",
+};
+
+const shownState = "translate-x-0 translate-y-0 scale-100 opacity-100";
+
+function Reveal({
+  show,
+  from = "up",
+  delay = 0,
+  className = "",
+  children,
+}: {
+  show: boolean;
+  from?: Direction;
+  delay?: number;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={`transition-all duration-[900ms] ease-out ${
+        show ? shownState : hiddenState[from]
+      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function LeafImage({
+  src = LEAF,
+  size,
+  rotate = 0,
+  flip = false,
+  className = "",
+}: {
+  src?: string;
+  size: number;
+  rotate?: number;
+  flip?: boolean;
+  className?: string;
+}) {
+  return (
+    <Image
+      src={src}
+      alt=""
+      aria-hidden="true"
+      width={size}
+      height={size}
+      draggable={false}
+      className={`select-none ${className}`}
+      style={{
+        width: size,
+        height: size,
+        transform: `rotate(${rotate}deg) ${flip ? "scaleX(-1)" : ""}`,
+      }}
+    />
+  );
+}
+
+export default function Features({
+  data = defaultFeaturesData,
+}: FeaturesProps) {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
-  const getUspIcon = (icon: string) => {
+  const top = useInView<HTMLDivElement>(0.15);
+  const bottom = useInView<HTMLDivElement>(0.1);
+
+  const getBadgeIcon = (icon?: string) => {
     switch (icon) {
       case "leaf":
-        return <Leaf className="w-7 h-7 text-[#166534]" />;
+        return <Leaf className="h-8 w-8 shrink-0 text-[#166534]" />;
       case "award":
-        return <Award className="w-7 h-7 text-[#F2C94C]" />;
+        return <Award className="h-8 w-8 shrink-0 text-[#F2C94C]" />;
+      case "sprout":
       case "globe":
-        return <Sprout className="w-7 h-7 text-[#166534]" />;
+        return <Sprout className="h-8 w-8 shrink-0 text-[#166534]" />;
+      case "wheat":
       default:
-        return <Leaf className="w-7 h-7 text-[#166534]" />;
+        return <Wheat className="h-8 w-8 shrink-0 text-[#F2C94C]" />;
+    }
+  };
+
+  const getUspIcon = (icon: string) => {
+    const iconClass = "h-9 w-9 sm:h-11 sm:w-11";
+
+    switch (icon) {
+      case "leaf":
+        return (
+          <Leaf className={`${iconClass} text-[#2E8B3A]`} strokeWidth={1.8} />
+        );
+      case "award":
+        return (
+          <Award className={`${iconClass} text-[#F2B705]`} strokeWidth={1.8} />
+        );
+      case "globe":
+        return (
+          <Sprout className={`${iconClass} text-[#2E8B3A]`} strokeWidth={1.8} />
+        );
+      case "wheat":
+        return (
+          <Wheat className={`${iconClass} text-[#F2B705]`} strokeWidth={1.8} />
+        );
+      default:
+        return (
+          <Leaf className={`${iconClass} text-[#2E8B3A]`} strokeWidth={1.8} />
+        );
     }
   };
 
   const renderTitle = (title: string) => {
-    if (title === "Our Crops Are Grown With Wonderful Love Of Nature") {
-      return (
-        <>
-          Our Crops Are Grown With <br className="hidden lg:block" />
-          <span className="text-[#166534]">Wonderful Love Of Nature</span>
-        </>
-      );
+    const highlight = data.highlightText || "Wonderful Love Of Nature";
+
+    if (!title.includes(highlight)) {
+      return title;
     }
-    return title;
+
+    const parts = title.split(highlight);
+    const before = parts[0].trim();
+    const after = parts.slice(1).join(highlight).trim();
+
+    return (
+      <>
+        <span className="block text-[#0B2A18]">{before}</span>
+        <span className="block text-[#15803D]">
+          {highlight}
+          {after ? ` ${after}` : ""}
+        </span>
+      </>
+    );
+  };
+
+  const getEmbedUrl = (url?: string) => {
+    if (!url) {
+      return "https://www.youtube.com/embed/1V_xRb0x9aw?autoplay=1";
+    }
+
+    if (url.includes("watch?v=")) {
+      const videoId = url.split("watch?v=")[1]?.split("&")[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+
+    if (url.includes("youtu.be/")) {
+      const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+
+    return url;
   };
 
   return (
-    <section id="why-us" className="w-full bg-[#fcfdfa] pt-16 sm:pt-24 pb-0 relative overflow-hidden font-sans">
-      
-      {/* Decorative leaf background top right */}
-      <div className="absolute -top-10 -right-10 w-64 h-64 opacity-20 pointer-events-none transform rotate-45 hidden lg:block">
-        <Leaf className="w-full h-full text-[#166534]" />
+    <section
+      id={data.sectionId || "why-us"}
+      className="relative w-full overflow-x-clip bg-[#F8FBF5] pb-4 pt-12 font-sans sm:pb-6 sm:pt-16 lg:pt-5"
+    >
+      <div className="pointer-events-none absolute -right-4 -top-4 z-0 hidden lg:block">
+        <Reveal show={top.inView} from="scale" delay={700}>
+          <LeafImage
+            src={LEAF_LIGHT}
+            size={300}
+            rotate={38}
+            className="opacity-40"
+          />
+        </Reveal>
+      </div>
+      <div className="pointer-events-none absolute right-28 top-4 z-0 hidden xl:block">
+        <Reveal show={top.inView} from="scale" delay={850}>
+          <LeafImage
+            src={LEAF_LIGHT}
+            size={170}
+            rotate={-12}
+            flip
+            className="opacity-40"
+          />
+        </Reveal>
       </div>
 
-      {/* Top Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-32 lg:pb-40 relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          
-          {/* Left: Image with Video Button */}
-          <div className="relative w-full aspect-[4/3] sm:aspect-auto sm:h-[450px] lg:h-[550px] rounded-[32px] overflow-visible group shadow-2xl z-10">
-            <Image
-              src="/images/farm_landscape.jpg"
-              alt="Farm landscape"
-              fill
-              className="object-cover rounded-[32px]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            {/* Play Button - Top Left (floating slightly outside) */}
-            <div className="absolute -top-6 -left-4 sm:-top-8 sm:-left-8 z-30 p-2 rounded-2xl bg-[#FFD700] bg-opacity-90 border border-dashed border-white shadow-xl shadow-amber-500/20">
+      <div
+        ref={top.ref}
+        className="relative z-10 mx-auto max-w-[1400px] px-5 pb-28 sm:px-8 sm:pb-36 lg:px-8 lg:pb-16"
+      >
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.02fr_1fr] lg:gap-14">
+          <Reveal show={top.inView} from="left" className="relative z-10 lg:pl-3">
+            <div className="relative h-[420px] w-full sm:h-[500px] lg:h-[560px] xl:h-[620px]">
+              <div className="absolute inset-0 overflow-hidden rounded-tl-[22px] rounded-tr-[56px] shadow-xl">
+                <Image
+                  src={data.videoThumbnail || "/images/farm_landscape.jpg"}
+                  alt={
+                    data.videoThumbnailAlt ||
+                    data.title ||
+                    "GreenFarm agricultural landscape"
+                  }
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+
               <button
                 type="button"
+                aria-label={data.playButtonAria || "Play GreenFarm video"}
                 onClick={() => setIsVideoModalOpen(true)}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-[#0A2F1D] text-white flex items-center justify-center shadow-lg transform hover:scale-105 active:scale-95 transition-all"
+                className="group/play absolute -left-3 -top-3 z-30 sm:-left-5 sm:-top-4"
               >
-                <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-current ml-1 text-white" />
+                <span className="relative flex h-24 w-24 items-center justify-center rounded-[22px] border border-dashed border-white/90 bg-[#FFCB2B] shadow-xl outline outline-4 -outline-offset-4 outline-[#FFCB2B] transition-transform duration-300 group-hover/play:scale-105 sm:h-[132px] sm:w-[132px] sm:rounded-[28px]">
+                  <span className="flex h-[66%] w-[66%] items-center justify-center rounded-full bg-[#062F1C] text-white shadow-md">
+                    <Play className="ml-1 h-8 w-8 fill-current sm:h-11 sm:w-11" />
+                  </span>
+                </span>
+
+                <svg
+                  className="absolute -right-9 -top-6 h-14 w-14 text-[#FFD329] sm:-right-12 sm:-top-8 sm:h-[72px] sm:w-[72px]"
+                  viewBox="0 0 72 72"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <ellipse
+                    cx="22"
+                    cy="12"
+                    rx="4"
+                    ry="12"
+                    transform="rotate(-18 22 12)"
+                  />
+                  <ellipse
+                    cx="38"
+                    cy="26"
+                    rx="4"
+                    ry="13"
+                    transform="rotate(72 38 26)"
+                  />
+                  <ellipse
+                    cx="32"
+                    cy="46"
+                    rx="3.5"
+                    ry="11"
+                    transform="rotate(108 32 46)"
+                  />
+                </svg>
               </button>
+
+              <div className="pointer-events-none absolute -right-8 top-[14%] z-20 hidden sm:block lg:-right-10">
+                <Reveal show={top.inView} from="scale" delay={600}>
+                  <LeafImage size={96} rotate={-15} />
+                </Reveal>
+                <Reveal
+                  show={top.inView}
+                  from="scale"
+                  delay={750}
+                  className="-mt-5 ml-1"
+                >
+                  <LeafImage size={110} rotate={25} flip />
+                </Reveal>
+                <Reveal
+                  show={top.inView}
+                  from="scale"
+                  delay={900}
+                  className="-mt-7"
+                >
+                  <LeafImage size={92} rotate={-5} />
+                </Reveal>
+              </div>
             </div>
-            
-            {/* Decorative leaf at bottom left of image */}
-            <div className="absolute -bottom-8 -left-8 w-24 h-24 text-[#86C232] transform -rotate-12 z-20">
-               <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M17.5 2c0 0-7.5.5-12 5C1 11.5 2 17 2 17s5.5 1 10-4.5c4.5-4.5 5-12 5.5-10.5z"/></svg>
-            </div>
-          </div>
+          </Reveal>
 
-          {/* Right: Content */}
-          <div className="space-y-6 lg:pl-6 relative z-10">
-             {/* Decorative dots top left of content */}
-             <div className="absolute -top-6 -left-6 w-16 h-16 bg-[radial-gradient(#F2C94C_2px,transparent_2px)] [background-size:8px_8px] opacity-40"></div>
-
-             {/* Badge */}
-            <div className="inline-flex items-center gap-2 relative z-10">
-              <Wheat className="w-6 h-6 text-[#F2C94C]" />
-              <span className="text-[15px] font-bold text-[#166534] tracking-wide">{data.badge}</span>
-              <div className="w-16 h-[2px] bg-[#F2C94C] ml-2 opacity-80"></div>
+          <div className="relative z-10 space-y-6 lg:pl-4 lg:pr-4">
+            <div className="pointer-events-none absolute -left-8 -top-6 hidden h-16 w-16 opacity-70 sm:block">
+              <div className="h-full w-full bg-[radial-gradient(#F2C94C_2px,transparent_2px)] [background-size:11px_11px]" />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-gray-900 tracking-tight leading-[1.2] relative z-10">
-              {renderTitle(data.title)}
-            </h2>
+            <Reveal show={top.inView} from="right" delay={150}>
+              <div className="relative flex items-center gap-3">
+                {getBadgeIcon(data.badgeIcon)}
 
-            <p className="text-base sm:text-[17px] text-gray-600 leading-relaxed max-w-lg relative z-10">
-              {data.description}
-            </p>
+                <span className="text-base font-bold text-[#15803D] sm:text-lg">
+                  {data.badge}
+                </span>
 
-            <div className="pt-6 relative z-10">
+                <span
+                  className={`h-[2px] bg-[#F2C94C] transition-all duration-1000 ease-out ${
+                    top.inView ? "w-24 sm:w-40" : "w-0"
+                  }`}
+                  style={{ transitionDelay: "700ms" }}
+                />
+              </div>
+            </Reveal>
+
+            <Reveal show={top.inView} from="right" delay={300}>
+              <h2 className="relative text-[34px] font-extrabold leading-[1.12] tracking-tight text-[#0B2A18] sm:text-5xl lg:text-[44px] xl:text-[54px]">
+                {renderTitle(data.title)}
+              </h2>
+            </Reveal>
+
+            <Reveal show={top.inView} from="right" delay={450}>
+              <p className="max-w-[640px] text-base leading-7 text-[#4B5563] sm:text-[17px] sm:leading-8">
+                {data.description}
+              </p>
+            </Reveal>
+
+            <Reveal show={top.inView} from="right" delay={600}>
               <a
                 href={data.ctaButton.href}
-                className="inline-flex items-center gap-4 bg-[#F2C94C] hover:bg-[#e6bb3b] text-[#0A2F1D] font-bold text-sm sm:text-base px-2 py-2 pr-6 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer w-fit"
+                className="group inline-flex w-fit items-center gap-5 rounded-full bg-[#FFCB2B] py-2 pl-8 pr-2 text-sm font-bold text-[#10351E] shadow-[0_8px_20px_rgba(242,185,5,0.35)] transition-colors duration-300 hover:bg-[#F5C51D] sm:gap-6 sm:pl-9 sm:text-base"
               >
-                <span className="ml-5">More {data.badge}</span>
-                <div className="w-10 h-10 rounded-full bg-[#0A2F1D] text-white flex items-center justify-center transform group-hover:translate-x-1 transition-transform">
-                  <ArrowRight className="w-5 h-5" />
-                </div>
+                <span>{data.ctaButton.label || `More ${data.badge}`}</span>
+
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#062F1C] text-white sm:h-[52px] sm:w-[52px]">
+                  <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
+                </span>
               </a>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>
 
-      {/* Bottom Section (Dark Green Wave) */}
-      <div className="relative w-full bg-[#114227] mt-10 z-30 pt-12 pb-16 px-4 sm:px-8 lg:px-12 xl:px-16">
-         {/* Wave Top (Darker Green) */}
-        <svg 
-          className="absolute top-0 left-0 w-full text-[#114227] transform -translate-y-[99%] z-20 drop-shadow-xl" 
-          viewBox="0 0 1440 120" 
-          fill="currentColor" 
-          preserveAspectRatio="none"
-          style={{ height: '8vw', minHeight: '60px' }}
-        >
-          <path d="M0,64L60,74.7C120,85,240,107,360,101.3C480,96,600,64,720,64C840,64,960,96,1080,96C1200,96,1320,64,1380,48L1440,32L1440,121L1380,121C1320,121,1200,121,1080,121C960,121,840,121,720,121C600,121,480,121,360,121C240,121,120,121,60,121L0,121Z"></path>
-        </svg>
-
-        {/* Decorative Wave underneath (Lighter Green) */}
-        <svg 
-          className="absolute top-0 left-0 w-full text-[#2D6A4F] transform -translate-y-[99%] z-10" 
-          viewBox="0 0 1440 120" 
-          fill="currentColor" 
-          preserveAspectRatio="none"
-          style={{ height: '12vw', minHeight: '90px' }}
-        >
-          <path d="M0,96L80,85.3C160,75,320,53,480,48C640,43,800,53,960,64C1120,75,1280,85,1360,90.7L1440,96L1440,121L1360,121C1280,121,1120,121,960,121C800,121,640,121,480,121C320,121,160,121,80,121L0,121Z"></path>
-        </svg>
-
-        {/* Decorative Leaf on the right wave side */}
-        <div className="absolute -top-16 right-0 w-40 h-40 text-[#86C232] transform rotate-90 opacity-60 z-30 pointer-events-none hidden md:block">
-           <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M17.5 2c0 0-7.5.5-12 5C1 11.5 2 17 2 17s5.5 1 10-4.5c4.5-4.5 5-12 5.5-10.5z"/></svg>
+      <div
+        ref={bottom.ref}
+        className="relative z-20 mx-3 sm:mx-5 lg:mx-6 lg:-mt-1"
+      >
+        <div className="pointer-events-none absolute -left-6 -top-24 z-30 hidden sm:block lg:-top-32">
+          <Reveal show={bottom.inView} from="scale" delay={200}>
+            <LeafImage size={110} rotate={-20} />
+          </Reveal>
+          <Reveal
+            show={bottom.inView}
+            from="scale"
+            delay={350}
+            className="-ml-8 -mt-8"
+          >
+            <LeafImage size={100} rotate={-55} />
+          </Reveal>
         </div>
 
+        <div className="pointer-events-none absolute -top-44 right-2 z-0 hidden lg:block">
+          <Reveal show={bottom.inView} from="scale" delay={300}>
+            <LeafImage
+              src={LEAF_LIGHT}
+              size={170}
+              rotate={20}
+              className="opacity-50"
+            />
+          </Reveal>
+        </div>
+        <div className="pointer-events-none absolute -top-24 right-0 z-30 hidden lg:block">
+          <Reveal show={bottom.inView} from="scale" delay={450}>
+            <LeafImage size={100} rotate={25} flip />
+          </Reveal>
+        </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 relative z-40">
-          {data.uspCards.map((usp, idx) => (
-            <div
-              key={usp.id}
-              className={`flex items-start gap-5 group relative ${
-                idx < data.uspCards.length - 1
-                  ? "md:after:content-[''] md:after:absolute md:after:-right-5 lg:after:-right-6 md:after:top-2 md:after:w-[1px] md:after:h-[80%] md:after:bg-white/20"
-                  : ""
-              }`}
-            >
-              <div className="w-[72px] h-[72px] rounded-full bg-white flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
-                {getUspIcon(usp.icon)}
-              </div>
-              <div className="pt-1">
-                <h3 className="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-[#F2C94C] transition-colors">
-                  {usp.title}
-                </h3>
-                <p className="text-[15px] text-gray-200/95 leading-relaxed pr-2">
-                  {usp.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        <svg
+          className="pointer-events-none absolute bottom-full left-0 z-10 h-20 w-full text-[#7DBE4A]/40 sm:h-28 lg:h-32"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M0 100 C125 62 215 48 335 76 S490 116 615 84 S780 26 905 56 S1075 104 1195 72 S1365 56 1440 92 L1440 120 L0 120 Z" />
+        </svg>
+
+        <svg
+          className="absolute bottom-[calc(100%-1px)] left-0 z-10 h-16 w-full text-[#2E8B3A] sm:h-24 lg:h-28"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M0 120 L0 96 C0 80 12 70 32 66 C130 44 215 40 310 64 S455 110 585 80 S735 32 860 42 S1020 96 1135 68 S1330 32 1400 58 C1428 66 1440 80 1440 96 L1440 120 Z" />
+        </svg>
+
+        <div className="relative rounded-b-[28px] bg-gradient-to-b from-[#2E8B3A] via-[#217A33] to-[#14532D] px-5 pb-9 pt-3 sm:rounded-b-[34px] sm:px-8 sm:pb-11 lg:px-12">
+          <div className="relative z-30 mx-auto grid max-w-[1320px] grid-cols-1 gap-8 md:grid-cols-3 md:gap-0">
+            {data.uspCards.map((usp, idx) => {
+              const isLast = idx === data.uspCards.length - 1;
+
+              return (
+                <Reveal
+                  key={usp.id}
+                  show={bottom.inView}
+                  from="up"
+                  delay={idx * 180}
+                  className={
+                    isLast
+                      ? ""
+                      : "border-b border-[#F2C94C]/30 pb-8 md:border-b-0 md:border-r md:pb-0"
+                  }
+                >
+                  <div
+                    className={`flex items-start gap-5 ${
+                      idx === 0 ? "md:pr-8 lg:pr-10" : "md:px-8 lg:px-10"
+                    } ${isLast ? "md:pl-8 lg:pl-10" : ""}`}
+                  >
+                    <div className="flex h-[78px] w-[78px] shrink-0 items-center justify-center rounded-full bg-white shadow-lg sm:h-[100px] sm:w-[100px]">
+                      {getUspIcon(usp.icon)}
+                    </div>
+
+                    <div className="min-w-0 flex-1 pt-1 sm:pt-2">
+                      <h3 className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">
+                        {usp.title}
+                      </h3>
+
+                      <div className="mb-3 mt-2 h-[3px] w-12 rounded-full bg-[#FFCB2B]" />
+
+                      <p className="text-[15px] leading-7 text-white/90 sm:text-base sm:leading-7">
+                        {usp.description}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {isVideoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn">
-          <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={data.videoTitle || "GreenFarm video"}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              setIsVideoModalOpen(false);
+            }
+          }}
+        >
+          <button
+            type="button"
+            aria-label={data.closeVideoAriaLabel || "Close video"}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={() => setIsVideoModalOpen(false)}
           />
-          <div className="relative w-full sm:w-[860px] aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl z-10 border border-white/10 animate-scaleUp">
+
+          <div className="relative z-10 aspect-video w-full max-w-5xl overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl sm:rounded-3xl">
             <button
+              type="button"
+              aria-label={data.closeVideoAriaLabel || "Close video"}
               onClick={() => setIsVideoModalOpen(false)}
-              className="absolute top-4 right-4 z-20 w-12 h-12 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors"
+              className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black sm:right-4 sm:top-4 sm:h-12 sm:w-12"
             >
-              <X className="w-6 h-6" />
+              <X className="h-6 w-6" />
             </button>
+
             <iframe
-              src="https://www.youtube.com/embed/1V_xRb0x9aw?autoplay=1"
-              title="GreenFarm Video"
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src={getEmbedUrl(data.videoUrl)}
+              title={data.videoTitle || "GreenFarm Video"}
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>

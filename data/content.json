@@ -10,14 +10,38 @@
         "pages": {
           "home": {
             "components": [
-              { "key": "Banner", "component": "AgricultureBanner1" },
-              { "key": "About", "component": "AgricultureAbout1" },
-              { "key": "Services", "component": "AgricultureServices1" },
-              { "key": "WhyChooseUs", "component": "AgricultureWhyChooseUs1" },
-              { "key": "Products", "component": "AgricultureProducts1" },
-              { "key": "CompanyStatistics", "component": "AgricultureStats1" },
-              { "key": "Testimonial", "component": "AgricultureTestimonial1" },
-              { "key": "Blog", "component": "AgricultureBlog1" }
+              {
+                "key": "Banner",
+                "component": "AgricultureBanner1"
+              },
+              {
+                "key": "About",
+                "component": "AgricultureAbout1"
+              },
+              {
+                "key": "Services",
+                "component": "AgricultureServices1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "AgricultureWhyChooseUs1"
+              },
+              {
+                "key": "Products",
+                "component": "AgricultureProducts1"
+              },
+              {
+                "key": "CompanyStatistics",
+                "component": "AgricultureStats1"
+              },
+              {
+                "key": "Testimonial",
+                "component": "AgricultureTestimonial1"
+              },
+              {
+                "key": "Blog",
+                "component": "AgricultureBlog1"
+              }
             ]
           }
         }
@@ -31,10 +55,18 @@
               {
                 "id": "testimonials",
                 "label": "Testimonials",
-                "href": "#testimonials"
+                "href": "/testimonials"
               },
-              { "id": "faqs", "label": "Faq's", "href": "#faqs" },
-              { "id": "blogs", "label": "Blogs", "href": "#blog" }
+              {
+                "id": "faqs",
+                "label": "Faq's",
+                "href": "/faqs"
+              },
+              {
+                "id": "blogs",
+                "label": "Blogs",
+                "href": "/blog"
+              }
             ],
             "contact": {
               "prefixText": "TALK TO US FOR FRESH DEALS",
@@ -83,43 +115,43 @@
               {
                 "id": "home",
                 "label": "Home",
-                "href": "#home",
+                "href": "/",
                 "active": true
               },
               {
                 "id": "about",
                 "label": "About Us",
-                "href": "#about",
+                "href": "/about",
                 "active": false
               },
               {
                 "id": "services",
                 "label": "Services",
-                "href": "#services",
+                "href": "/services",
                 "active": false
               },
               {
                 "id": "products",
                 "label": "Our Products",
-                "href": "#products",
+                "href": "/products",
                 "active": false
               },
               {
                 "id": "team",
                 "label": "Our Team",
-                "href": "#team",
+                "href": "/team",
                 "active": false
               },
               {
                 "id": "gallery",
                 "label": "Gallery",
-                "href": "#gallery",
+                "href": "/gallery",
                 "active": false
               },
               {
                 "id": "contact",
                 "label": "Contact",
-                "href": "#contact",
+                "href": "/contact",
                 "active": false
               }
             ],
@@ -138,7 +170,19 @@
                 "Bulk Farm Produce Purchase",
                 "Agri Supply & Fertilizers",
                 "Farm Tour & Partnership"
-              ]
+              ],
+              "formLabels": {
+                "fullName": "Full Name",
+                "namePlaceholder": "Enter your full name",
+                "phone": "Phone Number",
+                "phonePlaceholder": "+91 98765 43210",
+                "email": "Email Address",
+                "emailPlaceholder": "you@example.com",
+                "requirement": "Requirement",
+                "message": "Message",
+                "messagePlaceholder": "Tell us about your requirements...",
+                "cancel": "Cancel"
+              }
             }
           }
         }
@@ -174,6 +218,7 @@
           "AgricultureAbout1": {
             "badge": "About Our Agriculture",
             "title": "Growing Naturally, Living Fully Nurturing Nature at Home",
+            "highlightText": "Nurturing Nature at Home",
             "experienceYears": "25+",
             "experienceLabel": "Years Of Experience",
             "features": [
@@ -212,6 +257,7 @@
           "AgricultureServices1": {
             "badge": "Our Services",
             "title": "Delivering natural farm services with trusted quality",
+            "highlightText": "with trusted quality",
             "description": "We provide end-to-end sustainable agricultural services to farmers, wholesale distributors, and eco-conscious families.",
             "items": [
               {
@@ -277,15 +323,23 @@
       "WhyChooseUs": {
         "variants": {
           "AgricultureWhyChooseUs1": {
+            "sectionId": "why-us",
             "badge": "Why Choose Us",
+            "badgeIcon": "wheat",
             "title": "Our Crops Are Grown With Wonderful Love Of Nature",
+            "highlightText": "Wonderful Love Of Nature",
             "description": "Our devotion to regenerative agriculture ensures every vegetable and fruit receives abundant natural sunlight, pure mountain irrigation, and organic soil enrichment for wholesome nutrition.",
             "ctaButton": {
-              "label": "Explore Products",
+              "label": "More Why Choose Us",
               "href": "#products"
             },
-            "videoThumbnail": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80",
+            "videoThumbnail": "/images/farm_landscape.jpg",
+            "videoThumbnailAlt": "GreenFarm agricultural landscape",
             "videoUrl": "https://www.youtube.com/watch?v=1V_xRb0x9aw",
+            "videoTitle": "GreenFarm Agricultural & Organic Farming Video",
+            "playButtonAria": "Play GreenFarm video",
+            "sparkleText": "✦",
+            "closeVideoAriaLabel": "Close video",
             "uspCards": [
               {
                 "id": "usp1",
@@ -313,8 +367,12 @@
         "variants": {
           "AgricultureProducts1": {
             "badge": "Our Products",
+            "badgeIcon": "leaf",
             "title": "Pure & Natural Farm Products Straight From Our Fields",
+            "highlightText": "Straight From Our Fields",
             "description": "Handpicked every sunrise, packed in breathable eco-packaging, and delivered with crisp farm aroma.",
+            "prevAriaLabel": "Previous product",
+            "nextAriaLabel": "Next product",
             "items": [
               {
                 "id": "p1",
@@ -322,6 +380,7 @@
                 "description": "Crisp organic greens, broccoli, carrots & colorful bell peppers.",
                 "price": "$12.00 / box",
                 "badge": "Organic",
+                "icon": "carrot",
                 "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80"
               },
               {
@@ -330,6 +389,7 @@
                 "description": "Sun-ripened orchard apples, citrus oranges, berries & seasonal fruits.",
                 "price": "$16.50 / box",
                 "badge": "Seasonal",
+                "icon": "apple",
                 "image": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=600&q=80"
               },
               {
@@ -338,6 +398,7 @@
                 "description": "Stone-ground ancient grains, organic oats & unrefined golden seeds.",
                 "price": "$8.50 / kg",
                 "badge": "Non-GMO",
+                "icon": "wheat",
                 "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=600&q=80"
               },
               {
@@ -346,71 +407,230 @@
                 "description": "Whole pasture-fed raw cow milk, fresh artisan butter & yogurt.",
                 "price": "$5.50 / bottle",
                 "badge": "Grass-Fed",
+                "icon": "milk",
                 "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p5",
+                "title": "Raw Pure Honey",
+                "description": "Unprocessed golden wildflower honey bottled straight from our hives.",
+                "price": "$14.00 / jar",
+                "badge": "100% Pure",
+                "icon": "leaf",
+                "image": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p6",
+                "title": "Organic Farm Eggs",
+                "description": "Free-range pasture-raised brown organic eggs rich in natural omega-3.",
+                "price": "$6.00 / dozen",
+                "badge": "Free-Range",
+                "icon": "leaf",
+                "image": "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p7",
+                "title": "Cold-Pressed Oils",
+                "description": "First cold extraction extra-virgin sunflower and mustard seed oils.",
+                "price": "$18.00 / bottle",
+                "badge": "Cold-Pressed",
+                "icon": "wheat",
+                "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p8",
+                "title": "Organic Herbal Tea",
+                "description": "Aromatic hand-harvested chamomile, mint & lemongrass herbal infusions.",
+                "price": "$9.50 / tin",
+                "badge": "Hand-Picked",
+                "icon": "leaf",
+                "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p9",
+                "title": "Organic Brown Rice",
+                "description": "Unpolished nutrient-rich aromatic organic brown rice grains.",
+                "price": "$7.50 / kg",
+                "badge": "Non-GMO",
+                "icon": "wheat",
+                "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p10",
+                "title": "Fresh Avocados",
+                "description": "Creamy Hass avocados hand-selected from our organic orchard.",
+                "price": "$9.00 / 4 pcs",
+                "badge": "Organic",
+                "icon": "apple",
+                "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p11",
+                "title": "Artisan Cheese",
+                "description": "Aged grass-fed raw milk cheddar made with traditional methods.",
+                "price": "$11.50 / block",
+                "badge": "Grass-Fed",
+                "icon": "milk",
+                "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p12",
+                "title": "Heritage Tomatoes",
+                "description": "Vine-ripened sweet heirloom tomatoes packed with lycopene.",
+                "price": "$8.00 / kg",
+                "badge": "Fresh",
+                "icon": "carrot",
+                "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p13",
+                "title": "Organic Strawberries",
+                "description": "Plump sweet ruby-red strawberries harvested fresh daily.",
+                "price": "$13.00 / box",
+                "badge": "Seasonal",
+                "icon": "apple",
+                "image": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p14",
+                "title": "Whole Almonds",
+                "description": "Crunchy raw sun-dried California almonds full of natural vitamin E.",
+                "price": "$15.00 / bag",
+                "badge": "Natural",
+                "icon": "wheat",
+                "image": "https://images.unsplash.com/photo-1508061252445-5350f3ab0a55?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p15",
+                "title": "Fresh Cow Butter",
+                "description": "Slow-churned sweet cream salted butter from pastured dairy cows.",
+                "price": "$6.50 / pack",
+                "badge": "Grass-Fed",
+                "icon": "milk",
+                "image": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                "id": "p16",
+                "title": "Baby Spinach",
+                "description": "Tender young organic baby spinach leaves washed and ready to enjoy.",
+                "price": "$5.00 / box",
+                "badge": "Organic",
+                "icon": "carrot",
+                "image": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80"
               }
-            ]
+            ],
+            "buttons": {
+              "viewDetails": "View Details",
+              "viewAll": "View All Products"
+            }
           }
         }
       },
       "CompanyStatistics": {
         "variants": {
           "AgricultureStats1": {
-            "title": "Healthy Life With Fresh Products!",
-            "subtitle": "We believe that fresh and pure nutrition creates healthy, vibrant communities.",
+            "title": "Healthy Life With\nFresh Products!",
+            "subtitle": "We believe that to have good health, clean and healthy food sources are the key",
             "organicBadge": "100% Organic",
             "stats": [
               {
                 "id": "m1",
                 "value": "19500",
-                "label": "Tons of Harvest",
+                "label": "Tons of harvesta",
                 "icon": "wheat"
               },
               {
                 "id": "m2",
                 "value": "2720",
-                "label": "Satisfied Clients",
-                "icon": "users"
+                "label": "Units of Cattle",
+                "icon": "cow"
               },
               {
                 "id": "m3",
                 "value": "10000",
-                "label": "Sq.ft Green Farm",
-                "icon": "home"
+                "label": "Hectares of farm",
+                "icon": "barn"
               },
               {
                 "id": "m4",
                 "value": "128",
-                "label": "Farming Equipment",
+                "label": "Units of technic",
                 "icon": "tractor"
               }
-            ]
+            ],
+            "mainTitle": "Your Agriculture Business with the Smart Solutions"
           }
         }
       },
       "Testimonial": {
         "variants": {
           "AgricultureTestimonial1": {
+            "sectionId": "testimonials",
             "badge": "Testimonials",
-            "title": "What Our Clients Say?",
-            "farmerImage": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=700&q=80",
+            "title": "What Our Customers Say",
+            "subtitle": "Our farmers and customers trust us for high-quality organic products, better farming practices and long-term support for a healthier tomorrow.",
+            "highlightText": "Customers",
+            "farmerImage": "/testimonials/ramesh.jpg",
             "items": [
               {
                 "id": "t1",
-                "quote": "GreenFarm products have transformed our restaurant's farm-to-table menu. The veggies arrive crisp and dewy every morning, packed with authentic soil-grown flavor and certified organic purity. Our customers notice the difference immediately!",
-                "author": "Sarah Jenkins",
-                "role": "Head Chef, Organic Roots Bistro",
+                "author": "Ramesh Yadav",
+                "role": "Farmer, Ahmedabad, Gujarat",
                 "rating": 5,
-                "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+                "avatar": "/testimonials/ramesh.jpg",
+                "headline": "Organic farming has improved my crop quality",
+                "quote": "I have been using their organic seeds and natural farming guidance for the past 3 years. My soil health has improved and my crop yield is much better now. The team is very supportive and always ready to help."
               },
               {
                 "id": "t2",
-                "quote": "The weekly organic vegetable basket delivery has been a game-changer for my family. Everything tastes so much more vibrant and sweeter than supermarket produce. Highly recommend GreenFarm to everyone!",
-                "author": "David Miller",
-                "role": "Family Nutritionist",
+                "author": "Sunita Patel",
+                "role": "Farmer, Indore, Madhya Pradesh",
                 "rating": 5,
-                "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                "avatar": "/testimonials/sunita.jpg",
+                "headline": "Their products helped me grow healthier vegetables",
+                "quote": "The organic farming solutions and expert advice have helped me grow chemical-free and fresh vegetables. I am very happy with their guidance and highly recommend them to other farmers."
+              },
+              {
+                "id": "t3",
+                "author": "Amit Kumar",
+                "role": "Farmer, Patna, Bihar",
+                "rating": 5,
+                "avatar": "/testimonials/amit.jpg",
+                "headline": "Excellent quality and great support",
+                "quote": "I have been using their organic products for the last 2 years. The quality is excellent and my crops are much healthier. Their team always provides useful farming tips and support."
+              },
+              {
+                "id": "t4",
+                "author": "Kavita Singh",
+                "role": "Farmer, Bhopal, Madhya Pradesh",
+                "rating": 5,
+                "avatar": "/testimonials/kavita.jpg",
+                "headline": "Great experience with natural farming",
+                "quote": "Their natural farming methods and expert guidance have helped me improve soil fertility and grow nutritious crops. I am very satisfied with their products and services."
+              },
+              {
+                "id": "t5",
+                "author": "Rajesh Sharma",
+                "role": "Farmer, Jaipur, Rajasthan",
+                "rating": 5,
+                "avatar": "/testimonials/ramesh.jpg",
+                "headline": "Significant boost in organic yield",
+                "quote": "Adopting their biological soil conditioning and regenerative farming methods was the best decision for our fields. Our farm productivity has grown consistently every season."
+              },
+              {
+                "id": "t6",
+                "author": "Pooja Verma",
+                "role": "Organic Grower, Lucknow, Uttar Pradesh",
+                "rating": 5,
+                "avatar": "/testimonials/kavita.jpg",
+                "headline": "Pure quality and reliable delivery",
+                "quote": "From certified non-GMO seeds to timely doorstep farm supplies, their service has been exceptional. Our farm produce has never tasted better."
               }
-            ]
+            ],
+            "trustBadge": {
+              "count": "Trusted by 2,700+ Farmers",
+              "subtitle": "Pure Quality You Can Taste"
+            }
           }
         }
       },
@@ -419,6 +639,7 @@
           "AgricultureBlog1": {
             "badge": "Our Blog",
             "title": "Latest News & Articles",
+            "highlightText": "Articles",
             "description": "Learn actionable insights on sustainable farming, regenerative soil care, and healthy organic living.",
             "items": [
               {
@@ -451,7 +672,12 @@
                 "author": "Devin Clark",
                 "href": "#read-more"
               }
-            ]
+            ],
+            "buttons": {
+              "readMore": "Read More",
+              "readFull": "Read Full Article",
+              "viewAll": "View All Blogs"
+            }
           }
         }
       },
@@ -491,23 +717,68 @@
               }
             ],
             "quickLinks": [
-              { "label": "Home", "href": "#home" },
-              { "label": "About Us", "href": "#about" },
-              { "label": "Our Products", "href": "#products" },
-              { "label": "Blog", "href": "#blog" },
-              { "label": "Gallery", "href": "#gallery" },
-              { "label": "FAQs", "href": "#faqs" },
-              { "label": "Contact Us", "href": "#contact" }
+              {
+                "label": "Home",
+                "href": "/"
+              },
+              {
+                "label": "About Us",
+                "href": "/about"
+              },
+              {
+                "label": "Our Products",
+                "href": "/products"
+              },
+              {
+                "label": "Blog",
+                "href": "/blog"
+              },
+              {
+                "label": "Gallery",
+                "href": "/gallery"
+              },
+              {
+                "label": "FAQs",
+                "href": "/faqs"
+              },
+              {
+                "label": "Contact Us",
+                "href": "/contact"
+              }
             ],
             "productLinks": [
-              { "label": "Fresh Vegetables", "href": "#products" },
-              { "label": "Fresh Fruits", "href": "#products" },
-              { "label": "Grains & Pulses", "href": "#products" },
-              { "label": "Dairy Products", "href": "#products" },
-              { "label": "Organic Flours", "href": "#products" },
-              { "label": "Natural Honey", "href": "#products" },
-              { "label": "Spices & Herbs", "href": "#products" },
-              { "label": "Pickles & Homemade Products", "href": "#products" }
+              {
+                "label": "Fresh Vegetables",
+                "href": "/products"
+              },
+              {
+                "label": "Fresh Fruits",
+                "href": "/products"
+              },
+              {
+                "label": "Grains & Pulses",
+                "href": "/products"
+              },
+              {
+                "label": "Dairy Products",
+                "href": "/products"
+              },
+              {
+                "label": "Organic Flours",
+                "href": "/products"
+              },
+              {
+                "label": "Natural Honey",
+                "href": "/products"
+              },
+              {
+                "label": "Spices & Herbs",
+                "href": "/products"
+              },
+              {
+                "label": "Pickles & Homemade Products",
+                "href": "/products"
+              }
             ],
             "contact": {
               "address": "123 Green Farm Road,\nNew Delhi, India - 110001",
@@ -549,7 +820,332 @@
                 "alt": "Tractor on crop field"
               }
             ],
-            "copyright": "© 2025 GreenFarm. All Rights Reserved."
+            "copyright": "© 2025 GreenFarm. All Rights Reserved.",
+            "titles": {
+              "quickLinks": "Quick Links",
+              "ourProducts": "Our Products",
+              "contactInfo": "Contact Info"
+            }
+          }
+        }
+      },
+      "Faq": {
+        "variants": {
+          "AgricultureFaq1": {
+            "sectionId": "faq",
+            "title": "Frequently Asked Questions",
+            "highlightText": "Questions",
+            "description": "Everything you need to know about our organic farming techniques, fresh harvest delivery timelines, and certified sustainable practices.",
+            "image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80",
+            "imageAlt": "Organic Farmer at GreenFarm",
+            "helpTitle": "Need Any More Help & Advice?",
+            "helpHighlight": "Help & Advice?",
+            "helpDescription": "Speak directly with our agriculture specialists and certified agronomists to get answers tailored to your crop, supply, or organic nutrition needs.",
+            "contactButton": {
+              "label": "Contact Us",
+              "href": "/contact"
+            },
+            "defaultOpenId": "faq-1",
+            "faqs": [
+              {
+                "id": "faq-1",
+                "question": "Are all your crops 100% certified organic and non-GMO?",
+                "answer": "Yes, every single crop at GreenFarm is certified USDA Organic and non-GMO verified. We adhere strictly to biological and regenerative cultivation practices without synthetic fertilizers or chemical pesticides."
+              },
+              {
+                "id": "faq-2",
+                "question": "How quickly are farm products delivered after harvest?",
+                "answer": "We harvest at sunrise and dispatch orders immediately. For local deliveries, produce arrives the very same day; for regional shipments, items are dispatched in climate-controlled eco-packaging within 24 hours."
+              },
+              {
+                "id": "faq-3",
+                "question": "What pest control methods do you use without synthetic chemicals?",
+                "answer": "We rely on natural biological pest control, including companion planting, beneficial predatory insect habitats (such as ladybugs and lacewings), organic neem-based botanical sprays, and crop rotation."
+              },
+              {
+                "id": "faq-4",
+                "question": "Can I place wholesale or bulk orders for markets and restaurants?",
+                "answer": "Absolutely! We supply fresh wholesale crates to local markets, farm-to-table restaurants, and community grocery co-ops. Reach out through our contact page to set up a regular delivery schedule."
+              },
+              {
+                "id": "faq-5",
+                "question": "Do you offer farm visits or educational field tours?",
+                "answer": "Yes, we host guided educational tours every weekend for families, schools, and sustainable farming enthusiasts. Please book in advance through our contact form."
+              }
+            ]
+          }
+        }
+      },
+      "Gallery": {
+        "variants": {
+          "AgricultureGallery1": {
+            "sectionId": "gallery",
+            "title": "Our Gallery",
+            "subtitle": "Explore the moments from our farms, organic produce, farming activities and community engagements.",
+            "categories": [
+              "All Projects",
+              "Organic",
+              "Farms",
+              "Harvest",
+              "Vegetable",
+              "Fruit",
+              "Cattle"
+            ],
+            "items": [
+              {
+                "id": "g1",
+                "title": "Pasture-Fed Dairy Cattle",
+                "category": "Cattle",
+                "categories": ["Cattle", "Farms", "Organic"],
+                "image": "/gallery/cattle.jpg",
+                "alt": "Dairy cows grazing on green organic pasture"
+              },
+              {
+                "id": "g2",
+                "title": "Modern Field Cultivation",
+                "category": "Farms",
+                "categories": ["Farms", "Harvest"],
+                "image": "/gallery/tractor.jpg",
+                "alt": "Modern red tractor working in green crop fields"
+              },
+              {
+                "id": "g3",
+                "title": "Organic Crop Inspection",
+                "category": "Organic",
+                "categories": ["Organic", "Vegetable", "Farms"],
+                "image": "/gallery/farmer.jpg",
+                "alt": "Farmer inspecting fresh green crops in the field"
+              },
+              {
+                "id": "g4",
+                "title": "Autumn Farm Harvest",
+                "category": "Harvest",
+                "categories": ["Harvest", "Organic", "Vegetable", "Fruit"],
+                "image": "/gallery/harvest.jpg",
+                "alt": "Freshly harvested organic vegetables and fruits in crates"
+              },
+              {
+                "id": "g5",
+                "title": "Fresh Vegetable Beds",
+                "category": "Vegetable",
+                "categories": ["Vegetable", "Organic", "Farms"],
+                "image": "/gallery/vegetable.jpg",
+                "alt": "Rows of organic crisp green vegetables in dark fertile soil"
+              },
+              {
+                "id": "g6",
+                "title": "Sunlit Fruit Orchards",
+                "category": "Fruit",
+                "categories": ["Fruit", "Harvest", "Organic"],
+                "image": "/gallery/fruit.jpg",
+                "alt": "Fruit orchard with ripe red apples on tree branches"
+              },
+              {
+                "id": "g7",
+                "title": "Greenhouse Seedlings Nursery",
+                "category": "Organic",
+                "categories": ["Organic", "Farms", "Vegetable"],
+                "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
+                "alt": "Healthy young green sprouts in greenhouse"
+              },
+              {
+                "id": "g8",
+                "title": "Golden Wheat Field Harvest",
+                "category": "Harvest",
+                "categories": ["Harvest", "Farms"],
+                "image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
+                "alt": "Golden sun over expansive wheat fields"
+              },
+              {
+                "id": "g9",
+                "title": "Organic Tomato Vine Garden",
+                "category": "Vegetable",
+                "categories": ["Vegetable", "Organic"],
+                "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80",
+                "alt": "Vine-ripened red organic tomatoes"
+              },
+              {
+                "id": "g10",
+                "title": "Sweet Summer Strawberry Rows",
+                "category": "Fruit",
+                "categories": ["Fruit", "Harvest"],
+                "image": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80",
+                "alt": "Ripe sweet red strawberries in field"
+              },
+              {
+                "id": "g11",
+                "title": "Pasture Grazing Heifers",
+                "category": "Cattle",
+                "categories": ["Cattle", "Farms"],
+                "image": "/gallery/cattle.jpg",
+                "alt": "Free-range cattle grazing in lush clover pasture"
+              },
+              {
+                "id": "g12",
+                "title": "Sustainable Farm Estate",
+                "category": "Farms",
+                "categories": ["Farms", "Organic"],
+                "image": "/gallery/tractor.jpg",
+                "alt": "Panoramic view of GreenFarm agricultural fields"
+              }
+            ]
+          }
+        }
+      },
+      "Team": {
+        "variants": {
+          "AgricultureTeam1": {
+            "sectionId": "team",
+            "title": "Our Team",
+            "subtitle": "Our team of experienced farmers, agricultural experts and sustainability enthusiasts work together to bring you the best natural and organic products.",
+            "members": [
+              {
+                "id": "t1",
+                "name": "Ramesh Yadav",
+                "role": "Senior Farmer",
+                "bio": "With over 20 years of farming experience, Ramesh ji leads our organic crop cultivation practices.",
+                "image": "/team/ramesh.jpg",
+                "alt": "Ramesh Yadav, Senior Farmer",
+                "socials": [
+                  { "platform": "facebook", "href": "https://facebook.com" },
+                  { "platform": "instagram", "href": "https://instagram.com" },
+                  { "platform": "phone", "href": "tel:+1234567890" },
+                  { "platform": "youtube", "href": "https://youtube.com" },
+                  { "platform": "twitter", "href": "https://x.com" }
+                ]
+              },
+              {
+                "id": "t2",
+                "name": "Sunita Sharma",
+                "role": "Crop Specialist",
+                "bio": "Sunita ji specializes in organic farming techniques and sustainable crop management.",
+                "image": "/team/sunita.jpg",
+                "alt": "Sunita Sharma, Crop Specialist",
+                "socials": [
+                  { "platform": "facebook", "href": "https://facebook.com" },
+                  { "platform": "instagram", "href": "https://instagram.com" },
+                  { "platform": "phone", "href": "tel:+1234567890" },
+                  { "platform": "youtube", "href": "https://youtube.com" },
+                  { "platform": "twitter", "href": "https://x.com" }
+                ]
+              },
+              {
+                "id": "t3",
+                "name": "Amit Kumar",
+                "role": "Soil Health Expert",
+                "bio": "Amit ji focuses on improving soil fertility and natural nutrient management for healthier crops.",
+                "image": "/team/amit.jpg",
+                "alt": "Amit Kumar, Soil Health Expert",
+                "socials": [
+                  { "platform": "facebook", "href": "https://facebook.com" },
+                  { "platform": "instagram", "href": "https://instagram.com" },
+                  { "platform": "phone", "href": "tel:+1234567890" },
+                  { "platform": "youtube", "href": "https://youtube.com" },
+                  { "platform": "twitter", "href": "https://x.com" }
+                ]
+              },
+              {
+                "id": "t4",
+                "name": "Dr. Priya Patel",
+                "role": "Horticulture Specialist",
+                "bio": "Priya oversees our organic greenhouse nurseries and heirloom fruit cultivation with scientific passion.",
+                "image": "/team/priya.jpg",
+                "alt": "Dr. Priya Patel, Horticulture Specialist",
+                "socials": [
+                  { "platform": "facebook", "href": "https://facebook.com" },
+                  { "platform": "instagram", "href": "https://instagram.com" },
+                  { "platform": "phone", "href": "tel:+1234567890" },
+                  { "platform": "youtube", "href": "https://youtube.com" },
+                  { "platform": "twitter", "href": "https://x.com" }
+                ]
+              },
+              {
+                "id": "t5",
+                "name": "Vikram Singh",
+                "role": "Regenerative Farm Lead",
+                "bio": "Vikram directs sustainable soil enrichment, composting cycles, and biological pest management programs.",
+                "image": "/team/vikram.jpg",
+                "alt": "Vikram Singh, Regenerative Farm Lead",
+                "socials": [
+                  { "platform": "facebook", "href": "https://facebook.com" },
+                  { "platform": "instagram", "href": "https://instagram.com" },
+                  { "platform": "phone", "href": "tel:+1234567890" },
+                  { "platform": "youtube", "href": "https://youtube.com" },
+                  { "platform": "twitter", "href": "https://x.com" }
+                ]
+              },
+              {
+                "id": "t6",
+                "name": "Ananya Rao",
+                "role": "Harvest Quality Inspector",
+                "bio": "Ananya ensures every harvest crate meets strict USDA Organic grade standards and peak field freshness.",
+                "image": "/team/ananya.jpg",
+                "alt": "Ananya Rao, Harvest Quality Inspector",
+                "socials": [
+                  { "platform": "facebook", "href": "https://facebook.com" },
+                  { "platform": "instagram", "href": "https://instagram.com" },
+                  { "platform": "phone", "href": "tel:+1234567890" },
+                  { "platform": "youtube", "href": "https://youtube.com" },
+                  { "platform": "twitter", "href": "https://x.com" }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "PageBanners": {
+        "variants": {
+          "Default": {
+            "faq": {
+              "title": "FREQUENTLY ASKED QUESTIONS",
+              "breadcrumb": "FAQ",
+              "image": "/page-banner.webp"
+            },
+            "faqs": {
+              "title": "FREQUENTLY ASKED QUESTIONS",
+              "breadcrumb": "FAQ",
+              "image": "/page-banner.webp"
+            },
+            "about": {
+              "title": "ABOUT US",
+              "breadcrumb": "About Us",
+              "image": "/page-banner.webp"
+            },
+            "services": {
+              "title": "OUR SERVICES",
+              "breadcrumb": "Services",
+              "image": "/page-banner.webp"
+            },
+            "products": {
+              "title": "OUR PRODUCTS",
+              "breadcrumb": "Our Products",
+              "image": "/page-banner.webp"
+            },
+            "team": {
+              "title": "OUR TEAM",
+              "breadcrumb": "Our Team",
+              "image": "/page-banner.webp"
+            },
+            "gallery": {
+              "title": "GALLERY",
+              "breadcrumb": "Gallery",
+              "image": "/page-banner.webp"
+            },
+            "contact": {
+              "title": "CONTACT US",
+              "breadcrumb": "Contact Us",
+              "image": "/page-banner.webp"
+            },
+            "testimonials": {
+              "title": "TESTIMONIALS",
+              "breadcrumb": "Testimonials",
+              "image": "/page-banner.webp"
+            },
+            "service-details": {
+              "title": "ORGANIC FARM CONSULTATION",
+              "breadcrumb": "Service Details",
+              "image": "/page-banner.webp"
+            }
           }
         }
       }

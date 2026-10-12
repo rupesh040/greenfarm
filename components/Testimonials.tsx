@@ -2,138 +2,200 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Quote, Star, ChevronLeft, ChevronRight, Sprout } from "lucide-react";
+import { Star, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { TestimonialsData } from "@/types";
+import { testimonialsData as defaultTestimonialsData } from "@/data";
 
 interface TestimonialsProps {
-  data: TestimonialsData;
+  data?: TestimonialsData;
 }
 
-export default function Testimonials({ data }: TestimonialsProps) {
-  const [activeIdx, setActiveIdx] = useState(0);
+export default function Testimonials({
+  data = defaultTestimonialsData,
+}: TestimonialsProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
-  const prevReview = () => {
-    setActiveIdx((prev) => (prev === 0 ? data.items.length - 1 : prev - 1));
+  const items = data.items ?? [];
+  const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
-  const nextReview = () => {
-    setActiveIdx((prev) => (prev === data.items.length - 1 ? 0 : prev + 1));
+  const handleNext = () => {
+    setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
   };
 
-  const current = data.items[activeIdx];
+  if (!items.length) {
+    return null;
+  }
 
   return (
-    <section id="testimonials" className="w-full py-16 sm:py-24 bg-zinc-50 relative px-4 sm:px-8 lg:px-12 xl:px-16 animate-fadeIn">
-      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-        <div className="lg:col-span-5 relative w-full animate-fadeUp">
-          <div className="relative aspect-4/5 rounded-3xl overflow-hidden shadow-2xl border-4 border-white group">
-            <Image
-              src={data.farmerImage}
-              alt="Happy farmer with harvest basket"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-emerald-100 flex items-center gap-3 transform group-hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#166534] flex items-center justify-center font-bold">
-                <Sprout className="w-5 h-5 animate-bounceGentle" />
-              </div>
-              <div>
-                <div className="text-xs font-bold uppercase text-emerald-800">
-                  Trusted by 2,700+ Clients
-                </div>
-                <div className="text-sm font-extrabold text-gray-900">
-                  Pure Quality You Can Taste
-                </div>
-              </div>
+    <section
+      id="testimonials"
+      className="relative w-full bg-[#FCFDF9] py-4 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="h-[2px] w-10 sm:w-16 bg-[#E5B83B] rounded-full inline-block" />
+            <div className="flex items-center justify-center">
+              <svg
+                viewBox="0 0 40 32"
+                className="w-9 h-8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 26C7 18 13 11 19 13C17 20 13 25 10 26Z"
+                  fill="#1B4D36"
+                />
+                <path
+                  d="M30 26C33 18 27 11 21 13C23 20 27 25 30 26Z"
+                  fill="#1B4D36"
+                />
+                <path
+                  d="M20 4C17 9 18 17 20 19C22 17 23 9 20 4Z"
+                  fill="#E5B83B"
+                />
+              </svg>
             </div>
-          </div>
-        </div>
-
-        <div className="lg:col-span-7 space-y-6 w-full animate-fadeUp">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-emerald-50 text-[#166534] border border-emerald-200/60">
-            <Sprout className="w-3.5 h-3.5 text-emerald-600 animate-bounceGentle" />
-            <span>{data.badge}</span>
+            <span className="h-[2px] w-10 sm:w-16 bg-[#E5B83B] rounded-full inline-block" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-[1.15]">
-            What Our <span className="text-[#166534]">Clients</span> Say?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#12482C] tracking-tight">
+            {data.title || "What Our Customers Say"}
           </h2>
 
-          <div
-            key={activeIdx}
-            className="relative bg-white rounded-3xl p-7 sm:p-10 shadow-xl border border-gray-200/80 w-full animate-fadeIn"
+          <p className="mt-4 text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            {data.subtitle ||
+              "Our farmers and customers trust us for high-quality organic products, better farming practices and long-term support for a healthier tomorrow."}
+          </p>
+
+          <div className="w-14 h-1 bg-[#E5B83B] rounded-full mx-auto mt-4" />
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
           >
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mb-6">
-              <Quote className="w-6 h-6 fill-current" />
-            </div>
-
-            <p className="text-base sm:text-lg text-gray-700 italic leading-relaxed mb-6">
-              &ldquo;{current.quote}&rdquo;
-            </p>
-
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-gray-100">
-              <div className="flex items-center gap-3.5">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-sm border border-emerald-200">
-                  <Image
-                    src={current.avatar}
-                    alt={current.author}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+            {currentItems.map((item) => (
+              <div
+                key={item.id}
+                className="bg-white rounded-3xl p-6 sm:p-8 border border-neutral-100 shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_35px_rgba(0,0,0,0.06)] transition-all duration-300 flex flex-col justify-between"
+              >
                 <div>
-                  <h4 className="font-extrabold text-gray-900 text-base">
-                    {current.author}
-                  </h4>
-                  <p className="text-xs text-gray-500 font-medium">
-                    {current.role}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden shrink-0 ring-2 ring-[#E5B83B] ring-offset-2 ring-offset-white bg-[#F3F4F6]">
+                        <Image
+                          src={item.avatar}
+                          alt={item.author}
+                          fill
+                          sizes="(max-width: 640px) 64px, 72px"
+                          className="object-cover object-center"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="font-bold text-gray-900 text-base sm:text-lg">
+                            {item.author}
+                          </h3>
+                          <div className="flex items-center gap-0.5 text-[#F2C94C]">
+                            {Array.from({ length: item.rating || 5 }).map(
+                              (_, starIndex) => (
+                                <Star
+                                  key={starIndex}
+                                  className="w-4 h-4 fill-current"
+                                />
+                              ),
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-600 font-medium mt-1">
+                          <MapPin className="w-3.5 h-3.5 text-black fill-black shrink-0" />
+                          <span>{item.role}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="shrink-0 text-[#F2C94C]">
+                      <svg
+                        viewBox="0 0 36 28"
+                        className="w-8 h-8 sm:w-9 sm:h-8"
+                        fill="currentColor"
+                      >
+                        <path d="M6 28C2.5 28 0 25.5 0 22C0 14 6 5 15 0L17 3C10.5 7 8 11.5 7.5 15C8.8 14.5 10.3 14.2 12 14.2C16 14.2 19 17.2 19 21.1C19 25 16 28 12 28H6ZM23 28C19.5 28 17 25.5 17 22C17 14 23 5 32 0L34 3C27.5 7 25 11.5 24.5 15C25.8 14.5 27.3 14.2 29 14.2C33 14.2 36 17.2 36 21.1C36 25 33 28 29 28H23Z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {item.headline && (
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-900 mt-5 leading-snug tracking-tight">
+                      {item.headline}
+                    </h4>
+                  )}
+
+                  <p className="text-sm sm:text-base text-gray-600 mt-3 leading-relaxed">
+                    {item.quote}
                   </p>
                 </div>
               </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
-              <div className="flex items-center gap-1 text-amber-400">
-                {[...Array(current.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" />
-                ))}
-              </div>
-            </div>
+        <div className="mt-12 flex items-center justify-center gap-3">
+          <button
+            onClick={handlePrev}
+            disabled={currentPage === 1}
+            aria-label="Previous page"
+            className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:bg-[#12482C] hover:text-white hover:border-[#12482C] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700 disabled:hover:border-gray-200 shadow-sm"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-            <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-              <div className="flex items-center gap-2">
-                {data.items.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveIdx(idx)}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
-                      activeIdx === idx
-                        ? "w-7 bg-[#166534]"
-                        : "w-2 bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Go to review ${idx + 1}`}
-                  />
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }).map((_, index) => {
+              const pageNumber = index + 1;
+              const isActive = pageNumber === currentPage;
+              return (
                 <button
-                  onClick={prevReview}
-                  aria-label="Previous review"
-                  className="p-2 rounded-full border border-gray-200 hover:bg-[#166534] hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                  key={pageNumber}
+                  onClick={() => setCurrentPage(pageNumber)}
+                  aria-label={`Go to page ${pageNumber}`}
+                  className={`w-10 h-10 rounded-full font-semibold text-sm transition-all duration-200 shadow-sm ${
+                    isActive
+                      ? "bg-[#12482C] text-white border border-[#12482C]"
+                      : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+                  }`}
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  {pageNumber}
                 </button>
-                <button
-                  onClick={nextReview}
-                  aria-label="Next review"
-                  className="p-2 rounded-full border border-gray-200 hover:bg-[#166534] hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+              );
+            })}
           </div>
+
+          <button
+            onClick={handleNext}
+            disabled={currentPage === totalPages}
+            aria-label="Next page"
+            className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:bg-[#12482C] hover:text-white hover:border-[#12482C] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700 disabled:hover:border-gray-200 shadow-sm"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </section>

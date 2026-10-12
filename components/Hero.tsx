@@ -1,13 +1,17 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { ArrowUpRight, Sprout } from "lucide-react";
+import { motion } from "framer-motion";
 import { HeroData } from "@/types";
+import { heroData as defaultHeroData } from "@/data";
 
 interface HeroProps {
-  data: HeroData;
+  data?: HeroData;
 }
 
-export default function Hero({ data }: HeroProps) {
+export default function Hero({ data = defaultHeroData }: HeroProps) {
   const renderTitle = () => {
     if (data.highlightText && data.title.includes(data.highlightText)) {
       const parts = data.title.split(data.highlightText);
@@ -45,7 +49,13 @@ export default function Hero({ data }: HeroProps) {
 
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end relative z-10">
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
-          <div className="space-y-5 animate-fadeUp">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-5"
+          >
             <div className="inline-flex items-center gap-2 bg-[#173a21]/90 border border-emerald-500/40 text-emerald-200 text-xs sm:text-[13px] font-bold px-4 py-1.5 rounded-full shadow-sm">
               <Sprout className="w-4 h-4 text-[#facc15]" />
               <span>{data.badge}</span>
@@ -70,124 +80,131 @@ export default function Hero({ data }: HeroProps) {
                 </span>
               </a>
             </div>
-          </div>
+          </motion.div>
 
-         
-<div className="relative aspect-[1.5/1] w-full drop-shadow-2xl group animate-fadeUp sm:aspect-[1.65/1] lg:aspect-[1.5/1] lg:w-[112%]">
-  <svg
-    className="absolute h-0 w-0"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <defs>
-      <clipPath
-        id="left-farmer-image-shape"
-        clipPathUnits="objectBoundingBox"
-      >
-        <path
-          d="
-            M 0.08,0
-            L 0.92,0
-            Q 1,0 1,0.08
-            L 0.95,0.88
-            Q 0.945,0.96 0.88,1
-            L 0.08,1
-            Q 0,1 0,0.92
-            L 0,0.08
-            Q 0,0 0.08,0
-            Z
-          "
-        />
-      </clipPath>
-    </defs>
-  </svg>
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative aspect-[1.5/1] w-full drop-shadow-2xl group sm:aspect-[1.65/1] lg:aspect-[1.5/1] lg:w-[112%]"
+          >
+            <svg
+              className="absolute h-0 w-0"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <defs>
+                <clipPath
+                  id="left-farmer-image-shape"
+                  clipPathUnits="objectBoundingBox"
+                >
+                  <path
+                    d="
+                      M 0.08,0
+                      L 0.92,0
+                      Q 1,0 1,0.08
+                      L 0.95,0.88
+                      Q 0.945,0.96 0.88,1
+                      L 0.08,1
+                      Q 0,1 0,0.92
+                      L 0,0.08
+                      Q 0,0 0.08,0
+                      Z
+                    "
+                  />
+                </clipPath>
+              </defs>
+            </svg>
 
-  <div
-    className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-[#d5d94b]/70 p-[2px]"
-    style={{
-      clipPath: "url(#left-farmer-image-shape)",
-    }}
-  >
-    <div
-      className="group relative h-full w-full overflow-hidden"
-      style={{
-        clipPath: "url(#left-farmer-image-shape)",
-      }}
-    >
-      <Image
-        src={data.leftFarmerImage.url || "/hero/hero-1.webp"}
-        alt={data.leftFarmerImage.alt}
-        fill
-        priority
-        sizes="(max-width: 1024px) 100vw, 48vw"
-        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-      />
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-[#d5d94b]/70 p-[2px]"
+              style={{
+                clipPath: "url(#left-farmer-image-shape)",
+              }}
+            >
+              <div
+                className="group relative h-full w-full overflow-hidden"
+                style={{
+                  clipPath: "url(#left-farmer-image-shape)",
+                }}
+              >
+                <Image
+                  src={data.leftFarmerImage.url || "/hero/hero-1.webp"}
+                  alt={data.leftFarmerImage.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-    </div>
-  </div>
-</div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+              </div>
+            </div>
+          </motion.div>
 
         </div>
 
-        <div className="lg:col-span-7 relative flex flex-col justify-end w-full animate-fadeUp">
-         
-<div className="relative h-[440px] w-full drop-shadow-2xl sm:h-[540px] lg:h-[580px] xl:h-[620px]">
-  <svg
-    className="absolute h-0 w-0"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <defs>
-      <clipPath
-        id="farmer-image-shape"
-        clipPathUnits="objectBoundingBox"
-      >
-        <path
-          d="
-            M 0.15,0
-            L 0.78,0
-            Q 0.88,0 0.92,0.04
-            Q 0.96,0.08 0.96,0.14
-            L 0.96,0.91
-            Q 0.96,1 0.90,1
-            L 0.045,1
-            Q 0,1 0.005,0.945
-            L 0.055,0.14
-            Q 0.06,0 0.15,0
-            Z
-          "
-        />
-      </clipPath>
-    </defs>
-  </svg>
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="lg:col-span-7 relative flex flex-col justify-end w-full"
+        >
+          <div className="relative h-[440px] w-full drop-shadow-2xl sm:h-[540px] lg:h-[580px] xl:h-[620px]">
+            <svg
+              className="absolute h-0 w-0"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <defs>
+                <clipPath
+                  id="farmer-image-shape"
+                  clipPathUnits="objectBoundingBox"
+                >
+                  <path
+                    d="
+                      M 0.15,0
+                      L 0.78,0
+                      Q 0.88,0 0.92,0.04
+                      Q 0.96,0.08 0.96,0.14
+                      L 0.96,0.91
+                      Q 0.96,1 0.90,1
+                      L 0.045,1
+                      Q 0,1 0.005,0.945
+                      L 0.055,0.14
+                      Q 0.06,0 0.15,0
+                      Z
+                    "
+                  />
+                </clipPath>
+              </defs>
+            </svg>
 
-  <div
-    className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-[#d5d94b]/70 p-[2px]"
-    style={{
-      clipPath: "url(#farmer-image-shape)",
-    }}
-  >
-    <div
-      className="group relative h-full w-full overflow-hidden"
-      style={{
-        clipPath: "url(#farmer-image-shape)",
-      }}
-    >
-      <Image
-        src={data.rightFarmerImage.url || "/hero/hero-2.webp"}
-        alt={data.rightFarmerImage.alt}
-        fill
-        priority
-        sizes="(max-width: 1024px) 100vw, 58vw"
-        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-      />
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-[#d5d94b]/70 p-[2px]"
+              style={{
+                clipPath: "url(#farmer-image-shape)",
+              }}
+            >
+              <div
+                className="group relative h-full w-full overflow-hidden"
+                style={{
+                  clipPath: "url(#farmer-image-shape)",
+                }}
+              >
+                <Image
+                  src={data.rightFarmerImage.url || "/hero/hero-2.webp"}
+                  alt={data.rightFarmerImage.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-    </div>
-  </div>
-</div>
-
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+            </div>
+          </div>
 
           <div className="absolute -left-4 sm:-left-8 lg:-left-12 bottom-12 sm:bottom-16 z-20 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#eab308] border-4 border-white shadow-2xl flex items-center justify-center select-none transform hover:scale-105 transition-transform duration-300">
             <svg
@@ -218,7 +235,7 @@ export default function Hero({ data }: HeroProps) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
