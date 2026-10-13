@@ -24,11 +24,21 @@ export interface BrandInfo {
   logo?: string;
 }
 
+export interface NavDropdownItem {
+  title: string;
+  description?: string;
+  href: string;
+  badge?: string;
+  image?: string;
+  price?: string;
+}
+
 export interface NavLink {
   id: string;
   label: string;
   href: string;
   active?: boolean;
+  dropdown?: NavDropdownItem[];
 }
 
 export interface CtaButton {
@@ -263,6 +273,7 @@ export interface BlogItem {
   image: string;
   author: string;
   href: string;
+  year?: string;
 }
 
 export interface BlogData {
@@ -271,6 +282,21 @@ export interface BlogData {
   highlightText?: string;
   description: string;
   items: BlogItem[];
+  buttons?: {
+    readMore?: string;
+    readFull?: string;
+    viewAll?: string;
+  };
+  leafImage?: string;
+  year?: string;
+  blogsPerPage?: number;
+  allBlogsHref?: string;
+  prevAriaLabel?: string;
+  nextAriaLabel?: string;
+  pagination?: {
+    prevAriaLabel?: string;
+    nextAriaLabel?: string;
+  };
 }
 
 export interface FooterGalleryItem {
@@ -297,14 +323,36 @@ export interface FooterData {
     email2?: string;
     hours: string;
   };
+  titles?: {
+    quickLinks?: string;
+    ourProducts?: string;
+    contactInfo?: string;
+  };
   gallery: FooterGalleryItem[];
   copyright: string;
+}
+
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
 }
 
 export interface PageBannerData {
   title: string;
   breadcrumb: string;
   image?: string;
+}
+
+export interface PageBannerConfig {
+  homeBreadcrumb: BreadcrumbItem;
+  parentBreadcrumbs: Record<string, BreadcrumbItem>;
+  defaultImage: string;
+  defaultTitle: string;
+  defaultBreadcrumb: string;
+  imagePosition?: string;
+  ariaLabels?: {
+    breadcrumb?: string;
+  };
 }
 
 export interface TemplatePageConfig {
@@ -345,6 +393,150 @@ export interface AgricultureContent {
     Gallery: { variants: Record<string, GalleryData> };
     Team: { variants: Record<string, TeamData> };
     PageBanners?: { variants: Record<string, Record<string, PageBannerData>> };
+    ProductDetail?: {
+      variants: Record<string, ProductDetailData>;
+      items?: Record<string, ProductDetailData>;
+    };
+    ServiceDetail?: {
+      variants: Record<string, ServiceDetailData>;
+      items?: Record<string, ServiceDetailData>;
+    };
+    Contact?: {
+      variants: Record<string, ContactData>;
+    };
+    MissionVision?: {
+      variants: Record<string, MissionVisionData>;
+    };
+    BlogDetail?: {
+      variants: Record<string, BlogDetailData>;
+      items?: Record<string, BlogDetailData>;
+    };
+  };
+}
+
+export interface BlogDetailSection1 {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  checklist: string[];
+}
+
+export interface BlogDetailSection2 {
+  title: string;
+  description: string;
+  images: { src: string; alt: string }[];
+  quote: {
+    text: string;
+    author: string;
+  };
+}
+
+export interface BlogDetailSection3 {
+  title: string;
+  description: string;
+  checklist: string[];
+  images: { src: string; alt: string }[];
+  conclusion: string;
+}
+
+export interface LatestBlogSidebarItem {
+  id: string;
+  title: string;
+  date: string;
+  category: string;
+  image: string;
+  href: string;
+}
+
+export interface BlogDetailData {
+  id: string;
+  category: string;
+  title: string;
+  author: string;
+  date: string;
+  heroImage: string;
+  heroImageAlt: string;
+  paragraphs: string[];
+  section1: BlogDetailSection1;
+  section2: BlogDetailSection2;
+  section3: BlogDetailSection3;
+  latestBlogs: LatestBlogSidebarItem[];
+}
+
+export interface MissionVisionCard {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  accentColor?: "green" | "yellow";
+  highlighted?: boolean;
+}
+
+export interface MissionVisionData {
+  sectionId?: string;
+  badge?: string;
+  title: string;
+  subtitle: string;
+  fieldBannerImage?: string;
+  cards: MissionVisionCard[];
+}
+
+export interface ContactInfoItem {
+  id: string;
+  icon: "MapPin" | "Mail" | "Phone" | "Clock" | string;
+  title: string;
+  lines: string[];
+  href?: string;
+}
+
+export interface ContactData {
+  sectionId?: string;
+  badge?: string;
+  title?: string;
+  description?: string;
+  phone?: string;
+  phoneHref?: string;
+  email?: string;
+  address?: string;
+  hours?: string;
+  header: {
+    badge?: string;
+    title: string;
+    description: string;
+  };
+  form: {
+    tag: string;
+    title: string;
+    description: string;
+    supportOptions: string[];
+    footerTagline: string;
+    submitButtonText: string;
+    namePlaceholder?: string;
+    emailPlaceholder?: string;
+    phonePlaceholder?: string;
+    messagePlaceholder?: string;
+    successTitle?: string;
+    successMessage?: string;
+    resetButtonText?: string;
+  };
+  contactCards: {
+    backgroundImage?: string;
+    items: ContactInfoItem[];
+    wheatImage: string;
+    wheatImageAlt: string;
+    grainImage: string;
+    grainImageAlt: string;
+  };
+  map: {
+    embedUrl: string;
+    locationName: string;
+    address: string;
+    directionsUrl: string;
+    viewLargerUrl: string;
+    directionsLabel?: string;
+    viewLargerLabel?: string;
+    badgeLabel?: string;
   };
 }
 

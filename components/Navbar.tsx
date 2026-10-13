@@ -373,13 +373,12 @@ export default function Navbar({ initialData }: NavbarProps) {
               transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
               className="hidden lg:flex items-center"
             >
-              <button
-                type="button"
-                onClick={openEnquiry}
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center bg-[#15803d] hover:bg-[#166534] text-white font-bold text-[15px] px-7 py-2.5 sm:py-3 rounded-full shadow-sm hover:shadow-lg hover:shadow-green-900/10 active:scale-95 transition-all duration-200 cursor-pointer"
               >
                 {data.ctaButton.label}
-              </button>
+              </Link>
             </motion.div>
 
             {/* Mobile Hamburger Toggle Button */}
@@ -441,13 +440,13 @@ export default function Navbar({ initialData }: NavbarProps) {
 
                   {/* Mobile CTA Button */}
                   <motion.div variants={mobileItemVariants} className="pt-2">
-                    <button
-                      type="button"
-                      onClick={openEnquiry}
-                      className="w-full bg-[#15803d] hover:bg-[#166534] text-white font-bold py-3.5 rounded-full shadow-md text-center transition-all active:scale-98"
+                    <Link
+                      href="/contact"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block w-full bg-[#15803d] hover:bg-[#166534] text-white font-bold py-3.5 rounded-full shadow-md text-center transition-all active:scale-98"
                     >
                       {data.ctaButton.label}
-                    </button>
+                    </Link>
                   </motion.div>
 
                   {/* Mobile Contact & Social Links Footer */}
@@ -599,7 +598,7 @@ export default function Navbar({ initialData }: NavbarProps) {
                           type="tel"
                           autoComplete="tel"
                           required
-                          placeholder="+91 98765 43210"
+                          placeholder="+1 000-000-000"
                           value={enquiryForm.phone}
                           onChange={(e) =>
                             setEnquiryForm((prev) => ({

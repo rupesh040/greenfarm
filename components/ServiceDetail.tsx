@@ -3,17 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Leaf,
-  Sprout,
-  Apple,
-  Coins,
-  Hand,
-  Globe,
-  ArrowRight,
-  ChevronRight,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { ServiceDetailData } from "@/types";
 import { serviceDetailData as defaultServiceDetailData } from "@/data";
 
@@ -21,27 +11,78 @@ interface ServiceDetailProps {
   data?: ServiceDetailData;
 }
 
+type IconPath = { d: string; evenodd?: boolean };
+
+const filledIcons: Record<string, IconPath[]> = {
+  leaf: [
+    {
+      d: "M20.5 3.5C11.5 3.5 4.5 8.2 4.5 15.2c0 1.7.4 3.2 1.2 4.5C6.9 14.4 10.4 10.7 15.3 8.6c-4 2.7-7.1 6.3-8.6 11.1 1.2.8 2.7 1.3 4.4 1.3 7 0 9.4-9.3 9.4-17.5z",
+    },
+  ],
+  sprout: [
+    { d: "M11 14.2C11 9.4 8 6.6 2.8 6.6c0 5.2 3 8.2 8.2 7.6z" },
+    { d: "M13 12.2C13 6.8 16.2 3.4 21.2 3.4c0 5.8-3.1 9-8.2 8.8z" },
+    { d: "M10.9 13h2.2v8.2a1.1 1.1 0 01-2.2 0z" },
+  ],
+  apple: [
+    {
+      d: "M18.7 8.3c-.8-.9-1.9-1.5-3.2-1.5-1.5 0-2.4.9-3.5.9s-2.1-.9-3.6-.9c-1.3 0-2.5.6-3.3 1.5C3.3 10.5 3.8 15.8 7 19.8c1 1.2 2.1 2.2 3.5 2.2 1.3 0 1.8-.8 3.5-.8 1.6 0 2.1.8 3.5.8 1.4 0 2.5-1.1 3.5-2.2 2.4-3.1 3.2-6.9 2-9.5-.9-1.2-2.3-1.9-4.3-2zM12 2c0 2.2 1.3 3.8 3 4-.2-2.2-1.5-3.8-3-4z",
+      evenodd: true,
+    },
+  ],
+  coins: [
+    {
+      d: "M12 3c-4.4 0-8 1.8-8 4s3.6 4 8 4 8-1.8 8-4-3.6-4-8-4zm0 6c-3.3 0-6-1.1-6-2.5S8.7 4 12 4s6 1.1 6 2.5S15.3 9 12 9zm8 2.2c-.7.5-1.6.9-2.6 1.2.4.8.6 1.6.6 2.6 0 2.2-3.6 4-8 4s-8-1.8-8-4c0-.9.2-1.8.6-2.6-1-.3-1.9-.7-2.6-1.2V13c0 2.2 3.6 4 8 4s8-1.8 8-4v-1.8zm0 5c-.7.5-1.6.9-2.6 1.2.4.8.6 1.6.6 2.6 0 2.2-3.6 4-8 4s-8-1.8-8-4c0-.9.2-1.8.6-2.6-1-.3-1.9-.7-2.6-1.2V18c0 2.2 3.6 4 8 4s8-1.8 8-4v-1.8z",
+      evenodd: true,
+    },
+  ],
+  hand: [
+    { d: "M10.9 9.4V7.6C8.8 7.6 7.4 6.2 7.4 4c2.2 0 3.6 1.3 3.5 3.4C11 5 12.6 3.3 15.2 3.3c0 2.7-1.6 4.3-3.9 4.3v1.8z" },
+    {
+      d: "M2.5 14.4h3.1c.7 0 1.4.2 2 .7l1.4 1.1h4c.9 0 1.6.7 1.6 1.5l5.4-2.7c.8-.4 1.8-.1 2.2.7.4.7.2 1.6-.5 2.1l-6.7 4.4c-.4.3-.9.4-1.4.4H8.2c-.5 0-1-.2-1.4-.5L2.5 18.6z",
+    },
+  ],
+  globe: [
+    {
+      d: "M12 2a10 10 0 100 20 10 10 0 000-20zm-1 17.9A8.02 8.02 0 014.1 13H7c.6 0 1-.4 1-1v-1c0-.6.4-1 1-1h2c.6 0 1-.4 1-1V7c0-.6.4-1 1-1h1c.6 0 1-.4 1-1v-.9A8.01 8.01 0 0119.9 12c0 .3 0 .7-.1 1h-2.8c-.6 0-1 .4-1 1v1c0 .6-.4 1-1 1H13c-.6 0-1 .4-1 1v2.9z",
+      evenodd: true,
+    },
+  ],
+  check: [
+    {
+      d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
+      evenodd: true,
+    },
+  ],
+};
+
+function Icon({ name, className = "" }: { name: string; className?: string }) {
+  const paths = filledIcons[name.toLowerCase()] ?? filledIcons.sprout;
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      {paths.map((p, i) => (
+        <path
+          key={i}
+          d={p.d}
+          fillRule={p.evenodd ? "evenodd" : undefined}
+          clipRule={p.evenodd ? "evenodd" : undefined}
+        />
+      ))}
+    </svg>
+  );
+}
+
 export default function ServiceDetail({
   data = defaultServiceDetailData,
 }: ServiceDetailProps) {
   const renderBenefitIcon = (icon: string) => {
-    const iconClass = "w-5 h-5";
-    switch (icon) {
-      case "sprout":
-        return <Sprout className={iconClass} />;
-      case "apple":
-        return <Apple className={iconClass} />;
-      case "coins":
-        return <Coins className={iconClass} />;
-      case "leaf":
-        return <Leaf className={iconClass} />;
-      case "hand":
-        return <Hand className={iconClass} />;
-      case "globe":
-        return <Globe className={iconClass} />;
-      default:
-        return <Sprout className={iconClass} />;
-    }
+    return <Icon name={icon} className="w-5 h-5 text-[#1B4D36]" />;
   };
 
   return (
@@ -52,7 +93,7 @@ export default function ServiceDetail({
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
               <div className="md:col-span-7">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAF5EC] text-[#1B4D36] text-xs font-bold tracking-wide mb-3">
-                  <Leaf className="w-3.5 h-3.5 fill-[#1B4D36]" />
+                  <Icon name="leaf" className="w-3.5 h-3.5 text-[#1B4D36]" />
                   <span>{data.badge || "Our Services"}</span>
                 </div>
 
@@ -167,9 +208,7 @@ export default function ServiceDetail({
                 <div className="space-y-2.5 pt-2">
                   {data.whyChoosePoints.map((point, idx) => (
                     <div key={idx} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-[#12482C] flex items-center justify-center text-white shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-white" />
-                      </div>
+                      <Icon name="check" className="w-5 h-5 text-[#12482C] shrink-0" />
                       <span className="text-xs sm:text-sm font-semibold text-gray-800">
                         {point}
                       </span>

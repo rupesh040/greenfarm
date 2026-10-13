@@ -70,8 +70,8 @@
             ],
             "contact": {
               "prefixText": "TALK TO US FOR FRESH DEALS",
-              "phone": "+91 1234567890",
-              "phoneHref": "tel:+911234567890"
+              "phone": "+1 000-000-000",
+              "phoneHref": "tel:+1000000000"
             },
             "socialLinks": [
               {
@@ -133,7 +133,7 @@
               {
                 "id": "products",
                 "label": "Our Products",
-                "href": "/products",
+                "href": "/products/fresh-vegetables",
                 "active": false
               },
               {
@@ -157,7 +157,7 @@
             ],
             "ctaButton": {
               "label": "Enquiry Now",
-              "href": "#enquiry"
+              "href": "/contact"
             },
             "enquiryModal": {
               "title": "Quick Farm Enquiry",
@@ -175,9 +175,9 @@
                 "fullName": "Full Name",
                 "namePlaceholder": "Enter your full name",
                 "phone": "Phone Number",
-                "phonePlaceholder": "+91 98765 43210",
+                "phonePlaceholder": "+1 000-000-000",
                 "email": "Email Address",
-                "emailPlaceholder": "you@example.com",
+                "emailPlaceholder": "info@xyz.com",
                 "requirement": "Requirement",
                 "message": "Message",
                 "messagePlaceholder": "Tell us about your requirements...",
@@ -196,7 +196,7 @@
             "description": "Experience the richness of naturally grown produce nurtured with care, tradition, and sustainable farming practices.",
             "ctaButton": {
               "label": "Start Your Organic Journey",
-              "href": "#about"
+              "href": "/contact"
             },
             "organicSeal": {
               "title": "Get Fresh Today",
@@ -242,7 +242,7 @@
             ],
             "ctaButton": {
               "label": "Learn More",
-              "href": "#about"
+              "href": "/about"
             },
             "images": {
               "primary": "/about/about-1.jpg",
@@ -567,64 +567,46 @@
           "AgricultureTestimonial1": {
             "sectionId": "testimonials",
             "badge": "Testimonials",
-            "title": "What Our Customers Say",
+            "title": "What Our Clients Say?",
             "subtitle": "Our farmers and customers trust us for high-quality organic products, better farming practices and long-term support for a healthier tomorrow.",
-            "highlightText": "Customers",
-            "farmerImage": "/testimonials/ramesh.jpg",
+            "highlightText": "Clients Say?",
+            "farmerImage": "/images/farmer_harvest.jpg",
             "items": [
               {
                 "id": "t1",
-                "author": "Ramesh Yadav",
-                "role": "Farmer, Ahmedabad, Gujarat",
+                "author": "Ramesh Kumar",
+                "role": "Progressive Farmer, Uttar Pradesh",
                 "rating": 5,
                 "avatar": "/testimonials/ramesh.jpg",
-                "headline": "Organic farming has improved my crop quality",
-                "quote": "I have been using their organic seeds and natural farming guidance for the past 3 years. My soil health has improved and my crop yield is much better now. The team is very supportive and always ready to help."
+                "headline": "Real growth in farming business",
+                "quote": "Working with this farm has been a wonderful experience. The quality of their products is outstanding and always fresh. Their team is supportive, knowledgeable and truly cares about farmers. I have seen real growth in my farming business since collaborating with them."
               },
               {
                 "id": "t2",
                 "author": "Sunita Patel",
-                "role": "Farmer, Indore, Madhya Pradesh",
+                "role": "Organic Grower, Madhya Pradesh",
                 "rating": 5,
                 "avatar": "/testimonials/sunita.jpg",
-                "headline": "Their products helped me grow healthier vegetables",
+                "headline": "Grown healthier vegetables naturally",
                 "quote": "The organic farming solutions and expert advice have helped me grow chemical-free and fresh vegetables. I am very happy with their guidance and highly recommend them to other farmers."
               },
               {
                 "id": "t3",
                 "author": "Amit Kumar",
-                "role": "Farmer, Patna, Bihar",
+                "role": "Agricultural Entrepreneur, Bihar",
                 "rating": 5,
                 "avatar": "/testimonials/amit.jpg",
-                "headline": "Excellent quality and great support",
+                "headline": "Outstanding support and reliability",
                 "quote": "I have been using their organic products for the last 2 years. The quality is excellent and my crops are much healthier. Their team always provides useful farming tips and support."
               },
               {
                 "id": "t4",
                 "author": "Kavita Singh",
-                "role": "Farmer, Bhopal, Madhya Pradesh",
+                "role": "Sustainable Farmer, Gujarat",
                 "rating": 5,
                 "avatar": "/testimonials/kavita.jpg",
                 "headline": "Great experience with natural farming",
                 "quote": "Their natural farming methods and expert guidance have helped me improve soil fertility and grow nutritious crops. I am very satisfied with their products and services."
-              },
-              {
-                "id": "t5",
-                "author": "Rajesh Sharma",
-                "role": "Farmer, Jaipur, Rajasthan",
-                "rating": 5,
-                "avatar": "/testimonials/ramesh.jpg",
-                "headline": "Significant boost in organic yield",
-                "quote": "Adopting their biological soil conditioning and regenerative farming methods was the best decision for our fields. Our farm productivity has grown consistently every season."
-              },
-              {
-                "id": "t6",
-                "author": "Pooja Verma",
-                "role": "Organic Grower, Lucknow, Uttar Pradesh",
-                "rating": 5,
-                "avatar": "/testimonials/kavita.jpg",
-                "headline": "Pure quality and reliable delivery",
-                "quote": "From certified non-GMO seeds to timely doorstep farm supplies, their service has been exceptional. Our farm produce has never tasted better."
               }
             ],
             "trustBadge": {
@@ -641,36 +623,104 @@
             "title": "Latest News & Articles",
             "highlightText": "Articles",
             "description": "Learn actionable insights on sustainable farming, regenerative soil care, and healthy organic living.",
+            "leafImage": "/images/blog_leaf.jpg",
+            "year": "2025",
+            "blogsPerPage": 6,
+            "allBlogsHref": "/blog",
+            "prevAriaLabel": "Previous blog",
+            "nextAriaLabel": "Next blog",
+            "pagination": {
+              "prevAriaLabel": "Previous page",
+              "nextAriaLabel": "Next page"
+            },
             "items": [
               {
                 "id": "b1",
-                "date": "10 OCT",
-                "category": "Farming",
-                "title": "6 Easy Tips for Organic Vegetable Farming",
-                "description": "Learn simple organic practices to nourish garden beds using compost tea, companion planting, and mulch.",
-                "image": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?auto=format&fit=crop&w=600&q=80",
-                "author": "Marcus Vance",
-                "href": "#read-more"
+                "date": "12 OCT",
+                "year": "2025",
+                "category": "Organic Farming",
+                "title": "How to Start Organic Vegetable Farming at Home",
+                "description": "Step-by-step guidance on selecting sunlight spots, organic composting, soil enrichment, and choosing fast-yielding home vegetables.",
+                "image": "/images/blog_sprout_hands.jpg",
+                "author": "Rajesh Kumar",
+                "href": "/blog/how-to-start-organic-vegetable-farming-at-home"
               },
               {
                 "id": "b2",
-                "date": "08 OCT",
-                "category": "Organic Living",
-                "title": "The Health Benefits of Fresh Seasonal Vegetables",
-                "description": "Why eating seasonal crops straight from regional soil boosts vital micronutrients and digestive wellness.",
-                "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
-                "author": "Elena Rostova",
-                "href": "#read-more"
+                "date": "10 OCT",
+                "year": "2025",
+                "category": "Farming",
+                "title": "6 Easy Tips for Organic Vegetable Farming",
+                "description": "Learn simple organic practices to nourish garden beds using compost tea, companion planting, and natural straw mulch.",
+                "image": "/images/farmer_harvest.jpg",
+                "author": "Marcus Vance",
+                "href": "/blog/6-easy-tips-for-organic-vegetable-farming"
               },
               {
                 "id": "b3",
-                "date": "04 OCT",
+                "date": "08 OCT",
+                "year": "2025",
+                "category": "Organic Living",
+                "title": "The Health Benefits of Fresh Seasonal Vegetables",
+                "description": "Why eating seasonal crops straight from regional soil boosts vital micronutrients, antioxidants, and digestive wellness.",
+                "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
+                "author": "Elena Rostova",
+                "href": "/blog/the-health-benefits-of-fresh-seasonal-vegetables"
+              },
+              {
+                "id": "b4",
+                "date": "06 OCT",
+                "year": "2025",
                 "category": "Innovation",
                 "title": "Modern Technologies for Sustainable Agriculture",
-                "description": "How solar water pumps, micro-drip networks, and drone soil analysis make sustainable farms thrive.",
+                "description": "How solar water pumps, micro-drip networks, and drone soil analysis empower modern sustainable farms to thrive.",
                 "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
                 "author": "Devin Clark",
-                "href": "#read-more"
+                "href": "/blog/modern-technologies-for-sustainable-agriculture"
+              },
+              {
+                "id": "b5",
+                "date": "05 OCT",
+                "year": "2025",
+                "category": "Farming Tips",
+                "title": "How to Prepare Soil for Better Crop Yield",
+                "description": "Healthy soil leads to healthy plants. Discover vermicompost blending, pH balancing, and aerating methods for high yields.",
+                "image": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80",
+                "author": "Rajesh Kumar",
+                "href": "/blog/how-to-prepare-soil-for-better-crop-yield"
+              },
+              {
+                "id": "b6",
+                "date": "03 OCT",
+                "year": "2025",
+                "category": "Organic Living",
+                "title": "Top 5 Seasonal Vegetables to Grow at Home",
+                "description": "Start your balcony kitchen garden with these forgiving, high-reward varieties: cherry tomatoes, spinach, peppers, radishes, and mint.",
+                "image": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?auto=format&fit=crop&w=600&q=80",
+                "author": "Priya Sharma",
+                "href": "/blog/top-5-seasonal-vegetables-to-grow-at-home"
+              },
+              {
+                "id": "b7",
+                "date": "01 OCT",
+                "year": "2025",
+                "category": "Sustainable Farming",
+                "title": "Benefits of Drip Irrigation in Agriculture",
+                "description": "Direct root-zone hydration saves up to 70% irrigation water while drastically preventing fungal leaf diseases and weed growth.",
+                "image": "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=600&q=80",
+                "author": "Amit Patel",
+                "href": "/blog/benefits-of-drip-irrigation-in-agriculture"
+              },
+              {
+                "id": "b8",
+                "date": "28 SEP",
+                "year": "2025",
+                "category": "Farming Guide",
+                "title": "Natural Pest Control Methods for Organic Farms",
+                "description": "Harness neem leaf extracts, marigold companion borders, and ladybug habitats to defend crops without harmful synthetics.",
+                "image": "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=600&q=80",
+                "author": "Devin Clark",
+                "href": "/blog/natural-pest-control-methods-for-organic-farms"
               }
             ],
             "buttons": {
@@ -749,43 +799,48 @@
             "productLinks": [
               {
                 "label": "Fresh Vegetables",
-                "href": "/products"
+                "href": "/products/fresh-vegetables"
               },
               {
                 "label": "Fresh Fruits",
-                "href": "/products"
+                "href": "/products/fresh-fruits"
               },
               {
-                "label": "Grains & Pulses",
-                "href": "/products"
+                "label": "Natural Grains",
+                "href": "/products/natural-grains"
               },
               {
-                "label": "Dairy Products",
-                "href": "/products"
+                "label": "Dairy & Milk",
+                "href": "/products/dairy-and-milk"
               },
               {
-                "label": "Organic Flours",
-                "href": "/products"
+                "label": "Raw Pure Honey",
+                "href": "/products/raw-pure-honey"
               },
               {
-                "label": "Natural Honey",
-                "href": "/products"
+                "label": "Organic Farm Eggs",
+                "href": "/products/organic-farm-eggs"
               },
               {
-                "label": "Spices & Herbs",
-                "href": "/products"
+                "label": "Cold-Pressed Oils",
+                "href": "/products/cold-pressed-oils"
               },
               {
-                "label": "Pickles & Homemade Products",
-                "href": "/products"
+                "label": "Artisan Cheese",
+                "href": "/products/artisan-cheese"
               }
             ],
+            "titles": {
+              "quickLinks": "Quick Links",
+              "ourProducts": "Our Products",
+              "contactInfo": "Contact Info"
+            },
             "contact": {
-              "address": "123 Green Farm Road,\nNew Delhi, India - 110001",
-              "phone": "+91 98765 43210",
-              "phone2": "+91 98765 43211",
-              "email": "info@greenfarm.com",
-              "email2": "support@greenfarm.com",
+              "address": "450 Green Farm Way,\nAustin, TX 78701, USA",
+              "phone": "+1 000-000-000",
+              "phone2": "+1 000-000-000",
+              "email": "info@xyz.com",
+              "email2": "info@xyz.com",
               "hours": "Mon - Sat: 9:00 AM - 6:00 PM\nSunday: Closed"
             },
             "gallery": [
@@ -896,7 +951,11 @@
                 "id": "g1",
                 "title": "Pasture-Fed Dairy Cattle",
                 "category": "Cattle",
-                "categories": ["Cattle", "Farms", "Organic"],
+                "categories": [
+                  "Cattle",
+                  "Farms",
+                  "Organic"
+                ],
                 "image": "/gallery/cattle.jpg",
                 "alt": "Dairy cows grazing on green organic pasture"
               },
@@ -904,7 +963,10 @@
                 "id": "g2",
                 "title": "Modern Field Cultivation",
                 "category": "Farms",
-                "categories": ["Farms", "Harvest"],
+                "categories": [
+                  "Farms",
+                  "Harvest"
+                ],
                 "image": "/gallery/tractor.jpg",
                 "alt": "Modern red tractor working in green crop fields"
               },
@@ -912,7 +974,11 @@
                 "id": "g3",
                 "title": "Organic Crop Inspection",
                 "category": "Organic",
-                "categories": ["Organic", "Vegetable", "Farms"],
+                "categories": [
+                  "Organic",
+                  "Vegetable",
+                  "Farms"
+                ],
                 "image": "/gallery/farmer.jpg",
                 "alt": "Farmer inspecting fresh green crops in the field"
               },
@@ -920,7 +986,12 @@
                 "id": "g4",
                 "title": "Autumn Farm Harvest",
                 "category": "Harvest",
-                "categories": ["Harvest", "Organic", "Vegetable", "Fruit"],
+                "categories": [
+                  "Harvest",
+                  "Organic",
+                  "Vegetable",
+                  "Fruit"
+                ],
                 "image": "/gallery/harvest.jpg",
                 "alt": "Freshly harvested organic vegetables and fruits in crates"
               },
@@ -928,7 +999,11 @@
                 "id": "g5",
                 "title": "Fresh Vegetable Beds",
                 "category": "Vegetable",
-                "categories": ["Vegetable", "Organic", "Farms"],
+                "categories": [
+                  "Vegetable",
+                  "Organic",
+                  "Farms"
+                ],
                 "image": "/gallery/vegetable.jpg",
                 "alt": "Rows of organic crisp green vegetables in dark fertile soil"
               },
@@ -936,7 +1011,11 @@
                 "id": "g6",
                 "title": "Sunlit Fruit Orchards",
                 "category": "Fruit",
-                "categories": ["Fruit", "Harvest", "Organic"],
+                "categories": [
+                  "Fruit",
+                  "Harvest",
+                  "Organic"
+                ],
                 "image": "/gallery/fruit.jpg",
                 "alt": "Fruit orchard with ripe red apples on tree branches"
               },
@@ -944,7 +1023,11 @@
                 "id": "g7",
                 "title": "Greenhouse Seedlings Nursery",
                 "category": "Organic",
-                "categories": ["Organic", "Farms", "Vegetable"],
+                "categories": [
+                  "Organic",
+                  "Farms",
+                  "Vegetable"
+                ],
                 "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
                 "alt": "Healthy young green sprouts in greenhouse"
               },
@@ -952,7 +1035,10 @@
                 "id": "g8",
                 "title": "Golden Wheat Field Harvest",
                 "category": "Harvest",
-                "categories": ["Harvest", "Farms"],
+                "categories": [
+                  "Harvest",
+                  "Farms"
+                ],
                 "image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
                 "alt": "Golden sun over expansive wheat fields"
               },
@@ -960,7 +1046,10 @@
                 "id": "g9",
                 "title": "Organic Tomato Vine Garden",
                 "category": "Vegetable",
-                "categories": ["Vegetable", "Organic"],
+                "categories": [
+                  "Vegetable",
+                  "Organic"
+                ],
                 "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80",
                 "alt": "Vine-ripened red organic tomatoes"
               },
@@ -968,7 +1057,10 @@
                 "id": "g10",
                 "title": "Sweet Summer Strawberry Rows",
                 "category": "Fruit",
-                "categories": ["Fruit", "Harvest"],
+                "categories": [
+                  "Fruit",
+                  "Harvest"
+                ],
                 "image": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80",
                 "alt": "Ripe sweet red strawberries in field"
               },
@@ -976,7 +1068,10 @@
                 "id": "g11",
                 "title": "Pasture Grazing Heifers",
                 "category": "Cattle",
-                "categories": ["Cattle", "Farms"],
+                "categories": [
+                  "Cattle",
+                  "Farms"
+                ],
                 "image": "/gallery/cattle.jpg",
                 "alt": "Free-range cattle grazing in lush clover pasture"
               },
@@ -984,7 +1079,10 @@
                 "id": "g12",
                 "title": "Sustainable Farm Estate",
                 "category": "Farms",
-                "categories": ["Farms", "Organic"],
+                "categories": [
+                  "Farms",
+                  "Organic"
+                ],
                 "image": "/gallery/tractor.jpg",
                 "alt": "Panoramic view of GreenFarm agricultural fields"
               }
@@ -1007,11 +1105,26 @@
                 "image": "/team/ramesh.jpg",
                 "alt": "Ramesh Yadav, Senior Farmer",
                 "socials": [
-                  { "platform": "facebook", "href": "https://facebook.com" },
-                  { "platform": "instagram", "href": "https://instagram.com" },
-                  { "platform": "phone", "href": "tel:+1234567890" },
-                  { "platform": "youtube", "href": "https://youtube.com" },
-                  { "platform": "twitter", "href": "https://x.com" }
+                  {
+                    "platform": "facebook",
+                    "href": "https://facebook.com"
+                  },
+                  {
+                    "platform": "instagram",
+                    "href": "https://instagram.com"
+                  },
+                  {
+                    "platform": "phone",
+                    "href": "tel:+1234567890"
+                  },
+                  {
+                    "platform": "youtube",
+                    "href": "https://youtube.com"
+                  },
+                  {
+                    "platform": "twitter",
+                    "href": "https://x.com"
+                  }
                 ]
               },
               {
@@ -1022,11 +1135,26 @@
                 "image": "/team/sunita.jpg",
                 "alt": "Sunita Sharma, Crop Specialist",
                 "socials": [
-                  { "platform": "facebook", "href": "https://facebook.com" },
-                  { "platform": "instagram", "href": "https://instagram.com" },
-                  { "platform": "phone", "href": "tel:+1234567890" },
-                  { "platform": "youtube", "href": "https://youtube.com" },
-                  { "platform": "twitter", "href": "https://x.com" }
+                  {
+                    "platform": "facebook",
+                    "href": "https://facebook.com"
+                  },
+                  {
+                    "platform": "instagram",
+                    "href": "https://instagram.com"
+                  },
+                  {
+                    "platform": "phone",
+                    "href": "tel:+1234567890"
+                  },
+                  {
+                    "platform": "youtube",
+                    "href": "https://youtube.com"
+                  },
+                  {
+                    "platform": "twitter",
+                    "href": "https://x.com"
+                  }
                 ]
               },
               {
@@ -1037,11 +1165,26 @@
                 "image": "/team/amit.jpg",
                 "alt": "Amit Kumar, Soil Health Expert",
                 "socials": [
-                  { "platform": "facebook", "href": "https://facebook.com" },
-                  { "platform": "instagram", "href": "https://instagram.com" },
-                  { "platform": "phone", "href": "tel:+1234567890" },
-                  { "platform": "youtube", "href": "https://youtube.com" },
-                  { "platform": "twitter", "href": "https://x.com" }
+                  {
+                    "platform": "facebook",
+                    "href": "https://facebook.com"
+                  },
+                  {
+                    "platform": "instagram",
+                    "href": "https://instagram.com"
+                  },
+                  {
+                    "platform": "phone",
+                    "href": "tel:+1234567890"
+                  },
+                  {
+                    "platform": "youtube",
+                    "href": "https://youtube.com"
+                  },
+                  {
+                    "platform": "twitter",
+                    "href": "https://x.com"
+                  }
                 ]
               },
               {
@@ -1052,11 +1195,26 @@
                 "image": "/team/priya.jpg",
                 "alt": "Dr. Priya Patel, Horticulture Specialist",
                 "socials": [
-                  { "platform": "facebook", "href": "https://facebook.com" },
-                  { "platform": "instagram", "href": "https://instagram.com" },
-                  { "platform": "phone", "href": "tel:+1234567890" },
-                  { "platform": "youtube", "href": "https://youtube.com" },
-                  { "platform": "twitter", "href": "https://x.com" }
+                  {
+                    "platform": "facebook",
+                    "href": "https://facebook.com"
+                  },
+                  {
+                    "platform": "instagram",
+                    "href": "https://instagram.com"
+                  },
+                  {
+                    "platform": "phone",
+                    "href": "tel:+1234567890"
+                  },
+                  {
+                    "platform": "youtube",
+                    "href": "https://youtube.com"
+                  },
+                  {
+                    "platform": "twitter",
+                    "href": "https://x.com"
+                  }
                 ]
               },
               {
@@ -1067,11 +1225,26 @@
                 "image": "/team/vikram.jpg",
                 "alt": "Vikram Singh, Regenerative Farm Lead",
                 "socials": [
-                  { "platform": "facebook", "href": "https://facebook.com" },
-                  { "platform": "instagram", "href": "https://instagram.com" },
-                  { "platform": "phone", "href": "tel:+1234567890" },
-                  { "platform": "youtube", "href": "https://youtube.com" },
-                  { "platform": "twitter", "href": "https://x.com" }
+                  {
+                    "platform": "facebook",
+                    "href": "https://facebook.com"
+                  },
+                  {
+                    "platform": "instagram",
+                    "href": "https://instagram.com"
+                  },
+                  {
+                    "platform": "phone",
+                    "href": "tel:+1234567890"
+                  },
+                  {
+                    "platform": "youtube",
+                    "href": "https://youtube.com"
+                  },
+                  {
+                    "platform": "twitter",
+                    "href": "https://x.com"
+                  }
                 ]
               },
               {
@@ -1082,11 +1255,26 @@
                 "image": "/team/ananya.jpg",
                 "alt": "Ananya Rao, Harvest Quality Inspector",
                 "socials": [
-                  { "platform": "facebook", "href": "https://facebook.com" },
-                  { "platform": "instagram", "href": "https://instagram.com" },
-                  { "platform": "phone", "href": "tel:+1234567890" },
-                  { "platform": "youtube", "href": "https://youtube.com" },
-                  { "platform": "twitter", "href": "https://x.com" }
+                  {
+                    "platform": "facebook",
+                    "href": "https://facebook.com"
+                  },
+                  {
+                    "platform": "instagram",
+                    "href": "https://instagram.com"
+                  },
+                  {
+                    "platform": "phone",
+                    "href": "tel:+1234567890"
+                  },
+                  {
+                    "platform": "youtube",
+                    "href": "https://youtube.com"
+                  },
+                  {
+                    "platform": "twitter",
+                    "href": "https://x.com"
+                  }
                 ]
               }
             ]
@@ -1145,7 +1333,589 @@
               "title": "ORGANIC FARM CONSULTATION",
               "breadcrumb": "Service Details",
               "image": "/page-banner.webp"
+            },
+            "blog": {
+              "title": "OUR BLOGS & ARTICLES",
+              "breadcrumb": "Blog",
+              "image": "/page-banner.webp"
+            },
+            "blog-details": {
+              "title": "BLOG DETAILS",
+              "breadcrumb": "Blog Details",
+              "image": "/page-banner.webp"
+            },
+            "default": {
+              "title": "ABOUT US",
+              "breadcrumb": "About Us",
+              "image": "/page-banner.webp"
+            },
+            "config": {
+              "homeBreadcrumb": {
+                "label": "Home",
+                "href": "/"
+              },
+              "parentBreadcrumbs": {
+                "services": {
+                  "label": "Services",
+                  "href": "/services"
+                },
+                "service-details": {
+                  "label": "Services",
+                  "href": "/services"
+                },
+                "products": {
+                  "label": "Our Products",
+                  "href": "/products"
+                },
+                "blog": {
+                  "label": "Blog",
+                  "href": "/blog"
+                },
+                "blog-details": {
+                  "label": "Blog",
+                  "href": "/blog"
+                }
+              },
+              "defaultImage": "/page-banner.webp",
+              "defaultTitle": "ABOUT US",
+              "defaultBreadcrumb": "About Us",
+              "imagePosition": "center center",
+              "ariaLabels": {
+                "breadcrumb": "Breadcrumb"
+              }
             }
+          }
+        }
+      },
+      "ProductDetail": {
+        "variants": {
+          "AgricultureProductDetail1": {
+            "id": "p1",
+            "sectionId": "product-detail",
+            "category": "100% Organic",
+            "title": "Fresh Vegetables",
+            "description": "Crisp organic greens, broccoli, carrots & colorful bell peppers hand-harvested at peak morning freshness from our certified sustainable farm fields.",
+            "images": [
+              {
+                "src": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=80",
+                "alt": "Fresh Vegetables Harvest"
+              },
+              {
+                "src": "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=1200&q=80",
+                "alt": "Crisp Organic Farm Greens"
+              },
+              {
+                "src": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=1200&q=80",
+                "alt": "Farm Fresh Carrots"
+              },
+              {
+                "src": "https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=1200&q=80",
+                "alt": "Green Vegetables Box"
+              }
+            ],
+            "imageBadges": [
+              {
+                "id": "b1",
+                "icon": "leaf",
+                "label": "100% Organic"
+              },
+              {
+                "id": "b2",
+                "icon": "sprout",
+                "label": "Pure Quality"
+              }
+            ],
+            "highlights": [
+              {
+                "id": "h1",
+                "icon": "leaf",
+                "label": "100% Organic"
+              },
+              {
+                "id": "h2",
+                "icon": "flask",
+                "label": "Zero Chemicals"
+              },
+              {
+                "id": "h3",
+                "icon": "sprout",
+                "label": "Naturally Grown"
+              },
+              {
+                "id": "h4",
+                "icon": "hand",
+                "label": "Hand Picked"
+              }
+            ],
+            "enquiry": {
+              "label": "Enquiry Now",
+              "href": "/contact"
+            },
+            "overview": {
+              "title": "Product Overview",
+              "description": "Our fresh vegetables are grown using strictly organic, non-GMO farming practices. Cultivated with mineral-rich mountain spring water and natural compost, each crop is nurtured without chemical pesticides or synthetic growth accelerators to preserve authentic flavors and vital nutrients.",
+              "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+              "imageAlt": "Organic Vegetable Harvest"
+            },
+            "keyFeatures": {
+              "title": "Key Features",
+              "items": [
+                {
+                  "id": "kf1",
+                  "icon": "leaf",
+                  "text": "100% Certified organic cultivation without synthetic additives"
+                },
+                {
+                  "id": "kf2",
+                  "icon": "sprout",
+                  "text": "Harvested fresh daily before sunrise to lock in vitality"
+                },
+                {
+                  "id": "kf3",
+                  "icon": "layers",
+                  "text": "Packed in breathable, biodegradable eco-friendly materials"
+                },
+                {
+                  "id": "kf4",
+                  "icon": "droplet",
+                  "text": "Irrigated with purified natural spring water sources"
+                }
+              ]
+            },
+            "specifications": {
+              "title": "Specifications",
+              "rows": [
+                {
+                  "label": "Origin",
+                  "value": "GreenFarm Organic Sanctuary, Sector 4"
+                },
+                {
+                  "label": "Farming Method",
+                  "value": "100% Regenerative Biological Farming"
+                },
+                {
+                  "label": "Shelf Life",
+                  "value": "7 to 10 Days at recommended 4°C - 8°C"
+                },
+                {
+                  "label": "Packaging",
+                  "value": "Recyclable eco-crate or breathable pack"
+                },
+                {
+                  "label": "Certification",
+                  "value": "USDA Organic & EcoCert Verified"
+                },
+                {
+                  "label": "Storage",
+                  "value": "Keep cool, dry and away from direct sunlight"
+                }
+              ]
+            },
+            "benefits": {
+              "title": "Quality & Benefits",
+              "items": [
+                {
+                  "id": "bn1",
+                  "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80",
+                  "imageAlt": "Vital Nutrition",
+                  "title": "Vital Nutrition",
+                  "description": "Packed with active minerals, vitamins, and antioxidants for optimal health."
+                },
+                {
+                  "id": "bn2",
+                  "image": "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=400&q=80",
+                  "imageAlt": "Natural Taste",
+                  "title": "Natural Taste",
+                  "description": "Crisp and juicy with the authentic sweetness of farm-grown soil."
+                },
+                {
+                  "id": "bn3",
+                  "image": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=400&q=80",
+                  "imageAlt": "Soil Friendly",
+                  "title": "Soil Friendly",
+                  "description": "Farming methods that replenish soil health and protect local wildlife."
+                },
+                {
+                  "id": "bn4",
+                  "image": "https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=400&q=80",
+                  "imageAlt": "Direct Dispatch",
+                  "title": "Direct Dispatch",
+                  "description": "Guaranteed same-day harvesting and dispatch straight to your pantry."
+                }
+              ]
+            },
+            "availability": {
+              "title": "Availability & Delivery",
+              "items": [
+                {
+                  "id": "av1",
+                  "icon": "truck",
+                  "label": "Delivery Time",
+                  "value": "Express delivery within 24 hours"
+                },
+                {
+                  "id": "av2",
+                  "icon": "pin",
+                  "label": "Source Farm",
+                  "value": "GreenFarm Organic Sanctuary"
+                },
+                {
+                  "id": "av3",
+                  "icon": "package",
+                  "label": "Packaging Type",
+                  "value": "100% Biodegradable cartons"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ServiceDetail": {
+        "variants": {
+          "AgricultureServiceDetail1": {
+            "id": "organic-farm-consultation",
+            "badge": "Our Services",
+            "title": "Organic Farm Consultation",
+            "shortDescription": "Get expert guidance to start or improve your organic farm. We provide personalized consultation on soil preparation, crop selection, organic practices and sustainable farming methods.",
+            "enquiryButtonText": "Enquiry Now",
+            "heroImage": "/services/consultation-hero.jpg",
+            "overviewTitle": "Service Overview",
+            "overviewDescription": "Our Organic Farm Consultation service is designed to help farmers, home gardeners and agricultural businesses adopt sustainable and chemical-free farming practices. Our experts analyze your land, soil condition and farming goals to provide practical solutions that improve productivity, ensure long-term soil health and support a greener environment. Whether you are starting a new farm or want to switch to organic methods, we guide you at every step with personalized recommendations.",
+            "overviewImage": "/services/soil-overview.jpg",
+            "benefitsTitle": "Key Benefits",
+            "benefits": [
+              {
+                "id": "b1",
+                "title": "Healthy Soil",
+                "description": "Improves soil fertility and maintains long-term soil health.",
+                "icon": "sprout"
+              },
+              {
+                "id": "b2",
+                "title": "Better Crop Quality",
+                "description": "Get higher yield with chemical-free produce.",
+                "icon": "apple"
+              },
+              {
+                "id": "b3",
+                "title": "Cost-Effective",
+                "description": "Reduces input cost with natural farming methods.",
+                "icon": "coins"
+              },
+              {
+                "id": "b4",
+                "title": "Sustainable Farming",
+                "description": "Supports eco-friendly and sustainable agriculture.",
+                "icon": "leaf"
+              },
+              {
+                "id": "b5",
+                "title": "Expert Guidance",
+                "description": "Personalized solutions for your land and crops.",
+                "icon": "hand"
+              },
+              {
+                "id": "b6",
+                "title": "Environment Friendly",
+                "description": "Helps in conserving natural resources.",
+                "icon": "globe"
+              }
+            ],
+            "whyChooseTitle": "Why Choose Our Service",
+            "whyChooseDescription": "We combine practical knowledge with hands-on experience to provide reliable and result-oriented organic farming consultation. Our focus is on natural solutions, long-term productivity and the overall health of your land, crops and environment.",
+            "whyChooseImage": "/services/field-consultation.jpg",
+            "whyChoosePoints": [
+              "Experienced agricultural experts",
+              "Tailored solutions for your farm",
+              "Focus on organic and natural methods",
+              "Support at every stage",
+              "Commitment to sustainable and greener farming"
+            ],
+            "sidebarServices": [
+              {
+                "id": "organic-farm-consultation",
+                "title": "Organic Farm Consultation",
+                "image": "/services/soil-overview.jpg",
+                "href": "/services/organic-farm-consultation"
+              },
+              {
+                "id": "vertical-farming",
+                "title": "Vertical Farming Solutions",
+                "image": "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=200&q=80",
+                "href": "/services/vertical-farming"
+              },
+              {
+                "id": "container-gardening",
+                "title": "Custom Container Gardening",
+                "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=200&q=80",
+                "href": "/services/container-gardening"
+              },
+              {
+                "id": "garden-maintenance",
+                "title": "Garden Maintenance Plans",
+                "image": "https://images.unsplash.com/photo-1592417817098-8f3d69106093?auto=format&fit=crop&w=200&q=80",
+                "href": "/services/garden-maintenance"
+              },
+              {
+                "id": "organic-fertilizer",
+                "title": "Organic Fertilizer Supply",
+                "image": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=200&q=80",
+                "href": "/services/organic-fertilizer"
+              },
+              {
+                "id": "crop-rotation",
+                "title": "Crop Rotation Planning",
+                "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
+                "href": "/services/crop-rotation"
+              },
+              {
+                "id": "natural-pest-control",
+                "title": "Natural Pest Control",
+                "image": "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=200&q=80",
+                "href": "/services/natural-pest-control"
+              }
+            ],
+            "helpCard": {
+              "title": "Need Help?",
+              "description": "Our team is here to guide you with the best organic farming solutions."
+            }
+          }
+        }
+      },
+      "Contact": {
+        "variants": {
+          "AgricultureContact1": {
+            "sectionId": "contact",
+            "badge": "Contact Us",
+            "title": "Contact Us",
+            "description": "Have a question, suggestion, or just want to say hello? We'd love to hear from you. Our team is always here to help.",
+            "phone": "+1 000-000-000",
+            "phoneHref": "tel:+1000000000",
+            "email": "info@xyz.com",
+            "address": "450 Green Farm Way, Austin, TX 78701, USA",
+            "hours": "Mon - Sat: 9:00 AM - 6:00 PM",
+            "header": {
+              "badge": "Contact Us",
+              "title": "Contact Us",
+              "description": "Have a question, suggestion, or just want to say hello? We'd love to hear from you. Our team is always here to help."
+            },
+            "form": {
+              "tag": "Get In Touch With",
+              "title": "Green Farm",
+              "description": "Have a question, suggestion, or just want to say hello? We'd love to hear from you. Whether you're a customer, a partner, or a fellow nature lover feel free to reach out. Our team is always here to help.",
+              "namePlaceholder": "Name",
+              "emailPlaceholder": "Email",
+              "phonePlaceholder": "Phone",
+              "messagePlaceholder": "Type your message...",
+              "supportOptions": [
+                "Your Need Support?",
+                "General Inquiry",
+                "Organic Grain Orders",
+                "Bulk Wholesale Supply",
+                "Farm Tour & Visit",
+                "Partnership & Distribution"
+              ],
+              "footerTagline": "Purity In Every Grain",
+              "submitButtonText": "Submit Now",
+              "successTitle": "Message Sent Successfully!",
+              "successMessage": "Thank you for reaching out to Green Farm. Our team has received your message and will respond promptly.",
+              "resetButtonText": "Send Another Message"
+            },
+            "contactCards": {
+              "backgroundImage": "/images/contact/contact-1.webp",
+              "wheatImage": "/images/contact/contact-1.webp",
+              "wheatImageAlt": "Golden wheat harvest at Green Farm",
+              "grainImage": "/images/contact/contact-2.webp",
+              "grainImageAlt": "Purity in every grain harvest hands",
+              "items": [
+                {
+                  "id": "location",
+                  "icon": "MapPin",
+                  "title": "Location",
+                  "lines": [
+                    "450 Green Farm Way,",
+                    "Austin, TX 78701, USA"
+                  ]
+                },
+                {
+                  "id": "email",
+                  "icon": "Mail",
+                  "title": "Email Us",
+                  "lines": [
+                    "info@xyz.com"
+                  ],
+                  "href": "mailto:info@xyz.com"
+                },
+                {
+                  "id": "phone",
+                  "icon": "Phone",
+                  "title": "Phone",
+                  "lines": [
+                    "+1 000-000-000"
+                  ],
+                  "href": "tel:+1000000000"
+                },
+                {
+                  "id": "hours",
+                  "icon": "Clock",
+                  "title": "Working Hours",
+                  "lines": [
+                    "Mon – Sat: 9:00 AM – 6:00 PM",
+                    "Sunday: Closed"
+                  ]
+                }
+              ]
+            },
+            "map": {
+              "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.74637255392!2d-97.79606834999999!3d30.267153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b599a0cc032f%3A0x5d9b464bd469d57a!2sAustin%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus",
+              "locationName": "Austin, TX",
+              "address": "450 Green Farm Way, Austin, TX 78701, USA",
+              "directionsUrl": "https://www.google.com/maps/dir//450+Green+Farm+Way,+Austin,+TX+78701",
+              "viewLargerUrl": "https://www.google.com/maps/place/Austin,+TX",
+              "directionsLabel": "Directions",
+              "viewLargerLabel": "View larger map",
+              "badgeLabel": "Green Farm HQ"
+            }
+          }
+        }
+      },
+      "MissionVision": {
+        "variants": {
+          "AgricultureMissionVision1": {
+            "sectionId": "mission-vision",
+            "badge": "Our Purpose",
+            "title": "Our Mission & Vision",
+            "subtitle": "We are dedicated to promoting sustainable agriculture by delivering fresh, organic and natural farm products for a healthier future.",
+            "fieldBannerImage": "/images/organic_field_banner.jpg",
+            "cards": [
+              {
+                "id": "mission",
+                "title": "Our Mission",
+                "description": "To provide fresh, high-quality, and organic agricultural products that nourish people, support sustainable farming practices, and contribute to a healthier and greener planet.",
+                "icon": "target",
+                "accentColor": "green"
+              },
+              {
+                "id": "vision",
+                "title": "Our Vision",
+                "description": "To be a trusted leader in organic agriculture, known for innovation, quality, and sustainability, creating a future where healthy food and a cleaner environment go hand in hand.",
+                "icon": "eye",
+                "accentColor": "yellow",
+                "highlighted": true
+              },
+              {
+                "id": "values",
+                "title": "Our Core Values",
+                "description": "We believe in sustainability, integrity, quality, and community. Our values guide us to grow naturally, support local farmers, and deliver products that are good for people and the planet.",
+                "icon": "hand-sprout",
+                "accentColor": "green"
+              }
+            ]
+          }
+        }
+      },
+      "BlogDetail": {
+        "variants": {
+          "AgricultureBlogDetail1": {
+            "id": "how-to-start-organic-vegetable-farming-at-home",
+            "category": "Organic Farming",
+            "title": "How to Start Organic Vegetable Farming at Home",
+            "author": "Rajesh Kumar",
+            "date": "12 Oct 2025",
+            "heroImage": "/images/blog_sprout_hands.jpg",
+            "heroImageAlt": "Planting organic sprout in fertile soil",
+            "paragraphs": [
+              "Organic vegetable farming is a great way to grow fresh, healthy and chemical-free food for your family. It not only helps you eat better but also supports a cleaner environment. With the right planning and simple methods, you can easily start organic vegetable farming at home, even in a small space.",
+              "In this blog, we will guide you through the basic steps, important tips and best practices to grow organic vegetables successfully at home. Whether you have a backyard, rooftop or balcony, you can create your own organic vegetable garden with natural and sustainable methods."
+            ],
+            "section1": {
+              "title": "1. Choose the Right Location",
+              "description": "Select a location that receives at least 6–8 hours of sunlight daily. A balcony, terrace or backyard with good sunlight and proper drainage is ideal for growing organic vegetables.",
+              "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
+              "imageAlt": "Sunlit terrace container garden",
+              "checklist": [
+                "At least 6–8 hours of sunlight daily",
+                "Well-drained area",
+                "Clean and pollution-free environment",
+                "Use grow bags or raised beds",
+                "Ensure easy access to water",
+                "Suitable for terrace, balcony or backyard"
+              ]
+            },
+            "section2": {
+              "title": "2. Prepare Organic Soil",
+              "description": "Healthy soil is the foundation of organic farming. Use compost, vermicompost and well-rotted manure to enrich the soil. Avoid chemical fertilizers and choose natural soil conditioners to maintain soil health.",
+              "images": [
+                {
+                  "src": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80",
+                  "alt": "Farmer hands holding rich organic soil"
+                },
+                {
+                  "src": "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=600&q=80",
+                  "alt": "Organic seedling rows with drip irrigation"
+                }
+              ],
+              "quote": {
+                "text": "Healthy soil leads to healthy plants, which gives you nutritious and tasty vegetables while also protecting the environment for future generations.",
+                "author": "RAJESH KUMAR – ORGANIC FARMING EXPERT"
+              }
+            },
+            "section3": {
+              "title": "3. Select the Right Vegetables",
+              "description": "Choose vegetables that are easy to grow and suitable for your local climate. Leafy greens, tomatoes, chilies, capsicum and spinach are good options for home gardens.",
+              "checklist": [
+                "Select seasonal vegetables",
+                "Choose varieties suitable for your climate",
+                "Start with easy-to-grow crops like spinach, lettuce, tomatoes and chilies",
+                "Use high-quality organic seeds",
+                "Plan crop rotation for better results"
+              ],
+              "images": [
+                {
+                  "src": "/images/farmer_harvest.jpg",
+                  "alt": "Freshly harvested organic vegetables basket"
+                },
+                {
+                  "src": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80",
+                  "alt": "Ripe red organic tomatoes on vine"
+                }
+              ],
+              "conclusion": "Starting organic vegetable farming at home is simple and rewarding. With the right location, healthy soil, suitable vegetables and natural care, you can enjoy fresh, chemical-free produce while contributing to a healthier and greener planet."
+            },
+            "latestBlogs": [
+              {
+                "id": "how-to-prepare-soil-for-better-crop-yield",
+                "title": "How to Prepare Soil for Better Crop Yield",
+                "date": "12 Oct 2025",
+                "category": "Farming Tips",
+                "image": "/images/blog_sprout_hands.jpg",
+                "href": "/blog/how-to-prepare-soil-for-better-crop-yield"
+              },
+              {
+                "id": "top-5-seasonal-vegetables-to-grow-at-home",
+                "title": "Top 5 Seasonal Vegetables to Grow at Home",
+                "date": "08 Oct 2025",
+                "category": "Organic Living",
+                "image": "/images/farmer_harvest.jpg",
+                "href": "/blog/top-5-seasonal-vegetables-to-grow-at-home"
+              },
+              {
+                "id": "benefits-of-drip-irrigation-in-agriculture",
+                "title": "Benefits of Drip Irrigation in Agriculture",
+                "date": "05 Oct 2025",
+                "category": "Sustainable Farming",
+                "image": "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=600&q=80",
+                "href": "/blog/benefits-of-drip-irrigation-in-agriculture"
+              },
+              {
+                "id": "natural-pest-control-methods-for-organic-farms",
+                "title": "Natural Pest Control Methods for Organic Farms",
+                "date": "02 Oct 2025",
+                "category": "Farming Guide",
+                "image": "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=600&q=80",
+                "href": "/blog/natural-pest-control-methods-for-organic-farms"
+              }
+            ]
           }
         }
       }

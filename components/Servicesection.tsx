@@ -3,6 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Tractor,
   Sprout,
@@ -20,7 +21,7 @@ import {
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { ServicesData } from "@/types";
-import { servicesData as defaultServicesData } from "@/data";
+import { servicesData as defaultServicesData, slugify } from "@/data";
 
 interface ServicesProps {
   data?: ServicesData;
@@ -177,8 +178,8 @@ export default function Services({ data = defaultServicesData }: ServicesProps) 
                   {service.description}
                 </p>
 
-                <a
-                  href={`/services/${service.id}`}
+                <Link
+                  href={`/services/${slugify(service.title)}`}
                   aria-label={`Read more about ${service.title}`}
                   className="group/link inline-flex w-fit items-center gap-3 text-sm font-semibold text-white"
                 >
@@ -189,7 +190,7 @@ export default function Services({ data = defaultServicesData }: ServicesProps) 
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FFD32F] text-[#15391F] transition-all duration-300 group-hover/link:translate-x-1 group-hover/link:bg-white">
                     <ArrowRight className="h-4 w-4" />
                   </span>
-                </a>
+                </Link>
               </div>
 
               <div className="pointer-events-none absolute inset-0 rounded-[18px] border border-white/15 transition-colors duration-300 group-hover:border-[#FFD32F]/60" />

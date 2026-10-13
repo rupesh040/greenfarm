@@ -1,5 +1,5 @@
-import { productsData } from "@/data";
-import { Products, PageBanner } from "@/components";
+import { productsData} from "@/data";
+import { Products, PageBanner} from "@/components";
 
 export default function ProductsPage() {
   return (

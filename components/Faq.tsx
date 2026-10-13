@@ -127,7 +127,7 @@ export default function Faq({ data = defaultFaqData }: FaqProps) {
   return (
     <section
       id={data?.sectionId || "faq"}
-      className="relative w-full overflow-x-clip bg-[#F6FAF3] py-14 font-sans sm:py-16 lg:py-20"
+      className="relative w-full overflow-x-clip bg-[#F6FAF3] py-4 font-sans sm:py-4 lg:py-4"
     >
       <div className="pointer-events-none absolute -left-10 top-10 hidden md:block">
         <Reveal from="scale" delay={500}>

@@ -1,4 +1,4 @@
-import { PageBanner, Testimonials } from "@/components";
+import { Testimonials, PageBanner } from "@/components";
 import { testimonialsData } from "@/data";
 
 export default function TestimonialsPage() {
@@ -9,3 +9,4 @@ export default function TestimonialsPage() {
     </main>
   );
 }
+

@@ -1,11 +1,11 @@
-import { About, PageBanner } from "@/components";
-import { aboutData } from "@/data";
+import { Blog, PageBanner } from "@/components";
+import { blogData } from "@/data";
 
-export default function Blog() {
+export default function BlogPage() {
   return (
     <main className="w-full">
       <PageBanner />
-      <About data={aboutData} />
+      <Blog data={blogData} />
     </main>
   );
 }

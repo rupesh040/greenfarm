@@ -61,7 +61,7 @@ export default function Hero({ data = defaultHeroData }: HeroProps) {
               <span>{data.badge}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[54px] font-black text-white tracking-tight leading-[1.08]">
+            <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[54px] font-black text-white tracking-normal leading-[1.08]">
               {renderTitle()}
             </h1>
 

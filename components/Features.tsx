@@ -164,7 +164,7 @@ export default function Features({
     const highlight = data.highlightText || "Wonderful Love Of Nature";
 
     if (!title.includes(highlight)) {
-      return title;
+      return <span className="block whitespace-nowrap">{title}</span>;
     }
 
     const parts = title.split(highlight);
@@ -173,8 +173,12 @@ export default function Features({
 
     return (
       <>
-        <span className="block text-[#0B2A18]">{before}</span>
-        <span className="block text-[#15803D]">
+        {before && (
+          <span className="block whitespace-nowrap text-[#0B2A18]">
+            {before}
+          </span>
+        )}
+        <span className="block whitespace-nowrap text-[#15803D]">
           {highlight}
           {after ? ` ${after}` : ""}
         </span>
@@ -229,12 +233,12 @@ export default function Features({
 
       <div
         ref={top.ref}
-        className="relative z-10 mx-auto max-w-[1400px] px-5 pb-28 sm:px-8 sm:pb-36 lg:px-8 lg:pb-16"
+        className="relative z-10 mx-auto max-w-[1400px] px-5 pb-4 sm:px-8 sm:pb-4 lg:px-8 lg:pb-4"
       >
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.02fr_1fr] lg:gap-14">
           <Reveal show={top.inView} from="left" className="relative z-10 lg:pl-3">
             <div className="relative h-[420px] w-full sm:h-[500px] lg:h-[560px] xl:h-[620px]">
-              <div className="absolute inset-0 overflow-hidden rounded-tl-[22px] rounded-tr-[56px] shadow-xl">
+              <div className="absolute inset-0 overflow-hidden rounded-tl-[22px] rounded-tr-[56px] shadow-xl ">
                 <Image
                   src={data.videoThumbnail || "/images/farm_landscape.jpg"}
                   alt={
@@ -291,7 +295,7 @@ export default function Features({
                 </svg>
               </button>
 
-              <div className="pointer-events-none absolute -right-8 top-[14%] z-20 hidden sm:block lg:-right-10">
+              <div className="pointer-events-none absolute -right-20 top-[14%] z-[-9] hidden sm:block lg:-right-10">
                 <Reveal show={top.inView} from="scale" delay={600}>
                   <LeafImage size={96} rotate={-15} />
                 </Reveal>
@@ -315,7 +319,7 @@ export default function Features({
             </div>
           </Reveal>
 
-          <div className="relative z-10 space-y-6 lg:pl-4 lg:pr-4">
+          <div className="relative z-10 min-w-0 space-y-6 lg:pl-4 lg:pr-4">
             <div className="pointer-events-none absolute -left-8 -top-6 hidden h-16 w-16 opacity-70 sm:block">
               <div className="h-full w-full bg-[radial-gradient(#F2C94C_2px,transparent_2px)] [background-size:11px_11px]" />
             </div>
@@ -337,8 +341,16 @@ export default function Features({
               </div>
             </Reveal>
 
-            <Reveal show={top.inView} from="right" delay={300}>
-              <h2 className="relative text-[34px] font-extrabold leading-[1.12] tracking-tight text-[#0B2A18] sm:text-5xl lg:text-[44px] xl:text-[54px]">
+            <Reveal
+              show={top.inView}
+              from="right"
+              delay={300}
+              className="[container-type:inline-size]"
+            >
+              <h2
+                className="relative text-[22px] font-extrabold leading-[1.15] tracking-tight text-[#0B2A18] sm:text-4xl lg:text-[30px] xl:text-[40px]"
+                style={{ fontSize: "clamp(18px, 6.4cqw, 56px)" }}
+              >
                 {renderTitle(data.title)}
               </h2>
             </Reveal>

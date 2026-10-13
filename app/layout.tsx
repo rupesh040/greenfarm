@@ -7,6 +7,7 @@ import { navbarData, footerData } from "@/data";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
@@ -36,9 +37,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${caveat.variable} ${patrickHand.variable} h-full antialiased`}
+      className={`${inter.variable} ${caveat.variable} ${patrickHand.variable} ${inter.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-white text-gray-900 selection:bg-emerald-100 selection:text-emerald-900 scroll-smooth">
+      <body className={`${inter.className} min-h-full flex flex-col font-sans bg-white text-gray-900 selection:bg-emerald-100 selection:text-emerald-900 scroll-smooth`}>
         <Navbar initialData={navbarData} />
         <main className="w-full flex-1">{children}</main>
         <Footer data={footerData} />

@@ -7,6 +7,10 @@ export default function ServiceDetailsPage() {
       <PageBanner
         title={serviceDetailData.title.toUpperCase()}
         breadcrumb={serviceDetailData.title}
+        breadcrumbs={[
+          { label: "Services", href: "/services" },
+          { label: serviceDetailData.title },
+        ]}
       />
       <ServiceDetail data={serviceDetailData} />
     </main>

@@ -29,8 +29,6 @@ function CountingNumber({
     const prefix = match[1] || "";
     const target = parseInt(match[2], 10);
     const suffix = match[3] || "";
-
-    // Set initial 0 before starting animation
     ref.current.textContent = `${prefix}0${suffix}`;
 
     const controls = animate(0, target, {
@@ -83,7 +81,7 @@ export default function About({ data = defaultAboutData }: AboutProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[40px] font-extrabold text-[#111827] tracking-tight leading-[1.2] whitespace-normal sm:whitespace-nowrap"
+            className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[40px] font-extrabold text-[#111827] tracking-normal leading-[1.2] whitespace-normal sm:whitespace-nowrap"
           >
             {parts[0].trim()}
           </motion.h2>
@@ -94,7 +92,7 @@ export default function About({ data = defaultAboutData }: AboutProps) {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-nowrap items-center gap-2.5"
           >
-            <span className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[40px] font-extrabold tracking-tight leading-[1.2] text-[#15803d] whitespace-nowrap">
+            <span className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[40px] font-extrabold tracking-normal leading-[1.2] text-[#15803d] whitespace-nowrap">
               {highlight}
             </span>
             <span className="inline-flex items-center text-[#eab308] shrink-0">
@@ -285,8 +283,7 @@ export default function About({ data = defaultAboutData }: AboutProps) {
                       <CountingNumber value={data.experienceYears} />
                     </div>
                   </div>
-                </div>
-
+                </div> 
                 <div className="text-[11px] sm:text-xs md:text-[13px] font-bold text-gray-500 mt-2 text-center leading-snug tracking-wide uppercase relative z-10">
                   {data.experienceLabel}
                 </div>

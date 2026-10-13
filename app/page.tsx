@@ -5,7 +5,7 @@ import {
   Features,
   Products,
   Milestones,
-  Testimonials,
+  ClientTestimonials,
   Blog,
 } from "@/components";
 import ScrollAnim from "@/components/ScrollAnim";
@@ -46,8 +46,9 @@ export default function Home() {
       </ScrollAnim>
 
       <ScrollAnim>
-        <Testimonials data={testimonialsData} />
+        <ClientTestimonials data={testimonialsData} />
       </ScrollAnim>
+
 
       <ScrollAnim>
         <Blog data={blogData} />

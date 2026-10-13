@@ -118,7 +118,7 @@ export default function Gallery({ data = defaultGalleryData }: GalleryProps) {
     <section
       ref={sectionRef}
       id={data?.sectionId || "gallery"}
-      className="w-full overflow-hidden bg-white py-2"
+      className="w-full overflow-hidden bg-white py-2 pb-20"
     >
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
