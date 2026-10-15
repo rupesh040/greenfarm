@@ -108,10 +108,6 @@ export default function Navbar({ initialData }: NavbarProps) {
 
   const pathname = usePathname();
   const lastScrollY = useRef(0);
-
-  // Dynamic Scroll Behavior:
-  // - Auto-hides on scroll down, reappears on scroll up
-  // - Shrinks slightly & adopts blurred semi-transparent background when scrolled
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
@@ -121,12 +117,10 @@ export default function Navbar({ initialData }: NavbarProps) {
       if (currentY <= 35) {
         setIsVisible(true);
       } else if (currentY > lastScrollY.current && currentY > 90) {
-        // Scrolling down -> hide navbar (unless mobile menu is active)
         if (!isMenuOpen) {
           setIsVisible(false);
         }
       } else if (currentY < lastScrollY.current) {
-        // Scrolling up -> reveal navbar
         setIsVisible(true);
       }
 
@@ -136,8 +130,6 @@ export default function Navbar({ initialData }: NavbarProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMenuOpen]);
-
-  // Lock body scroll when modal or mobile menu is active
   useEffect(() => {
     document.body.style.overflow = isEnquiryOpen ? "hidden" : "";
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -184,13 +176,10 @@ export default function Navbar({ initialData }: NavbarProps) {
 
   return (
     <>
-      {/* Spacer to prevent layout shift under fixed navbar */}
       <div
-        className="w-full h-[120px] sm:h-[132px] lg:h-[138px] pointer-events-none select-none"
+        className="w-full pb-20 pointer-events-none select-none"
         aria-hidden="true"
       />
-
-      {/* Floating Dynamic Navbar */}
       <motion.header
         initial={{ y: 0 }}
         animate={{
@@ -202,91 +191,6 @@ export default function Navbar({ initialData }: NavbarProps) {
         }}
         className="fixed top-0 left-0 right-0 z-50 w-full font-sans"
       >
-        {/* Top Accent Green Bar with Organic Wavy Edge */}
-        <motion.div
-          animate={{
-            height: isScrolled ? 0 : "auto",
-            opacity: isScrolled ? 0 : 1,
-          }}
-          transition={{ duration: 0.28, ease: "easeInOut" }}
-          className="overflow-hidden bg-[#15803d] text-white"
-        >
-          <div className="w-full flex items-center justify-between gap-y-2 gap-x-4 px-4 sm:px-8 lg:px-12 xl:px-16 pt-2 pb-1.5">
-            {/* Topbar Left Links */}
-            <motion.div
-              variants={navContainerVariants}
-              initial="hidden"
-              animate="visible"
-              className="hidden md:flex items-center gap-6 text-[13px] font-semibold text-white/95"
-            >
-              {data.topBar.links.map((link) => (
-                <motion.div key={link.id} variants={navItemVariants}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-amber-300 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Topbar Center Contact & Pill */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="flex items-center gap-2.5 mx-auto md:mx-0"
-            >
-              <Phone className="w-3.5 h-3.5 text-white fill-white shrink-0" />
-              <span className="text-[11px] sm:text-xs font-bold tracking-wider uppercase text-white/95">
-                {data.topBar.contact.prefixText}
-              </span>
-              <a
-                href={data.topBar.contact.phoneHref}
-                className="bg-white text-[#15803d] font-extrabold text-xs sm:text-[13px] px-3.5 py-0.5 sm:py-1 rounded-full shadow-sm hover:scale-105 active:scale-95 transition-all inline-flex items-center"
-              >
-                {data.topBar.contact.phone}
-              </a>
-            </motion.div>
-
-            {/* Topbar Right Social Icons */}
-            <motion.div
-              variants={navContainerVariants}
-              initial="hidden"
-              animate="visible"
-              className="hidden sm:flex items-center gap-4 text-white"
-            >
-              {data.topBar.socialLinks.map((item: SocialLink) => (
-                <motion.div key={item.id} variants={navItemVariants}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.name}
-                    className="text-white hover:text-amber-300 hover:scale-110 active:scale-95 transition-all block"
-                  >
-                    {renderSocialIcon(item.icon)}
-                  </a>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Organic Wave Edge Separator (Styled like attached image) */}
-          <div className="w-full relative h-3.5 sm:h-4.5 lg:h-5 overflow-hidden leading-none -mb-[1px]">
-            <svg
-              viewBox="0 0 1440 28"
-              preserveAspectRatio="none"
-              className="w-full h-full block text-[#15803d]"
-              fill="currentColor"
-            >
-              <path d="M0,0 L1440,0 L1440,8 C1360,20 1260,26 1160,14 C1040,2 940,22 830,24 C720,26 620,8 500,14 C380,20 280,28 170,16 C100,8 40,18 0,12 Z" />
-            </svg>
-          </div>
-        </motion.div>
-
-        {/* Main Navigation Bar */}
         <div
           className={`w-full transition-all duration-300 ${
             isScrolled
@@ -295,7 +199,6 @@ export default function Navbar({ initialData }: NavbarProps) {
           }`}
         >
           <div className="w-full flex items-center justify-between gap-4 px-4 sm:px-8 lg:px-12 xl:px-16">
-            {/* Brand Logo with graceful load animation */}
             <motion.div
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}

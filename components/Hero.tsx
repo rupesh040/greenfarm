@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowUpRight, Sprout } from "lucide-react";
+import { Sprout } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroData } from "@/types";
 import { heroData as defaultHeroData } from "@/data";
@@ -64,22 +64,6 @@ export default function Hero({ data = defaultHeroData }: HeroProps) {
             <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[54px] font-black text-white tracking-normal leading-[1.08]">
               {renderTitle()}
             </h1>
-
-            <p className="text-sm sm:text-[15px] text-emerald-100/85 leading-relaxed">
-              {data.description}
-            </p>
-
-            <div className="pt-2">
-              <a
-                href={data.ctaButton.href}
-                className="inline-flex items-center gap-3 bg-[#eab308] hover:bg-[#ca8a04] text-gray-950 font-extrabold text-sm sm:text-base pl-6 pr-2.5 py-2.5 rounded-full shadow-lg shadow-amber-950/30 hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
-              >
-                <span>{data.ctaButton.label}</span>
-                <span className="w-8 h-8 rounded-full bg-[#0d2a17] text-[#facc15] flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-300 shrink-0">
-                  <ArrowUpRight className="w-4 h-4" />
-                </span>
-              </a>
-            </div>
           </motion.div>
 
           <motion.div 

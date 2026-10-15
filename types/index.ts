@@ -104,21 +104,37 @@ export interface AboutFeature {
   icon: string;
 }
 
+export interface AboutImages {
+  primary?: string;
+  couple?: string;
+  femaleFarmer?: string;
+  secondary?: string;
+  leafBackground?: string;
+  farmBackground?: string;
+  experienceLeaf?: string;
+  primaryAlt?: string;
+  coupleAlt?: string;
+  femaleFarmerAlt?: string;
+  secondaryAlt?: string;
+  experienceLeafAlt?: string;
+  leafBackgroundAlt?: string;
+  farmBackgroundAlt?: string;
+  [key: string]: any;
+}
+
 export interface AboutData {
   badge: string;
+  badgeIcon?: string;
   title: string;
   highlightText?: string;
-  experienceYears: string;
+  experienceYears: string | number;
   experienceLabel: string;
   features: AboutFeature[];
   description: string;
   checkpoints: string[];
-  ctaButton: CtaButton;
-  images: {
-    primary: string;
-    couple: string;
-    femaleFarmer: string;
-  };
+  ctaButton?: CtaButton;
+  images: AboutImages;
+  [key: string]: any;
 }
 
 export interface ServiceItem {
@@ -686,3 +702,4 @@ export interface ProductDetailData {
     items: ProductDetailAvailability[];
   };
 }
+

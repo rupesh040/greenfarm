@@ -58,7 +58,7 @@ export default function ClientTestimonials({
 
       <div className="max-w-[1320px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-center">
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="lg:col-span-5 flex justify-center self-center">
             <div className="relative w-full max-w-[380px] sm:max-w-[420px] lg:max-w-[440px] aspect-[1/1.05]">
               <div
                 className="absolute -top-3.5 -left-3.5 sm:-top-5 sm:-left-5 w-[76%] h-[76%] rounded-[28px] sm:rounded-[36px] bg-[#F5B800] z-0"
@@ -127,7 +127,7 @@ export default function ClientTestimonials({
               <div className="relative z-10 w-full h-full rounded-[24px] sm:rounded-[32px] overflow-hidden border-[5px] sm:border-[6px] border-white shadow-[0_16px_40px_rgba(14,56,34,0.18)] bg-white">
                 <Image
                   src={farmerPhoto}
-                  alt={current.author || "Farmer Harvest"}
+                  alt="Farmer Harvest Testimonial"
                   fill
                   priority
                   sizes="(max-width: 640px) 380px, (max-width: 1024px) 420px, 440px"
@@ -168,7 +168,7 @@ export default function ClientTestimonials({
               </button>
 
   
-              <div className="relative w-full rounded-[24px] sm:rounded-[30px] bg-white p-7 sm:p-9 md:p-10 shadow-[0_12px_45px_rgba(14,56,34,0.06)] border border-[#EFF5EC] overflow-hidden min-h-[290px] flex flex-col justify-between">
+              <div className="relative w-full rounded-[24px] sm:rounded-[30px] bg-white p-7 sm:p-9 md:p-10 shadow-[0_12px_45px_rgba(14,56,34,0.06)] border border-[#EFF5EC] overflow-hidden min-h-[310px] sm:min-h-[300px] flex flex-col justify-between">
                 <svg
                   className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 text-[#22723A]/10"
                   viewBox="0 0 100 100"

@@ -133,7 +133,7 @@
               {
                 "id": "products",
                 "label": "Our Products",
-                "href": "/products/fresh-vegetables",
+                "href": "/products",
                 "active": false
               },
               {
@@ -247,7 +247,18 @@
             "images": {
               "primary": "/about/about-1.jpg",
               "couple": "/about/about-1.jpg",
-              "femaleFarmer": "/about/about-2.jpg"
+              "femaleFarmer": "/about/about-2.jpg",
+              "secondary": "/about/about-2.jpg",
+              "leafBackground": "/Glossy-Leaf-2.webp",
+              "farmBackground": "/farm.webp",
+              "experienceLeaf": "/Glossy-Leaf.webp",
+              "primaryAlt": "Farmer couple harvesting fresh vegetables",
+              "coupleAlt": "Farmer couple harvesting fresh vegetables",
+              "femaleFarmerAlt": "Farmer woman holding seedling nursery tray",
+              "secondaryAlt": "Farmer woman holding seedling nursery tray",
+              "experienceLeafAlt": "Experience leaf",
+              "leafBackgroundAlt": "Decorative green leaf",
+              "farmBackgroundAlt": "Farm landscape silhouette"
             }
           }
         }
@@ -498,7 +509,7 @@
                 "price": "$15.00 / bag",
                 "badge": "Natural",
                 "icon": "wheat",
-                "image": "https://images.unsplash.com/photo-1508061252445-5350f3ab0a55?auto=format&fit=crop&w=600&q=80"
+                "image": "/images/almonds.jpg"
               },
               {
                 "id": "p15",
@@ -696,7 +707,7 @@
                 "category": "Organic Living",
                 "title": "Top 5 Seasonal Vegetables to Grow at Home",
                 "description": "Start your balcony kitchen garden with these forgiving, high-reward varieties: cherry tomatoes, spinach, peppers, radishes, and mint.",
-                "image": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?auto=format&fit=crop&w=600&q=80",
+                "image": "/images/blog_vegetables.jpg",
                 "author": "Priya Sharma",
                 "href": "/blog/top-5-seasonal-vegetables-to-grow-at-home"
               },

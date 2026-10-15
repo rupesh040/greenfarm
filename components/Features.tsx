@@ -207,7 +207,7 @@ export default function Features({
   return (
     <section
       id={data.sectionId || "why-us"}
-      className="relative w-full overflow-x-clip bg-[#F8FBF5] pb-4 pt-12 font-sans sm:pb-6 sm:pt-16 lg:pt-5"
+      className="relative w-full overflow-x-clip bg-[#F8FBF5] pt-6 pb-2 font-sans sm:pt-8 sm:pb-2 lg:pt-8 lg:pb-2 mt-4 sm:mt-8 lg:mt-10"
     >
       <div className="pointer-events-none absolute -right-4 -top-4 z-0 hidden lg:block">
         <Reveal show={top.inView} from="scale" delay={700}>
@@ -364,12 +364,12 @@ export default function Features({
             <Reveal show={top.inView} from="right" delay={600}>
               <a
                 href={data.ctaButton.href}
-                className="group inline-flex w-fit items-center gap-5 rounded-full bg-[#FFCB2B] py-2 pl-8 pr-2 text-sm font-bold text-[#10351E] shadow-[0_8px_20px_rgba(242,185,5,0.35)] transition-colors duration-300 hover:bg-[#F5C51D] sm:gap-6 sm:pl-9 sm:text-base"
+                className="inline-flex items-center gap-3 bg-[#facc15] hover:bg-[#eab308] text-gray-950 font-bold text-sm sm:text-base pl-6 pr-2.5 py-2.5 rounded-full shadow-[0_4px_16px_rgba(234,179,8,0.25)] hover:shadow-[0_6px_22px_rgba(234,179,8,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
               >
                 <span>{data.ctaButton.label || `More ${data.badge}`}</span>
 
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#062F1C] text-white sm:h-[52px] sm:w-[52px]">
-                  <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
+                <span className="w-8 h-8 rounded-full bg-[#0d2a17] text-white flex items-center justify-center group-hover:translate-x-1 transition-transform shrink-0 shadow-sm">
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </a>
             </Reveal>

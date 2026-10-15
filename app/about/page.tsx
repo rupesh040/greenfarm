@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <main className="w-full">
       <PageBanner />
-      <About data={aboutData} />
+      <About data={aboutData} showCta={false} />
       <MissionVision data={missionVisionData} />
       <Features data={featuresData} />
       <ClientTestimonials data={testimonialsData} />

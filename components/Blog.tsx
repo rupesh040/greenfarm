@@ -30,6 +30,7 @@ export default function Blog({
   const [currentPage, setCurrentPage] = useState(1);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const blogsPerPage = data.blogsPerPage || 6;
   const items = data.items ?? [];
@@ -99,7 +100,7 @@ export default function Blog({
     return () => observer.disconnect();
   }, [isGrid, updateScrollState]);
 
-  const getCardWidth = () => {
+  const getCardWidth = useCallback(() => {
     const container = scrollRef.current;
 
     if (!container) return 0;
@@ -114,7 +115,36 @@ export default function Blog({
       parseFloat(window.getComputedStyle(container).columnGap) || 0;
 
     return firstCard.getBoundingClientRect().width + gap;
-  };
+  }, []);
+
+  // Autoplay functionality for blog slider
+  useEffect(() => {
+    if (isGrid || isHovered || items.length <= 1) return;
+
+    const timer = setInterval(() => {
+      const container = scrollRef.current;
+      if (!container) return;
+
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const distance = getCardWidth();
+
+      if (distance <= 0) return;
+
+      if (container.scrollLeft >= maxScroll - 12) {
+        container.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        container.scrollBy({
+          left: distance,
+          behavior: "smooth",
+        });
+      }
+    }, 3800);
+
+    return () => clearInterval(timer);
+  }, [isGrid, isHovered, items.length, getCardWidth]);
 
   const scrollCarousel = (direction: "left" | "right") => {
     const container = scrollRef.current;
@@ -278,6 +308,10 @@ export default function Blog({
         <div
           ref={scrollRef}
           onScroll={updateScrollState}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
           className={
             isGrid
               ? "grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-8"
