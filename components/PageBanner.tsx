@@ -14,6 +14,7 @@ interface PageBannerProps {
   breadcrumbs?: BreadcrumbItem[];
   image?: string;
   imagePosition?: string;
+  hideText?: boolean;
 }
 
 export default function PageBanner({
@@ -22,6 +23,7 @@ export default function PageBanner({
   breadcrumbs,
   image,
   imagePosition,
+  hideText = false,
 }: PageBannerProps) {
   const pathname = usePathname();
 
@@ -103,97 +105,99 @@ export default function PageBanner({
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
 
-        <div className="relative z-10 flex w-full items-center">
-          <div className="mx-auto w-full max-w-[1500px] px-5 pb-9 pt-8 sm:px-10 sm:pb-8 md:px-14 lg:px-20 xl:px-24">
-            <div className="w-full min-w-0 max-w-3xl">
-              <h1
-                title={currentTitle}
-                className="line-clamp-3 break-words font-condensed text-[30px] font-bold uppercase leading-[1.08] tracking-normal text-white drop-shadow-lg [overflow-wrap:anywhere] min-[400px]:text-4xl sm:text-5xl md:text-[56px] lg:text-[62px]"
-              >
-                {currentTitle}
-              </h1>
+        {!hideText && (
+          <div className="relative z-10 flex w-full items-center">
+            <div className="mx-auto w-full max-w-[1500px] px-5 pb-9 pt-8 sm:px-10 sm:pb-8 md:px-14 lg:px-20 xl:px-24">
+              <div className="w-full min-w-0 max-w-3xl">
+                <h1
+                  title={currentTitle}
+                  className="line-clamp-3 break-words font-condensed text-[30px] font-bold uppercase leading-[1.08] tracking-normal text-white drop-shadow-lg [overflow-wrap:anywhere] min-[400px]:text-4xl sm:text-5xl md:text-[56px] lg:text-[62px]"
+                >
+                  {currentTitle}
+                </h1>
 
-              <svg
-                className="mt-4 h-3 w-36 sm:w-52"
-                viewBox="0 0 210 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 5.5C43 2.5 103 4 158 5.5C181 6 197 5.5 207 7"
-                  stroke="#F2C94C"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M5 9C48 7 110 8 169 8.5"
-                  stroke="#DCAA22"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                />
-              </svg>
+                <svg
+                  className="mt-4 h-3 w-36 sm:w-52"
+                  viewBox="0 0 210 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 5.5C43 2.5 103 4 158 5.5C181 6 197 5.5 207 7"
+                    stroke="#F2C94C"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M5 9C48 7 110 8 169 8.5"
+                    stroke="#DCAA22"
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                  />
+                </svg>
 
-              <nav
-                aria-label={pageBannersConfig.ariaLabels?.breadcrumb || "Breadcrumb"}
-                className="mt-6 w-full min-w-0 text-xs font-medium text-white/90 sm:mt-10 sm:text-sm"
-              >
-                <ol className="flex w-full min-w-0 flex-nowrap items-center">
-                  {breadcrumbList.map((item, idx) => {
-                    const isFirst = idx === 0;
-                    const isLast = idx === breadcrumbList.length - 1;
+                <nav
+                  aria-label={pageBannersConfig.ariaLabels?.breadcrumb || "Breadcrumb"}
+                  className="mt-6 w-full min-w-0 text-xs font-medium text-white/90 sm:mt-10 sm:text-sm"
+                >
+                  <ol className="flex w-full min-w-0 flex-nowrap items-center">
+                    {breadcrumbList.map((item, idx) => {
+                      const isFirst = idx === 0;
+                      const isLast = idx === breadcrumbList.length - 1;
 
-                    return (
-                      <li
-                        key={`${item.label}-${idx}`}
-                        className={`inline-flex items-center ${
-                          isFirst ? "shrink-0" : "min-w-0 shrink"
-                        }`}
-                        aria-current={isLast ? "page" : undefined}
-                      >
-                        {idx > 0 && (
-                          <svg
-                            className="mx-1.5 h-3.5 w-3.5 shrink-0 text-white sm:mx-2"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            aria-hidden="true"
-                          >
-                            <path d="m9 18 6-6-6-6" />
-                          </svg>
-                        )}
+                      return (
+                        <li
+                          key={`${item.label}-${idx}`}
+                          className={`inline-flex items-center ${
+                            isFirst ? "shrink-0" : "min-w-0 shrink"
+                          }`}
+                          aria-current={isLast ? "page" : undefined}
+                        >
+                          {idx > 0 && (
+                            <svg
+                              className="mx-1.5 h-3.5 w-3.5 shrink-0 text-white sm:mx-2"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              aria-hidden="true"
+                            >
+                              <path d="m9 18 6-6-6-6" />
+                            </svg>
+                          )}
 
-                        {item.href && !isLast ? (
-                          <Link
-                            href={item.href}
-                            title={item.label}
-                            className={`block truncate whitespace-nowrap text-white/85 transition-colors hover:text-[#F2C94C] ${
-                              isFirst ? "" : "max-w-[7.5rem] sm:max-w-[14rem]"
-                            }`}
-                          >
-                            {item.label}
-                          </Link>
-                        ) : (
-                          <span
-                            title={item.label}
-                            className={`block min-w-0 truncate whitespace-nowrap ${
-                              isLast
-                                ? "font-semibold text-white"
-                                : "max-w-[7.5rem] text-white/85 sm:max-w-[14rem]"
-                            }`}
-                          >
-                            {item.label}
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
-              </nav>
+                          {item.href && !isLast ? (
+                            <Link
+                              href={item.href}
+                              title={item.label}
+                              className={`block truncate whitespace-nowrap text-white/85 transition-colors hover:text-[#F2C94C] ${
+                                isFirst ? "" : "max-w-[7.5rem] sm:max-w-[14rem]"
+                              }`}
+                            >
+                              {item.label}
+                            </Link>
+                          ) : (
+                            <span
+                              title={item.label}
+                              className={`block min-w-0 truncate whitespace-nowrap ${
+                                isLast
+                                  ? "font-semibold text-white"
+                                  : "max-w-[7.5rem] text-white/85 sm:max-w-[14rem]"
+                              }`}
+                            >
+                              {item.label}
+                            </span>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </nav>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-5 sm:h-6"

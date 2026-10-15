@@ -156,6 +156,65 @@ export default function Products({
   const isGrid = variant === "grid" || (!variant && isProductPage);
   const items = data.items ?? [];
 
+  const [activeCategory, setActiveCategory] = useState("All Products");
+  const productCategories = [
+    "All Products",
+    "Vegetables",
+    "Fruits",
+    "Grains",
+    "Dairy & More",
+  ];
+
+  const filteredItems = isGrid
+    ? items.filter((item) => {
+        if (activeCategory === "All Products") return true;
+        const t = (
+          item.title +
+          " " +
+          (item.badge || "") +
+          " " +
+          item.description
+        ).toLowerCase();
+        if (activeCategory === "Vegetables") {
+          return (
+            t.includes("vegetable") ||
+            t.includes("carrot") ||
+            t.includes("green") ||
+            t.includes("broccoli")
+          );
+        }
+        if (activeCategory === "Fruits") {
+          return (
+            t.includes("fruit") ||
+            t.includes("apple") ||
+            t.includes("avocado") ||
+            t.includes("orange")
+          );
+        }
+        if (activeCategory === "Grains") {
+          return (
+            t.includes("grain") ||
+            t.includes("rice") ||
+            t.includes("wheat") ||
+            t.includes("flour") ||
+            t.includes("almond")
+          );
+        }
+        if (activeCategory === "Dairy & More") {
+          return (
+            t.includes("milk") ||
+            t.includes("dairy") ||
+            t.includes("cheese") ||
+            t.includes("honey") ||
+            t.includes("egg") ||
+            t.includes("oil") ||
+            t.includes("tea")
+          );
+        }
+        return true;
+      })
+    : items;
+
   useEffect(() => {
     const handleResize = () => {
       setItemsPerPage(window.innerWidth < 640 ? 4 : 8);
@@ -169,12 +228,15 @@ export default function Products({
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [itemsPerPage]);
+  }, [itemsPerPage, activeCategory]);
 
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
   const paginatedItems = isGrid
-    ? items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    ? filteredItems.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage,
+      )
     : items;
 
   const updateScrollState = useCallback(() => {
@@ -330,7 +392,9 @@ export default function Products({
   return (
     <section
       id="products"
-      className="relative w-full overflow-hidden bg-[#FAFCF7] pb-16 pt-2 font-sans sm:pb-20 lg:pb-24"
+      className={`relative w-full overflow-hidden bg-[#FAFCF7] font-sans ${
+        isProductPage ? "pt-10 sm:pt-14 pb-16 lg:pb-24" : "pb-16 pt-2 sm:pb-20 lg:pb-24"
+      }`}
     >
 
 
@@ -381,6 +445,34 @@ export default function Products({
           </p>
         </Reveal>
       </div>
+
+      {/* Category Tabs for Products Page */}
+      {isGrid && (
+        <div className="relative z-10 mx-auto mb-10 max-w-5xl px-2 sm:px-4 text-center">
+          <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto py-1 px-2 sm:px-0 sm:flex-wrap sm:overflow-visible no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {productCategories.map((cat) => {
+              const isSelected = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setCurrentPage(1);
+                  }}
+                  className={`shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 sm:px-6 sm:py-2.5 sm:text-base ${
+                    isSelected
+                      ? "scale-105 bg-[#12482C] text-white shadow-md ring-2 ring-[#12482C] ring-offset-2"
+                      : "bg-white text-gray-700 hover:bg-[#EAF5EC] hover:text-[#12482C] shadow-xs border border-gray-200"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* ============================ PRODUCTS ============================ */}
       <div className="relative z-10 mx-auto w-full max-w-[1340px]">

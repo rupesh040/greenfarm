@@ -361,9 +361,9 @@ export default function Contact({ data = defaultContactData }: ContactProps) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.08 }}
-                    className="flex items-start gap-3.5 group p-2 rounded-2xl hover:bg-white/40 backdrop-blur-[1px] transition-all duration-200"
+                    className="flex items-start gap-3.5 p-2 rounded-2xl transition-all duration-200"
                   >
-                    <div className="w-12 h-12 rounded-full bg-[#0c3821] flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 group-hover:bg-[#165130] transition-all duration-300">
+                    <div className="w-12 h-12 rounded-full bg-[#0c3821] flex items-center justify-center shrink-0 shadow-md">
                       {renderCardIcon(item.icon)}
                     </div>
 

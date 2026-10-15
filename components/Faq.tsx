@@ -127,7 +127,7 @@ export default function Faq({ data = defaultFaqData }: FaqProps) {
   return (
     <section
       id={data?.sectionId || "faq"}
-      className="relative w-full overflow-x-clip bg-[#F6FAF3] py-4 font-sans sm:py-4 lg:py-4"
+      className="relative w-full overflow-x-clip bg-[#F6FAF3] pt-10 sm:pt-14 pb-16 lg:pb-24 font-sans"
     >
       <div className="pointer-events-none absolute -left-10 top-10 hidden md:block">
         <Reveal from="scale" delay={500}>
@@ -152,16 +152,6 @@ export default function Faq({ data = defaultFaqData }: FaqProps) {
 
       <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
-          <Reveal from="scale">
-            <div className="mb-4 flex items-center justify-center gap-4">
-              <span className="h-[3px] w-16 rounded-full bg-[#FFD60A] sm:w-24" />
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FFD60A] text-[#0F4A28] shadow-md sm:h-12 sm:w-12">
-                <Sprout className="h-6 w-6" strokeWidth={2} />
-              </span>
-              <span className="h-[3px] w-16 rounded-full bg-[#FFD60A] sm:w-24" />
-            </div>
-          </Reveal>
-
           <Reveal from="down" delay={150}>
             <h2 className="text-4xl font-extrabold tracking-tight text-[#0B2A18] sm:text-5xl">
               <HighlightedText text={data.title} highlight={data.highlightText} />
@@ -178,7 +168,7 @@ export default function Faq({ data = defaultFaqData }: FaqProps) {
         <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-[0.82fr_1fr] lg:gap-8">
           <Reveal from="left" delay={100}>
             <div className="rounded-[22px] bg-white p-3 shadow-[0_10px_40px_rgba(15,61,34,0.08)]">
-              <div className="relative aspect-[1.05] w-full overflow-hidden rounded-[18px]">
+              <div className="relative aspect-[1.1] w-full overflow-hidden rounded-[18px]">
                 <Image
                   src={data.image}
                   alt={data.imageAlt}
@@ -186,30 +176,6 @@ export default function Faq({ data = defaultFaqData }: FaqProps) {
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
-              </div>
-
-              <div className="px-3 pb-4 pt-6 sm:px-4">
-                <div className="mb-3 h-1 w-10 rounded-full bg-[#F2C94C]" />
-
-                <h3 className="text-3xl font-extrabold tracking-tight text-[#0B2A18]">
-                  <HighlightedText text={data.helpTitle} highlight={data.helpHighlight} />
-                </h3>
-
-                <p className="mt-3 max-w-md text-base leading-7 text-[#4B5563]">
-                  {data.helpDescription}
-                </p>
-
-                {data.contactButton && (
-                  <Link
-                    href={data.contactButton.href || "/contact"}
-                    className="group mt-6 inline-flex w-fit items-center gap-6 rounded-full bg-[#FFD60A] py-2 pl-8 pr-2 text-base font-bold text-[#0F3D22] shadow-[0_8px_20px_rgba(242,185,5,0.35)] transition-colors duration-300 hover:bg-[#F5CB00]"
-                  >
-                    <span>{data.contactButton.label}</span>
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#062F1C] text-white">
-                      <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
-                    </span>
-                  </Link>
-                )}
               </div>
             </div>
           </Reveal>

@@ -157,12 +157,12 @@ export default function Navbar({ initialData }: NavbarProps) {
   };
 
   const modalData = data.enquiryModal || {
-    title: "Quick Farm Enquiry",
+    title: "Contact Us",
     subtitle: "Fresh organic produce & agricultural solutions",
-    successTitle: "Enquiry Received!",
+    successTitle: "Message Received!",
     successMessage:
       "Thank you! Our agricultural advisor will contact you shortly.",
-    submitText: "Submit Enquiry",
+    submitText: "Send Message",
     services: [
       "Organic Farming Consultation",
       "Bulk Farm Produce Purchase",
@@ -431,7 +431,7 @@ export default function Navbar({ initialData }: NavbarProps) {
 
                 <button
                   type="button"
-                  aria-label="Close enquiry"
+                  aria-label="Close contact modal"
                   onClick={() => setIsEnquiryOpen(false)}
                   className="flex size-9 shrink-0 items-center justify-center rounded-full text-white/80 hover:bg-white/20 hover:text-white transition-colors cursor-pointer"
                 >

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { TeamData } from "@/types";
 import { teamData as defaultTeamData } from "@/data";
 
@@ -11,42 +11,7 @@ interface TeamProps {
 }
 
 export default function Team({ data = defaultTeamData }: TeamProps) {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(3);
-
   const members = data?.members ?? [];
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerPage(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerPage(2);
-      } else {
-        setItemsPerPage(3);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const totalPages = Math.max(1, Math.ceil(members.length / itemsPerPage));
-
-  const paginatedMembers = members.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
-    if (sectionRef.current) {
-      const top = sectionRef.current.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
@@ -99,36 +64,11 @@ export default function Team({ data = defaultTeamData }: TeamProps) {
 
   return (
     <section
-      ref={sectionRef}
       id={data?.sectionId || "team"}
-      className="w-full overflow-hidden bg-white py-2"
+      className="w-full overflow-hidden bg-white pt-10 sm:pt-14 pb-16 lg:pb-24 font-sans"
     >
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-3 flex items-center justify-center gap-3 sm:gap-4">
-            <span className="h-[2px] w-12 sm:w-16 rounded-full bg-[#E5B83B]" />
-            <svg
-              className="h-8 w-8 sm:h-9 sm:w-9"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16 3.5C16 3.5 12 9.5 12 14.5C12 16.71 13.79 18.5 16 18.5C18.21 18.5 20 16.71 20 14.5C20 9.5 16 3.5 16 3.5Z"
-                fill="#F2C94C"
-              />
-              <path
-                d="M13 18C7.5 18 3 13 3 7C8.5 7 13.5 11.5 14 17"
-                fill="#166534"
-              />
-              <path
-                d="M19 18C24.5 18 29 13 29 7C23.5 7 18.5 11.5 18 17"
-                fill="#166534"
-              />
-            </svg>
-            <span className="h-[2px] w-12 sm:w-16 rounded-full bg-[#E5B83B]" />
-          </div>
-
           <h2 className="text-4xl font-extrabold tracking-tight text-[#16532D] sm:text-5xl lg:text-[52px]">
             {data?.title || "Our Team"}
           </h2>
@@ -140,7 +80,7 @@ export default function Team({ data = defaultTeamData }: TeamProps) {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:gap-9 md:grid-cols-2 lg:grid-cols-3">
-          {paginatedMembers.map((member) => (
+          {members.map((member) => (
             <div
               key={member.id}
               className="group flex flex-col overflow-hidden rounded-[28px] border border-gray-100 bg-white shadow-[0_6px_25px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
@@ -231,45 +171,6 @@ export default function Team({ data = defaultTeamData }: TeamProps) {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 flex items-center justify-center gap-2 px-4 sm:mt-16">
-          <button
-            type="button"
-            onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-            disabled={currentPage === 1}
-            aria-label="Previous page"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[#16532D] shadow-sm transition-all hover:border-[#166534] hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-35"
-          >
-            <ChevronLeft className="h-5 w-5" strokeWidth={2.5} />
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-            <button
-              key={pageNum}
-              type="button"
-              onClick={() => handlePageChange(pageNum)}
-              aria-label={`Go to page ${pageNum}`}
-              aria-current={currentPage === pageNum ? "page" : undefined}
-              className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold shadow-sm transition-all sm:text-base ${
-                currentPage === pageNum
-                  ? "scale-105 bg-[#16532D] text-white shadow-md ring-2 ring-[#16532D] ring-offset-2"
-                  : "border border-gray-200 bg-white text-gray-700 hover:border-[#16532D] hover:bg-gray-50 hover:text-[#16532D]"
-              }`}
-            >
-              {pageNum}
-            </button>
-          ))}
-
-          <button
-            type="button"
-            onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-            disabled={currentPage === totalPages}
-            aria-label="Next page"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[#16532D] shadow-sm transition-all hover:border-[#166534] hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-35"
-          >
-            <ChevronRight className="h-5 w-5" strokeWidth={2.5} />
-          </button>
         </div>
       </div>
     </section>

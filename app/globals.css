@@ -126,3 +126,12 @@ body {
 .animate-bounceGentle {
   animation: bounceGentle 2s ease-in-out infinite;
 }
+
+/* Custom Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

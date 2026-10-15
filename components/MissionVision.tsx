@@ -30,11 +30,9 @@ export default function MissionVision({
             strokeLinejoin="round"
             aria-hidden="true"
           >
-            {/* Bullseye target circles */}
             <circle cx="20" cy="20" r="14" />
             <circle cx="20" cy="20" r="9" />
             <circle cx="20" cy="20" r="4" fill="white" />
-            {/* Dart arrow */}
             <path d="M28 12 L35 5" />
             <path d="M30 5 H35 V10" />
           </svg>
@@ -75,17 +73,13 @@ export default function MissionVision({
             strokeLinejoin="round"
             aria-hidden="true"
           >
-            {/* Gently cupped hand */}
             <path d="M6 25 C10 23 15 25 18 27 L25 30 C27 30 30 29 32 27 C34 25 33 22 30 21 L22 19 C18 18 16 19 13 21" />
-            {/* Seedling stem */}
             <path d="M22 19 V9" />
-            {/* Left leaf */}
             <path
               d="M22 14 C18 14 16 11 16 7 C20 7 22 10 22 14 Z"
               fill="white"
               fillOpacity="0.18"
             />
-            {/* Right leaf */}
             <path
               d="M22 11 C26 11 28 8 28 4 C24 4 22 7 22 11 Z"
               fill="white"
@@ -101,13 +95,10 @@ export default function MissionVision({
       id={data?.sectionId || "mission-vision"}
       className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FAFDF8] to-[#EDF6EB]/60 pt-10 pb-0 font-sans sm:pt-14 lg:pt-16"
     >
-      {/* Central soft sunlit ambient radial gradient glow */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(245,184,0,0.06),transparent_65%)] z-0"
         aria-hidden="true"
       />
-
-      {/* Decorative botanical leaves at Top-Left */}
       <div
         className="pointer-events-none absolute left-0 top-0 z-0 select-none opacity-25 sm:opacity-35"
         aria-hidden="true"
@@ -128,8 +119,6 @@ export default function MissionVision({
           />
         </svg>
       </div>
-
-      {/* Decorative botanical leaves at Top-Right */}
       <div
         className="pointer-events-none absolute right-0 top-0 z-0 select-none opacity-25 sm:opacity-35"
         aria-hidden="true"
@@ -152,7 +141,6 @@ export default function MissionVision({
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Gradient Title & Accent Lines */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +148,6 @@ export default function MissionVision({
           transition={{ duration: 0.55, ease: "easeOut" }}
           className="mx-auto mb-10 max-w-3xl text-center sm:mb-12"
         >
-          {/* Top emblem: two gradient yellow lines flanking central sprout */}
           <div className="mb-3 flex items-center justify-center gap-3 sm:gap-4">
             <span className="inline-block h-[2.5px] w-12 sm:w-16 rounded-full bg-gradient-to-r from-[#F5B800] to-[#E59800]" />
 
@@ -200,8 +187,6 @@ export default function MissionVision({
               "We are dedicated to promoting sustainable agriculture by delivering fresh, organic and natural farm products for a healthier future."}
           </p>
         </motion.div>
-
-        {/* 3 Mission, Vision & Values Cards with Rich Vertical Gradients */}
         <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3 sm:gap-6 lg:gap-7">
           {cards.map((card, idx) => {
             const iconKey = (card.icon || "").toLowerCase();
@@ -228,7 +213,6 @@ export default function MissionVision({
                     : "border-[#D8EBD5] bg-gradient-to-b from-[#F7FCF6] via-[#EEF7EC] to-[#E1F1DF] shadow-[0_4px_22px_rgba(18,86,43,0.05)] hover:shadow-[0_10px_30px_rgba(18,86,43,0.12)]"
                 }`}
               >
-                {/* Subtle Botanical 3-Leaf Watermark with Gradient Opacity */}
                 <div
                   className="pointer-events-none absolute bottom-0 right-0 z-0 overflow-hidden"
                   aria-hidden="true"
@@ -240,17 +224,13 @@ export default function MissionVision({
                     viewBox="0 0 100 100"
                     fill="currentColor"
                   >
-                    {/* Leaf 1 (center) */}
                     <path d="M75 75 C60 55 45 35 50 15 C68 28 72 52 75 75 Z" />
-                    {/* Leaf 2 (left) */}
                     <path d="M75 75 C50 65 30 55 15 35 C38 32 60 48 75 75 Z" />
-                    {/* Leaf 3 (right) */}
                     <path d="M75 75 C68 52 60 35 70 20 C78 38 78 58 75 75 Z" />
                   </svg>
                 </div>
 
                 <div className="relative z-10">
-                  {/* Card Header with 3D Gradient Icon Circle and Underlined Title */}
                   <div className="mb-4 flex items-center gap-4 sm:mb-5 sm:gap-4.5">
                     <div className="relative shrink-0">
                       <div
@@ -263,7 +243,6 @@ export default function MissionVision({
                         {getCardIcon(card.icon || "")}
                       </div>
 
-                      {/* Small overlapping contrast accent dot with gradient */}
                       <span
                         className={`absolute -bottom-0.5 -right-0.5 h-4 w-4 sm:h-4.5 sm:w-4.5 rounded-full border-2 ${
                           isVision
@@ -277,12 +256,9 @@ export default function MissionVision({
                       <h3 className="text-lg font-black leading-tight tracking-tight text-[#0D381E] sm:text-xl">
                         {card.title}
                       </h3>
-                      {/* Gradient underline */}
                       <div className="mt-2 h-[3px] w-12 rounded-full bg-gradient-to-r from-[#F5B800] via-[#F7C02B] to-[#E59A00]" />
                     </div>
                   </div>
-
-                  {/* Card Description */}
                   <p
                     className={`relative z-10 text-sm leading-[1.65] font-normal sm:text-[14.5px] ${
                       isVision ? "text-[#555243]" : "text-[#4A5E4E]"
@@ -297,9 +273,7 @@ export default function MissionVision({
         </div>
       </div>
 
-      {/* Bottom Wave Ribbons & Lush Crop Field Banner with Dual Gradient Ribbons */}
       <div className="relative w-full h-24 sm:h-28 lg:h-32 mt-12 sm:mt-16 overflow-hidden">
-        {/* Lush green crop field photograph */}
         <Image
           src="/images/mission_crop_field.jpg"
           alt="Lush green organic crop fields"
@@ -309,10 +283,8 @@ export default function MissionVision({
           className="object-cover object-bottom"
         />
 
-        {/* Sunlight atmospheric depth overlay on crop field */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none" />
 
-        {/* Smooth organic mask for the top contour */}
         <svg
           className="absolute top-0 left-0 w-full h-8 sm:h-10 text-[#EDF6EB]/60 sm:text-[#EDF6EB]/40"
           viewBox="0 0 1440 60"
@@ -323,7 +295,6 @@ export default function MissionVision({
           <path d="M0 0C340 38 660 12 960 30S1390 18 1440 0V0H0Z" />
         </svg>
 
-        {/* Dynamic Dual Gradient Wave Ribbons across the top of the crop field */}
         <svg
           className="absolute top-0.5 sm:top-1 left-0 w-full h-8 sm:h-10 pointer-events-none"
           viewBox="0 0 1440 50"
@@ -357,13 +328,11 @@ export default function MissionVision({
             </linearGradient>
           </defs>
 
-          {/* Vibrant golden-yellow wave ribbon with linear gradient */}
           <path
             d="M0 8C340 38 660 12 960 30S1390 18 1440 6"
             stroke="url(#yellowWaveGrad)"
             strokeWidth="4"
           />
-          {/* Deep forest green wave ribbon with linear gradient */}
           <path
             d="M0 14C360 42 680 18 980 34S1400 24 1440 12"
             stroke="url(#greenWaveGrad)"

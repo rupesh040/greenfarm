@@ -44,13 +44,15 @@ export default function Gallery({ data = defaultGalleryData }: GalleryProps) {
   const allItems = data?.items ?? [];
 
   const filteredItems =
-    activeCategory === "All Projects"
+    activeCategory === "All Projects" || activeCategory.toLowerCase() === "all"
       ? allItems
-      : allItems.filter(
-          (item) =>
-            item.category === activeCategory ||
-            item.categories?.includes(activeCategory)
-        );
+      : allItems.filter((item) => {
+          const target = activeCategory.toLowerCase().trim();
+          return (
+            item.category?.toLowerCase().trim() === target ||
+            item.categories?.some((c) => c.toLowerCase().trim() === target)
+          );
+        });
 
   const totalPages = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
 
@@ -118,34 +120,10 @@ export default function Gallery({ data = defaultGalleryData }: GalleryProps) {
     <section
       ref={sectionRef}
       id={data?.sectionId || "gallery"}
-      className="w-full overflow-hidden bg-white py-2 pb-20"
+      className="w-full overflow-hidden bg-white pt-10 sm:pt-14 pb-16 lg:pb-24 font-sans"
     >
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-3 flex items-center justify-center gap-3 sm:gap-4">
-            <span className="h-[2px] w-12 sm:w-16 rounded-full bg-[#E5B83B]" />
-            <svg
-              className="h-8 w-8 sm:h-9 sm:w-9"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16 3.5C16 3.5 12 9.5 12 14.5C12 16.71 13.79 18.5 16 18.5C18.21 18.5 20 16.71 20 14.5C20 9.5 16 3.5 16 3.5Z"
-                fill="#F2C94C"
-              />
-              <path
-                d="M13 18C7.5 18 3 13 3 7C8.5 7 13.5 11.5 14 17"
-                fill="#166534"
-              />
-              <path
-                d="M19 18C24.5 18 29 13 29 7C23.5 7 18.5 11.5 18 17"
-                fill="#166534"
-              />
-            </svg>
-            <span className="h-[2px] w-12 sm:w-16 rounded-full bg-[#E5B83B]" />
-          </div>
-
           <h2 className="text-4xl font-extrabold tracking-tight text-[#16532D] sm:text-5xl lg:text-[52px]">
             {data?.title || "Our Gallery"}
           </h2>
@@ -154,8 +132,11 @@ export default function Gallery({ data = defaultGalleryData }: GalleryProps) {
             {data?.subtitle ||
               "Explore the moments from our farms, organic produce, farming activities and community engagements."}
           </p>
+        </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:mt-10 sm:gap-3">
+        {/* Categories Section */}
+        <div className="mx-auto mt-8 max-w-5xl px-2 sm:mt-10">
+          <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto py-2 px-2 sm:px-0 sm:flex-wrap sm:overflow-visible no-scrollbar">
             {categories.map((category) => {
               const isSelected = activeCategory === category;
               return (
@@ -163,7 +144,7 @@ export default function Gallery({ data = defaultGalleryData }: GalleryProps) {
                   key={category}
                   type="button"
                   onClick={() => handleCategoryChange(category)}
-                  className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 sm:px-6 sm:py-2.5 sm:text-base ${
+                  className={`shrink-0 cursor-pointer whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 sm:px-6 sm:py-2.5 sm:text-base ${
                     isSelected
                       ? "scale-105 bg-[#16532D] text-white shadow-md ring-2 ring-[#16532D] ring-offset-2"
                       : "bg-[#F2F6EF] text-[#2D4A3E] hover:bg-[#E5EFE1] hover:text-[#16532D]"

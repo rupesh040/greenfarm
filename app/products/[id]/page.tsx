@@ -21,6 +21,7 @@ export default async function ProductDetailPage({ params }: Props) {
   return (
     <main className="w-full">
       <PageBanner
+        hideText
         title={product.title.toUpperCase()}
         breadcrumb={product.title}
         breadcrumbs={[
@@ -28,7 +29,7 @@ export default async function ProductDetailPage({ params }: Props) {
           { label: product.title },
         ]}
       />
-      <ProductDetail data={product} />
+      <ProductDetail key={product.id || id} data={product} />
     </main>
   );
 }

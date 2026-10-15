@@ -54,7 +54,7 @@
             "links": [
               {
                 "id": "testimonials",
-                "label": "Testimonials",
+                "label": "Testimonial",
                 "href": "/testimonials"
               },
               {
@@ -147,24 +147,18 @@
                 "label": "Gallery",
                 "href": "/gallery",
                 "active": false
-              },
-              {
-                "id": "contact",
-                "label": "Contact",
-                "href": "/contact",
-                "active": false
               }
             ],
             "ctaButton": {
-              "label": "Enquiry Now",
+              "label": "Contact Us",
               "href": "/contact"
             },
             "enquiryModal": {
-              "title": "Quick Farm Enquiry",
+              "title": "Contact Us",
               "subtitle": "Fresh organic produce & agricultural solutions",
-              "successTitle": "Enquiry Received!",
+              "successTitle": "Message Received!",
               "successMessage": "Thank you! Our agricultural advisor will contact you shortly.",
-              "submitText": "Submit Enquiry",
+              "submitText": "Send Message",
               "services": [
                 "Organic Farming Consultation",
                 "Bulk Farm Produce Purchase",
@@ -799,6 +793,10 @@
                 "href": "/gallery"
               },
               {
+                "label": "Testimonial",
+                "href": "/testimonials"
+              },
+              {
                 "label": "FAQs",
                 "href": "/faqs"
               },
@@ -1337,7 +1335,12 @@
             },
             "testimonials": {
               "title": "TESTIMONIALS",
-              "breadcrumb": "Testimonials",
+              "breadcrumb": "Testimonial",
+              "image": "/page-banner.webp"
+            },
+            "testimonial": {
+              "title": "TESTIMONIALS",
+              "breadcrumb": "Testimonial",
               "image": "/page-banner.webp"
             },
             "service-details": {
@@ -1459,7 +1462,7 @@
               }
             ],
             "enquiry": {
-              "label": "Enquiry Now",
+              "label": "Contact Us",
               "href": "/contact"
             },
             "overview": {
@@ -1588,7 +1591,7 @@
             "badge": "Our Services",
             "title": "Organic Farm Consultation",
             "shortDescription": "Get expert guidance to start or improve your organic farm. We provide personalized consultation on soil preparation, crop selection, organic practices and sustainable farming methods.",
-            "enquiryButtonText": "Enquiry Now",
+            "enquiryButtonText": "Contact Us",
             "heroImage": "/services/consultation-hero.jpg",
             "overviewTitle": "Service Overview",
             "overviewDescription": "Our Organic Farm Consultation service is designed to help farmers, home gardeners and agricultural businesses adopt sustainable and chemical-free farming practices. Our experts analyze your land, soil condition and farming goals to provide practical solutions that improve productivity, ensure long-term soil health and support a greener environment. Whether you are starting a new farm or want to switch to organic methods, we guide you at every step with personalized recommendations.",
@@ -1664,7 +1667,7 @@
               {
                 "id": "garden-maintenance",
                 "title": "Garden Maintenance Plans",
-                "image": "https://images.unsplash.com/photo-1592417817098-8f3d69106093?auto=format&fit=crop&w=200&q=80",
+                "image": "/images/garden_maintenance.jpg",
                 "href": "/services/garden-maintenance"
               },
               {
