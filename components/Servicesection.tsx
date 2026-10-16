@@ -108,7 +108,7 @@ export default function Services({ data = defaultServicesData }: ServicesProps) 
   return (
     <section
       id="services"
-      className="relative isolate w-full overflow-hidden bg-[#FAFBF6] px-4 pt-12 pb-10 sm:px-6 sm:pt-16 sm:pb-2 lg:px-10 lg:pt-10 lg:pb-2 xl:px-12"
+      className="relative isolate w-full overflow-hidden bg-[#FAFBF6] px-4 pt-6 pb-4 sm:px-6 sm:pt-8 sm:pb-4 lg:px-10 lg:pt-8 lg:pb-4 xl:px-12"
     >
     
       <div className="pointer-events-none absolute -left-20 top-40 -z-10 h-64 w-64 rounded-full bg-[#DDEBD8]/30 blur-3xl" />

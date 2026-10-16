@@ -31,7 +31,7 @@ export default function Hero({ data = defaultHeroData }: HeroProps) {
   return (
     <section
       id="home"
-      className="w-full relative bg-gradient-to-r from-[#0c2815] via-[#11341c] to-[#143e21] overflow-hidden pt-8 sm:pt-12 pb-16 sm:pb-24 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="w-full relative bg-gradient-to-r from-[#0c2815] via-[#11341c] to-[#143e21] overflow-hidden pt-6 sm:pt-8 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="absolute top-0 right-4 sm:right-12 w-80 sm:w-[420px] h-80 sm:h-[420px] pointer-events-none opacity-20 select-none">
         <svg viewBox="0 0 300 300" fill="none" stroke="#4ade80" strokeWidth="1.8" className="w-full h-full">

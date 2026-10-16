@@ -50,7 +50,7 @@ export default function ClientTestimonials({
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-[#FDFEFA] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-10 overflow-hidden font-sans"
+      className="relative w-full bg-[#FDFEFA] py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-10 overflow-hidden font-sans"
     >
    
       <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-[#EAF5E4]/60 blur-3xl" />

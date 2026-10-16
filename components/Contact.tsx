@@ -110,7 +110,7 @@ export default function Contact({ data = defaultContactData }: ContactProps) {
   return (
     <section
       id={data.sectionId || "contact"}
-      className="relative w-full py-6 pb-20 bg-[#fafcf7] overflow-hidden"
+      className="relative w-full py-6 pb-8 sm:pb-10 bg-[#fafcf7] overflow-hidden"
     >
       <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-amber-100/30 rounded-full blur-3xl pointer-events-none translate-x-1/3" />

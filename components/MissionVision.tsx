@@ -93,7 +93,7 @@ export default function MissionVision({
   return (
     <section
       id={data?.sectionId || "mission-vision"}
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FAFDF8] to-[#EDF6EB]/60 pt-10 pb-0 font-sans sm:pt-14 lg:pt-16"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FAFDF8] to-[#EDF6EB]/60 pt-6 pb-0 font-sans sm:pt-8 lg:pt-10"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(245,184,0,0.06),transparent_65%)] z-0"

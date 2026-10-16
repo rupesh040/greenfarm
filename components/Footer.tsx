@@ -63,9 +63,9 @@ export default function Footer({ data }: FooterProps) {
   };
 
   return (
-    <footer className="w-full bg-[#052412] text-white pt-16 sm:pt-20 pb-8 border-t border-emerald-900/40 relative overflow-hidden px-4 sm:px-8 lg:px-12 xl:px-16 animate-fadeIn">
+    <footer className="w-full bg-[#052412] text-white pt-10 sm:pt-14 pb-6 border-t border-emerald-900/40 relative overflow-hidden px-4 sm:px-8 lg:px-12 xl:px-16 animate-fadeIn">
       <div className="w-full relative z-10">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-10 pb-12">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-10 pb-8">
           <div className="lg:col-span-4 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3 focus:outline-none group">
               <Image

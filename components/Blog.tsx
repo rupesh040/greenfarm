@@ -219,7 +219,7 @@ export default function Blog({
   return (
     <section
       id="blog"
-      className="relative w-full overflow-hidden bg-[#fcfdfa] py-6 font-sans  pb-20"
+      className="relative w-full overflow-hidden bg-[#fcfdfa] pt-4 sm:pt-6 pb-8 sm:pb-10 font-sans"
     >
       <div className="pointer-events-none absolute -right-20 -top-20 z-0 hidden h-72 w-72 rotate-12 opacity-30 lg:block">
         <Image

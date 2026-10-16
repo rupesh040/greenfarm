@@ -17,7 +17,7 @@ export default function BlogDetail({
   if (!data) return null;
 
   return (
-    <article className="w-full bg-white py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 font-sans">
+    <article className="w-full bg-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 

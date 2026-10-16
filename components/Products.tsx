@@ -393,7 +393,7 @@ export default function Products({
     <section
       id="products"
       className={`relative w-full overflow-hidden bg-[#FAFCF7] font-sans ${
-        isProductPage ? "pt-10 sm:pt-14 pb-16 lg:pb-24" : "pb-16 pt-2 sm:pb-20 lg:pb-24"
+        isProductPage ? "pt-6 sm:pt-8 pb-8 sm:pb-12" : "pt-2 pb-6 sm:pb-8 lg:pb-10"
       }`}
     >
 

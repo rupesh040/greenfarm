@@ -231,7 +231,7 @@ export default function About({
     <section
       ref={containerRef}
       id="about"
-      className="relative w-full overflow-hidden bg-white pt-6 pb-20 sm:pb-28 lg:pb-36 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16"
+      className="relative w-full overflow-hidden bg-white pt-6 pb-8 sm:pb-12 lg:pb-14 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16"
     >
       {leafBackground && (
         <motion.div

@@ -38,7 +38,7 @@ export default function Testimonials({
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-[#FCFDF9] py-4 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans"
+      className="relative w-full bg-[#FCFDF9] py-4 pb-6 px-4 sm:px-6 lg:px-8 overflow-hidden font-sans"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
