@@ -121,6 +121,10 @@ export function getProductDetail(idOrSlug: string): ProductDetailData {
     category: item.badge ? `${item.badge} Produce` : "100% Organic",
     title: item.title,
     description: item.description,
+    detailedDescription: [
+      `Cultivated using sustainable, eco-conscious farming practices, our ${item.title.toLowerCase()} is grown in nutrient-rich organic soil under optimal sunlight and natural spring irrigation.`,
+      `Hand-inspected at daily morning harvest and packed in breathable eco-friendly packaging to ensure uncompromised purity, crisp natural texture, and exceptional farm-fresh taste from our fields directly to your table.`,
+    ],
     images: [
       { src: item.image, alt: item.title },
       ...(productDetailData?.images ? productDetailData.images.slice(1) : []),

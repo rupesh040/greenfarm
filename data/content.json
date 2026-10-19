@@ -1409,6 +1409,10 @@
             "category": "100% Organic",
             "title": "Fresh Vegetables",
             "description": "Crisp organic greens, broccoli, carrots & colorful bell peppers hand-harvested at peak morning freshness from our certified sustainable farm fields.",
+            "detailedDescription": [
+              "Cultivated using sustainable, eco-conscious farming practices, our produce is grown in nutrient-rich organic soil under optimal sunlight and natural spring irrigation.",
+              "Hand-inspected at daily morning harvest and packed in breathable eco-friendly packaging to ensure uncompromised purity, crisp natural texture, and exceptional farm-fresh taste from our fields directly to your table."
+            ],
             "images": [
               {
                 "src": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=80",

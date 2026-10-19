@@ -222,7 +222,6 @@ export default function Navbar({ initialData }: NavbarProps) {
               </Link>
             </motion.div>
 
-            {/* Desktop Navigation Links with Stagger Fade & Slide Down */}
             <motion.nav
               aria-label="Main navigation"
               variants={navContainerVariants}
@@ -248,7 +247,6 @@ export default function Navbar({ initialData }: NavbarProps) {
                     >
                       <span>{link.label}</span>
                       
-                      {/* Active indicator bar */}
                       {isActive && (
                         <motion.span
                           layoutId="activeNavIndicator"
@@ -261,7 +259,6 @@ export default function Navbar({ initialData }: NavbarProps) {
                         />
                       )}
 
-                      {/* Smooth pill hover highlight */}
                       <span className="absolute inset-0 rounded-full bg-emerald-50/70 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
                     </Link>
                   </motion.div>
@@ -269,7 +266,6 @@ export default function Navbar({ initialData }: NavbarProps) {
               })}
             </motion.nav>
 
-            {/* Desktop CTA Action Button with Stagger Animation */}
             <motion.div
               initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
@@ -284,7 +280,6 @@ export default function Navbar({ initialData }: NavbarProps) {
               </Link>
             </motion.div>
 
-            {/* Mobile Hamburger Toggle Button */}
             <button
               type="button"
               aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -300,7 +295,6 @@ export default function Navbar({ initialData }: NavbarProps) {
             </button>
           </div>
 
-          {/* Smooth-Opening Mobile Hamburger Menu Dropdown */}
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div
@@ -341,7 +335,6 @@ export default function Navbar({ initialData }: NavbarProps) {
                     );
                   })}
 
-                  {/* Mobile CTA Button */}
                   <motion.div variants={mobileItemVariants} className="pt-2">
                     <Link
                       href="/contact"
@@ -352,7 +345,6 @@ export default function Navbar({ initialData }: NavbarProps) {
                     </Link>
                   </motion.div>
 
-                  {/* Mobile Contact & Social Links Footer */}
                   <motion.div
                     variants={mobileItemVariants}
                     className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3"
@@ -387,7 +379,6 @@ export default function Navbar({ initialData }: NavbarProps) {
         </div>
       </motion.header>
 
-      {/* Enquiry Modal Dialog */}
       <AnimatePresence>
         {isEnquiryOpen && (
           <div
@@ -396,7 +387,6 @@ export default function Navbar({ initialData }: NavbarProps) {
             aria-modal="true"
             aria-labelledby="enquiry-title"
           >
-            {/* Backdrop Blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -405,7 +395,6 @@ export default function Navbar({ initialData }: NavbarProps) {
               className="fixed inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
             />
 
-            {/* Modal Content Box */}
             <motion.div
               initial={{ opacity: 0, scale: 0.94, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -413,7 +402,6 @@ export default function Navbar({ initialData }: NavbarProps) {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="relative my-auto flex w-full sm:w-[500px] flex-col overflow-hidden rounded-3xl border border-green-100 bg-white shadow-2xl z-10"
             >
-              {/* Header */}
               <div className="relative flex shrink-0 items-center justify-between gap-3 overflow-hidden bg-[#15803d] px-6 py-5 text-white">
                 <div className="flex items-center gap-3">
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/20">
@@ -439,7 +427,6 @@ export default function Navbar({ initialData }: NavbarProps) {
                 </button>
               </div>
 
-              {/* Body */}
               <div className="p-6">
                 {enquirySubmitted ? (
                   <div className="flex flex-col items-center py-8 text-center">

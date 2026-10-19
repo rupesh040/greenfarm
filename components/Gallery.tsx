@@ -134,7 +134,6 @@ export default function Gallery({ data = defaultGalleryData }: GalleryProps) {
           </p>
         </div>
 
-        {/* Categories Section */}
         <div className="mx-auto mt-8 max-w-5xl px-2 sm:mt-10">
           <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto py-2 px-2 sm:px-0 sm:flex-wrap sm:overflow-visible no-scrollbar">
             {categories.map((category) => {

@@ -22,14 +22,9 @@ interface ProductsProps {
   variant?: "grid" | "carousel";
 }
 
-/* Image files – put them in /public/images */
 const LEAF = "/images/leaf.png";
 const LEAF_LIGHT = "/images/leaf-light.png";
 const FARM_ART = "/images/farm-illustration.png";
-
-/* ------------------------------------------------------------------ */
-/*  Reveal – plays once on page load / when scrolled into view         */
-/* ------------------------------------------------------------------ */
 
 type Direction = "left" | "right" | "up" | "down" | "scale";
 
@@ -93,7 +88,6 @@ function Reveal({
   );
 }
 
-/* Decorative leaf made from a real image */
 function LeafImage({
   src = LEAF,
   size,
@@ -125,7 +119,6 @@ function LeafImage({
   );
 }
 
-/* Small filled leaf used inside the "Our Products" badge */
 function FilledLeaf({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
@@ -133,10 +126,6 @@ function FilledLeaf({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
 
 export default function Products({
   data = defaultProductsData,
@@ -399,7 +388,6 @@ export default function Products({
 
 
       <div className="pointer-events-none absolute right-0 top-0 hidden h-[360px] w-[320px] md:block lg:w-[380px]">
-        {/* yellow petals */}
         <Reveal from="scale" delay={700} className="absolute left-6 top-24">
           <span className="absolute left-0 top-9 block h-3 w-12 -rotate-[8deg] rounded-full bg-[#FFD60A]" />
           <span className="absolute left-6 top-0 block h-3.5 w-12 rotate-[62deg] rounded-full bg-[#FFD60A]" />
@@ -416,7 +404,6 @@ export default function Products({
         </Reveal>
       </div>
 
-      {/* ============================ HEADER ============================ */}
       <div className="relative z-10 mb-10 px-4 text-center sm:mb-14">
         <Reveal from="down">
           <div className="mb-5 inline-flex items-center gap-2.5 rounded-full bg-white px-5 py-2 text-[15px] font-semibold text-[#0A3D1F] shadow-[0_4px_18px_rgba(20,83,45,0.10)] ring-1 ring-[#E6EFE3]">
@@ -446,7 +433,6 @@ export default function Products({
         </Reveal>
       </div>
 
-      {/* Category Tabs for Products Page */}
       {isGrid && (
         <div className="relative z-10 mx-auto mb-10 max-w-5xl px-2 sm:px-4 text-center">
           <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto py-1 px-2 sm:px-0 sm:flex-wrap sm:overflow-visible no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -474,9 +460,7 @@ export default function Products({
         </div>
       )}
 
-      {/* ============================ PRODUCTS ============================ */}
       <div className="relative z-10 mx-auto w-full max-w-[1340px]">
-        {/* leaf peeking in at the left edge */}
         <div
           className={`pointer-events-none absolute -left-3 z-10 hidden lg:block ${
             isGrid ? "top-[200px]" : "top-[340px]"
@@ -564,14 +548,12 @@ export default function Products({
                       )}
                     </Link>
 
-                    {/* leaf overlapping the bottom-right corner of the photo */}
                     <LeafImage
                       size={46}
                       rotate={40}
                       className="absolute right-0 top-[158px] z-10 sm:top-[190px]"
                     />
 
-                    {/* yellow icon badge overlapping the photo */}
                     <div className="absolute left-5 top-[164px] z-10 flex h-14 w-14 items-center justify-center rounded-full bg-[#FFD33D] shadow-[0_6px_16px_rgba(242,185,5,0.45)] transition-transform duration-300 group-hover:scale-110 sm:left-6 sm:top-[196px]">
                       {getIcon(prod.title, prod.icon)}
                     </div>

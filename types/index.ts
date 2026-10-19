@@ -672,6 +672,7 @@ export interface ProductDetailData {
   category: string;
   title: string;
   description: string;
+  detailedDescription?: string[];
   images: ProductDetailImage[];
   imageBadges: ProductDetailBadge[];
   highlights: ProductDetailHighlight[];

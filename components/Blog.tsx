@@ -116,8 +116,6 @@ export default function Blog({
 
     return firstCard.getBoundingClientRect().width + gap;
   }, []);
-
-  // Autoplay functionality for blog slider
   useEffect(() => {
     if (isGrid || isHovered || items.length <= 1) return;
 
@@ -326,7 +324,7 @@ export default function Blog({
                 }
           }
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {visibleBlogs.map((post, index) => (
               <motion.article
                 key={post.id}
